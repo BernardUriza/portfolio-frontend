@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "tailwind:build": "tailwindcss -i ./src/styles.scss -o ./src/tailwind.css --watch"
   },
   "private": true,
   "dependencies": {
@@ -16,6 +17,10 @@
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@fontsource/cinzel": "^5.2.6",
+    "@fontsource/cormorant-garamond": "^5.2.9",
+    "@fontsource/inter": "^5.2.6",
+    "@fontsource/open-sans": "^5.2.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -24,6 +29,7 @@
     "@angular/build": "^20.0.2",
     "@angular/cli": "^20.0.2",
     "@angular/compiler-cli": "^20.0.0",
+    "@tailwindcss/postcss": "^4.1.10",
     "@types/jasmine": "~5.1.0",
     "autoprefixer": "^10.4.21",
     "jasmine-core": "~5.7.0",
