@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SkillService } from '../skill.service';
+import { SkillModel } from '../models/skill.model';
 
 @Component({
   selector: 'app-skill-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './skill-list.html',
-  styleUrl: './skill-list.scss'
+  styleUrls: ['./skill-list.scss']
 })
-export class SkillList {
+export class SkillList implements OnInit {
+  skills: SkillModel[] = [];
+  error = '';
 
+  constructor(private service: SkillService) {}
+
+  ngOnInit(): void {
+    this.service.getAll().subscribe({
+      next: data => this.skills = data,
+      error: () => this.error = 'Failed to load skills'
+    });
+  }
 }

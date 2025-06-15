@@ -1,1 +1,9 @@
-<p>skill-list works!</p>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<ul *ngIf="skills.length">
+  <li *ngFor="let s of skills">
+    <strong>{{ s.name }}</strong>: {{ s.description }}
+  </li>
+</ul>
+
+<div *ngIf="!skills.length && !error">No skills found.</div>
