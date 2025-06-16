@@ -3,7 +3,7 @@
   <div class="absolute inset-0 bg-gradient-to-b from-azul-noche to-antracita opacity-95"></div>
 
   <!-- Inline dynamic SVG -->
-  <svg id="nocheOscuraSVG" class="absolute inset-0 w-full h-full object-cover pointer-events-none" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <svg id="nocheOscuraSVG" class="absolute inset-0 w-full h-full object-cover pointer-events-none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
     <defs>
       <linearGradient id="bgGradient" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#121826"/>
@@ -13,6 +13,12 @@
       <radialGradient id="fogGradient" cx="50%" cy="30%" r="80%">
         <stop offset="0%" stop-color="#8B0000" stop-opacity="0.2"/>
         <stop offset="100%" stop-color="#8B0000" stop-opacity="0"/>
+      </radialGradient>
+      
+      <radialGradient id="galaxyGradient" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#8B0000" stop-opacity="0.4"/>
+        <stop offset="50%" stop-color="#3B1F47" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
       </radialGradient>
 
       <filter id="blurFog">
@@ -27,6 +33,11 @@
 
     <!-- Background rect -->
     <rect width="1920" height="1080" fill="url(#bgGradient)"/>
+    <g id="galaxias-fondo" opacity="0.05">
+      <circle cx="300" cy="200" r="30" fill="url(#galaxyGradient)"/>
+      <circle cx="1600" cy="400" r="40" fill="url(#galaxyGradient)"/>
+      <circle cx="900" cy="800" r="25" fill="url(#galaxyGradient)"/>
+    </g>
 
     <!-- Fractal wave layers -->
     <g class="fractal-layer depth-1">
@@ -37,6 +48,11 @@
     </g>
     <g class="fractal-layer depth-3">
       <path d="M0,300 C720,200 1200,600 1920,400" fill="none" stroke="#3B1F47" stroke-width="2" opacity="0.15"/>
+    </g>
+    <g id="galaxias-frente" opacity="0.08">
+      <circle cx="500" cy="500" r="20" fill="url(#galaxyGradient)"/>
+      <circle cx="1300" cy="200" r="35" fill="url(#galaxyGradient)"/>
+      <circle cx="1700" cy="900" r="28" fill="url(#galaxyGradient)"/>
     </g>
 
     <!-- Fog layers with vertical float -->

@@ -31,3 +31,21 @@
   100% { transform: translateY(0) translateX(0) scale(1); }
 }
 
+#nocheOscuraSVG {
+  #galaxias-fondo {
+    animation: galaxyDriftBack 120s infinite alternate ease-in-out;
+  }
+  #galaxias-frente {
+    animation: galaxyDriftFront 90s infinite alternate ease-in-out;
+  }
+}
+
+@keyframes galaxyDriftBack {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50px); }
+}
+
+@keyframes galaxyDriftFront {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(30px); }
+}
