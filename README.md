@@ -1,8 +1,4 @@
-💡 **¡Con mucho gusto! Aquí tienes un `README.md` bien estructurado para tu proyecto `Portfolio API` con \~900 palabras, listo para documentación profesional en GitHub o cualquier repositorio!**
 
----
-
-````markdown
 # Portfolio API
 
 Portfolio API es un servicio RESTful desarrollado con **Java 21** y **Spring Boot 3.5.0** que permite gestionar un portafolio de proyectos, habilidades, experiencias laborales y contactos. Este backend está diseñado para ser consumido por interfaces frontend como aplicaciones web, móviles o herramientas de automatización, ofreciendo un conjunto de endpoints seguros, escalables y fáciles de integrar.
