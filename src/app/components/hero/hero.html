@@ -1,9 +1,40 @@
 <section class="relative bg-azul-noche text-gris-claro min-h-screen flex flex-col justify-center items-center overflow-hidden">
   <!-- Fondo gradiente + overlay -->
   <div class="absolute inset-0 bg-gradient-to-b from-azul-noche to-antracita opacity-95"></div>
-  <div class="absolute inset-0">
-    <img src="assets/abstract-bg.svg" alt="Abstract background" class="w-full h-full object-cover opacity-10" />
-  </div>
+
+  <!-- SVG interactivo -->
+  <svg id="nocheOscuraSVG" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="fogGradient" cx="50%" cy="30%" r="80%">
+        <stop offset="0%" stop-color="#8B0000" stop-opacity="0.1"/>
+        <stop offset="100%" stop-color="#8B0000" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="blurFog">
+        <feGaussianBlur stdDeviation="40"/>
+      </filter>
+    </defs>
+
+    <g id="fractals" stroke="#3B1F47" fill="none" stroke-width="2" opacity="0.3">
+      <path d="M0,900 C480,800 1440,1200 1920,1000"/>
+      <path d="M0,600 C600,500 1320,900 1920,700"/>
+      <path d="M0,300 C720,200 1200,600 1920,400"/>
+    </g>
+
+    <g id="fogLayer" opacity="0.1" filter="url(#blurFog)">
+      <rect width="1920" height="1080" fill="url(#fogGradient)"/>
+    </g>
+
+    <g id="particles" opacity="0.1">
+      <circle cx="150" cy="100" r="0.8"/>
+      <circle cx="600" cy="150" r="1.2"/>
+      <circle cx="900" cy="80" r="1"/>
+      <circle cx="1300" cy="200" r="1.4"/>
+      <circle cx="1700" cy="50" r="1"/>
+      <circle cx="300" cy="250" r="1.5"/>
+      <circle cx="1100" cy="180" r="0.9"/>
+      <circle cx="1600" cy="300" r="1.3"/>
+    </g>
+  </svg>
 
   <!-- Contenido principal -->
   <div class="relative z-10 text-center max-w-4xl px-4 animate-fade-in">

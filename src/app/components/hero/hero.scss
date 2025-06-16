@@ -1,0 +1,11 @@
+#nocheOscuraSVG {
+  transition: opacity 0.5s ease;
+
+  &.fog-active {
+    opacity: 0.3;
+  }
+
+  &.particles-cleared g#particles circle {
+    opacity: 0;
+  }
+}
