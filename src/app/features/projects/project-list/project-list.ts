@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../project.service';
-import { CommonModule } from '@angular/common';
-import { ProjectModel } from '../models/project.model';
+import { ProjectService, Project } from '../project.service';
 
 @Component({
-  standalone: true,
   selector: 'app-project-list',
-  imports: [CommonModule],
+  standalone: true,
   templateUrl: './project-list.html',
-  styleUrl: './project-list.scss'
+  styleUrls: ['./project-list.scss'],
+  imports: [] // agrega lo necesario (NgForOf, CommonModule, etc.)
 })
-export class ProjectList {
-  projects: ProjectModel[] = [];
-  error = '';
+export class ProjectListComponent implements OnInit {
+  projects: Project[] = [];
 
-  constructor(private service: ProjectService) {}
+  constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
-    this.service.getAll().subscribe({
-      next: data => this.projects = data,
-      error: () => this.error = 'Failed to load projects'
+    this.projectService.getProjects().subscribe({
+      next: (data) => this.projects = data,
+      error: (err) => console.error('Error loading projects', err)
     });
   }
 }

@@ -1,23 +1,13 @@
-<p>project-list works!</p>
-<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+<div *ngIf="projects.length; else noProjects">
+  <ul>
+    <li *ngFor="let p of projects">
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.description }}</p>
+      <a [href]="p.link" target="_blank">Ver proyecto</a>
+    </li>
+  </ul>
+</div>
 
-<table *ngIf="projects.length" class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Link</th>
-      <th>Created Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let p of projects">
-      <td>{{ p.title }}</td>
-      <td>{{ p.description }}</td>
-      <td><a [href]="p.link" target="_blank">Visit</a></td>
-      <td>{{ p.createdDate }}</td>
-    </tr>
-  </tbody>
-</table>
-
-<div *ngIf="!projects.length && !error">No projects found.</div>
+<ng-template #noProjects>
+  <p>No hay proyectos para mostrar.</p>
+</ng-template>
