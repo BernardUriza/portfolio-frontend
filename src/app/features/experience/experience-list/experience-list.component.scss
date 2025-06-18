@@ -1,0 +1,27 @@
+.timeline {
+  margin: 2rem 0 2rem 0;
+  padding: 1rem 2rem;
+  border-left: 3px solid #ac2eff;
+  background: #18182499;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px #2e204540;
+  h2 {
+    margin-bottom: 1.2rem;
+    color: #ac2eff;
+    text-shadow: 0 0 8px #ac2eff33;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #4442;
+      &:last-child { border-bottom: none; }
+      strong { color: #fff; }
+      span { color: #ac2eff; margin-left: 1rem; font-size: 0.93em; }
+      p { margin: 0.5em 0 0.3em 0; color: #dedede; }
+      small { color: #888; font-size: 0.85em; }
+    }
+  }
+}

@@ -10,6 +10,9 @@ export const routes: Routes = [
   { path: 'skills', component: SkillList },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
+  { path: 'experience',
+    loadChildren: () => import('./features/experience/experience.routes').then(m => m.routes)
+  },
   { path: 'admin', component: AdminComponent, canActivate: [authGuard] }
 ];
 

@@ -7,7 +7,6 @@ import { Cases } from './components/cases/cases';
 import { Services } from './components/services/services';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
-import { LoginComponent } from './features/login/login.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from './app.animations';
@@ -23,7 +22,6 @@ import { Router, NavigationEnd } from '@angular/router';
     Services,
     Contact,
     Footer,
-    LoginComponent,
     CommonModule,
     RouterOutlet
   ],
@@ -34,6 +32,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class App {
   mostrarLogin = false;
+  mostrarRouterRoboticArea = true;
   
   constructor(private router: Router) {
     // Detecta la ruta actual y muestra el modal si es /login
