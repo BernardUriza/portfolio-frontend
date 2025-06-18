@@ -10,8 +10,8 @@ import { Footer } from './components/footer/footer';
 import { LoginComponent } from './features/login/login.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { routeAnimations } from './app.animations'; // Importa las animaciones
-
+import { routeAnimations } from './app.animations';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [
@@ -34,6 +34,21 @@ import { routeAnimations } from './app.animations'; // Importa las animaciones
 })
 export class App {
   mostrarLogin = false;
-  abrirLogin() { this.mostrarLogin = true; }
-  cerrarLogin() { this.mostrarLogin = false; }
+  
+  constructor(private router: Router) {
+    // Detecta la ruta actual y muestra el modal si es /login
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.mostrarLogin = this.router.url === '/login';
+      }
+    });
+  }
+  abrirLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  cerrarLogin() {
+    // Vuelve a la home o la ruta anterior
+    this.router.navigate(['/']);
+  }
 }
