@@ -13,12 +13,13 @@ import { SkillModel } from '../models/skill.model';
 export class SkillList implements OnInit {
   skills: SkillModel[] = [];
   error = '';
+  loading = true;
 
   constructor(private service: SkillService) {}
 
   ngOnInit(): void {
     this.service.getAll().subscribe({
-      next: data => this.skills = data,
+      next: data => { this.skills = data; this.loading = false; },
       error: () => this.error = 'Failed to load skills'
     });
   }

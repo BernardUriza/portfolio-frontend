@@ -1,9 +1,25 @@
-<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+<div *ngIf="loading" class="text-center py-12">
+  <span class="animate-pulse-dorado text-xl text-dorado font-heading">Loading skills…</span>
+</div>
 
-<ul *ngIf="skills.length">
-  <li *ngFor="let s of skills">
-    <strong>{{ s.name }}</strong>: {{ s.description }}
-  </li>
-</ul>
+<div
+  *ngIf="!loading && skills.length > 0"
+  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8"
+>
+  <div
+    *ngFor="let skill of skills"
+    class="rounded-xl bg-azul-noche border-2 border-dorado shadow-inner-glow p-6 flex flex-col items-center justify-center animate-slide-up hover:scale-105 hover:shadow-dorado transition-all duration-300"
+  >
+    <span class="font-heading text-dorado text-xl mb-1 tracking-tight uppercase">{{ skill.name }}</span>
+    <span class="font-body text-gris-claro text-xs mb-4">{{ skill.description }}</span>
+    <span
+      class="bg-dorado text-antracita rounded-full px-4 py-1 font-heading font-bold text-xs shadow mt-2 tracking-wide animate-pulse-dorado"
+    >
+      EXPERTISE
+    </span>
+  </div>
+</div>
 
-<div *ngIf="!skills.length && !error">No skills found.</div>
+<p *ngIf="!loading && skills.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">
+  No skills found.
+</p>
