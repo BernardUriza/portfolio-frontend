@@ -7,7 +7,8 @@ import { Cases } from './components/cases/cases';
 import { Services } from './components/services/services';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
-
+import { AuthService } from './core/auth/auth.service'; 
+import { LoginComponent } from './features/login/login.component'; 
 @Component({
   selector: 'app-root',
   imports: [
@@ -18,12 +19,13 @@ import { Footer } from './components/footer/footer';
     Cases,
     Services,
     Contact,
-    Footer
+    Footer,
+    LoginComponent 
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   standalone: true
 })
 export class App {
-  protected title = 'portfolio-frontend';
+  constructor(public authService: AuthService) {}
 }
