@@ -7,9 +7,11 @@ import { Cases } from './components/cases/cases';
 import { Services } from './components/services/services';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
-import { AuthService } from './core/auth/auth.service'; 
-import { LoginComponent } from './features/login/login.component'; 
+import { LoginComponent } from './features/login/login.component';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { routeAnimations } from './app.animations'; // Importa las animaciones
+
 @Component({
   selector: 'app-root',
   imports: [
@@ -22,22 +24,16 @@ import { CommonModule } from '@angular/common';
     Contact,
     Footer,
     LoginComponent,
-    CommonModule
+    CommonModule,
+    RouterOutlet
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
-  standalone: true
+  standalone: true,
+  animations: [routeAnimations] // Aquí se activan
 })
 export class App {
-  constructor(public authService: AuthService) {}
-    mostrarLogin = false; // Valor por defecto, cambia según tu lógica
-
-  // Si quieres mostrar el login al hacer clic en algún botón, agrega el método:
-  abrirLogin() {
-    this.mostrarLogin = true;
-  }
-
-  cerrarLogin() {
-    this.mostrarLogin = false;
-  }
+  mostrarLogin = false;
+  abrirLogin() { this.mostrarLogin = true; }
+  cerrarLogin() { this.mostrarLogin = false; }
 }

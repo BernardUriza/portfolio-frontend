@@ -15,3 +15,36 @@
   box-shadow: 0 4px 32px rgba(0,0,0,0.4);
   z-index: 1001;
 }
+.router-robotic-area {
+  min-height: 340px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #181824 65%, #2e2045 100%);
+  border-radius: 22px;
+  box-shadow:
+    0 0 32px 8px #ac2eff44,
+    0 1px 1.5px 0 #fff1 inset;
+  border: 2px solid #ac2eff;
+  filter: drop-shadow(0 4px 16px #000a);
+  position: relative;
+  overflow: hidden;
+
+  // CRT scanlines for efecto retro
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 11px,
+      rgba(255,255,255,0.025) 12px,
+      transparent 16px
+    );
+    z-index: 2;
+    mix-blend-mode: lighten;
+  }
+}
+
