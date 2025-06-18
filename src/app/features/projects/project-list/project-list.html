@@ -1,32 +1,42 @@
 <div *ngIf="loading" class="text-center py-16">
-  <span class="animate-pulse text-xl text-accent">Loading projects…</span>
+  <span class="animate-pulse-dorado text-2xl text-dorado font-heading">Loading projects…</span>
 </div>
 
 <ul
   *ngIf="!loading && projects.length > 0"
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6"
+  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8"
 >
   <li
     *ngFor="let p of projects; trackBy: trackProject"
-    class="rounded-2xl shadow-lg bg-neutral p-6 hover:scale-105 hover:shadow-xl transition-all duration-300 border border-primary/10"
+    class="rounded-2xl bg-purpura-profundo border-2 border-dorado p-7 shadow-lg hover:shadow-dorado transition-all duration-300 animate-fade-in"
   >
-    <h3 class="font-jetbrainsmono font-bold text-lg mb-2 text-primary">{{ p.title }}</h3>
-    <p class="text-base text-body mb-4">{{ p.description }}</p>
-    <div class="flex justify-between items-center mt-2">
+    <h3 class="font-heading text-dorado text-2xl mb-1 tracking-tight">{{ p.title }}</h3>
+    <p class="font-body text-gris-claro mb-5">{{ p.description }}</p>
+    <div class="flex justify-between items-center mt-4">
       <a
         *ngIf="p.link"
         [href]="p.link"
-        class="text-accent font-semibold underline underline-offset-4 hover:text-highlight transition"
+        class="bg-dorado text-antracita font-bold px-5 py-2 rounded-lg shadow-dorado hover:bg-rojo-oscuro hover:text-dorado transition animate-pulse-dorado"
         target="_blank"
         rel="noopener"
       >
         View Project
       </a>
-      <span class="text-xs text-right text-gray-500">{{ p.createdDate | date }}</span>
+      <span class="text-xs text-gris-medio">{{ p.createdDate | date }}</span>
+    </div>
+    <div class="mt-6 flex gap-4">
+      <a href="/assets/cv.pdf" target="_blank"
+         class="bg-rojo-oscuro text-dorado font-heading px-4 py-2 rounded shadow-rojo-oscuro hover:bg-dorado hover:text-rojo-oscuro transition">
+        Download CV
+      </a>
+      <a href="/#contact"
+         class="border-2 border-dorado text-dorado font-heading px-4 py-2 rounded hover:bg-dorado hover:text-purpura-profundo transition">
+        Contact
+      </a>
     </div>
   </li>
 </ul>
 
-<p *ngIf="!loading && projects.length === 0" class="text-warning text-center my-16 text-xl">
+<p *ngIf="!loading && projects.length === 0" class="text-rojo-oscuro text-center my-16 text-xl font-heading">
   No projects found.
 </p>
