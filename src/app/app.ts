@@ -9,6 +9,7 @@ import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 import { AuthService } from './core/auth/auth.service'; 
 import { LoginComponent } from './features/login/login.component'; 
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   imports: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './features/login/login.component';
     Services,
     Contact,
     Footer,
-    LoginComponent 
+    LoginComponent,
+    CommonModule
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
@@ -28,4 +30,14 @@ import { LoginComponent } from './features/login/login.component';
 })
 export class App {
   constructor(public authService: AuthService) {}
+    mostrarLogin = false; // Valor por defecto, cambia según tu lógica
+
+  // Si quieres mostrar el login al hacer clic en algún botón, agrega el método:
+  abrirLogin() {
+    this.mostrarLogin = true;
+  }
+
+  cerrarLogin() {
+    this.mostrarLogin = false;
+  }
 }

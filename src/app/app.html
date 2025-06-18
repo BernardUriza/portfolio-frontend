@@ -1,15 +1,19 @@
 <app-header></app-header>
+<button (click)="abrirLogin()" style="position:fixed;bottom:30px;right:30px;z-index:1050;">Iniciar sesión</button>
 
-<ng-container *ngIf="authService.isAuthenticated(); else loginTemplate">
-  <app-hero></app-hero>
-  <app-carousel></app-carousel>
-  <app-about></app-about>
-  <app-cases></app-cases>
-  <app-services></app-services>
-  <app-contact></app-contact>
-  <app-footer></app-footer>
+<ng-container *ngIf="mostrarLogin">
+  <div class="login-modal-overlay" (click)="cerrarLogin()">
+    <div class="login-modal-content" (click)="$event.stopPropagation()">
+      <app-login></app-login>
+      <button (click)="cerrarLogin()" style="margin-top:1rem;width:100%;">Cerrar</button>
+    </div>
+  </div>
 </ng-container>
 
-<ng-template #loginTemplate>
-  <app-login></app-login>
-</ng-template>
+<app-hero></app-hero>
+<app-carousel></app-carousel>
+<app-about></app-about>
+<app-cases></app-cases>
+<app-services></app-services>
+<app-contact></app-contact>
+<app-footer></app-footer>
