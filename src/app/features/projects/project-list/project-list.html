@@ -4,6 +4,31 @@
   }
 </ul>
 <p *ngIf="projects.length === 0">No hay proyectos.</p>
+
 <button *ngIf="authService.isAdmin()" (click)="agregarProyecto()">
   Agregar proyecto
 </button>
+
+<!-- Formulario inline -->
+<div *ngIf="showForm() && authService.isAdmin()" class="new-project-form">
+  <h3>Nuevo Proyecto</h3>
+  <input
+    type="text"
+    placeholder="Título"
+    [(ngModel)]="newProject.title"
+    required
+  />
+  <textarea
+    placeholder="Descripción"
+    [(ngModel)]="newProject.description"
+    required
+  ></textarea>
+  <input
+    type="text"
+    placeholder="Stack (comma separated)"
+    [(ngModel)]="newProject.stack"
+  />
+  <br/>
+  <button (click)="guardarProyecto()">Guardar</button>
+  <button type="button" (click)="cancelarAgregar()">Cancelar</button>
+</div>
