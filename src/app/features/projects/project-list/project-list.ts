@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService, Project } from '../project.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../core/auth/auth.service';
+import { signal } from '@angular/core';
 @Component({
   selector: 'app-project-list',
   standalone: true,
@@ -9,14 +11,15 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule] 
 })
 export class ProjectList implements OnInit {
-  projects: Project[] = [];
+projects = signal<Project[]>([]);
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService,
+  public authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.projectService.getProjects().subscribe({
-      next: (data) => this.projects = data,
-      error: (err) => console.error('Error loading projects', err)
-    });
-  }
+ngOnInit(): void {
+  this.projectService.getProjects().subscribe({
+    next: (data) => this.projects.set(data),
+    error: (err) => console.error('Error loading projects', err)
+  });
+}
 }

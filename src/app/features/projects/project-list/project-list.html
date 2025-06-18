@@ -3,3 +3,7 @@
     <li>{{ p.title }}</li>
   }
 </ul>
+<p *ngIf="projects.length === 0">No hay proyectos.</p>
+<button *ngIf="authService.isAdmin()" (click)="agregarProyecto()">
+  Agregar proyecto
+</button>

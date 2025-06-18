@@ -4,6 +4,7 @@
 <ng-container *ngIf="!mostrarLogin">
   <app-hero></app-hero>
   <app-carousel></app-carousel>
+  <router-outlet #o="outlet"></router-outlet>
 </ng-container>
 
 <ng-container *ngIf="mostrarLogin">
