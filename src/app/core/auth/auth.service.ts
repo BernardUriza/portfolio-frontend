@@ -55,6 +55,11 @@ export class AuthService {
     return this.accessToken;
   }
 
+    isAuthenticated(): boolean {
+        const token = localStorage.getItem('access_token');
+        return !!token;
+    }
+
   private handleTokens(res: AuthResponse): void {
     this.accessToken = res.accessToken;
     localStorage.setItem('accessToken', res.accessToken);
