@@ -23,11 +23,6 @@
     [(ngModel)]="newProject.description"
     required
   ></textarea>
-  <input
-    type="text"
-    placeholder="Stack (comma separated)"
-    [(ngModel)]="newProject.stack"
-  />
   <br/>
   <button (click)="guardarProyecto()">Guardar</button>
   <button type="button" (click)="cancelarAgregar()">Cancelar</button>
