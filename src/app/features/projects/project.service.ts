@@ -14,7 +14,7 @@ export interface Project {
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/projects';
+  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/projects';
 
   constructor(private http: HttpClient) {}
 
