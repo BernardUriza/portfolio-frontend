@@ -14,7 +14,9 @@
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
         loading="lazy"></iframe>
     </div>
-    <!-- Panel README.md -->
-    <div class="bg-black/90 p-6 overflow-auto prose prose-invert text-gris-claro" [innerHTML]="readmeHtml"></div>
-  </div>
+    <div
+    class="bg-black/90 p-6 overflow-auto prose prose-invert max-w-none prose-headings:text-dorado prose-strong:text-dorado prose-a:text-dorado hover:prose-a:text-rojo-oscuro prose-code:bg-antracita prose-code:rounded prose-code:px-1 prose-code:py-0.5"
+    [innerHTML]="readmeHtml"
+    ></div>
+</div>
 </div>

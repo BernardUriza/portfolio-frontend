@@ -28,12 +28,7 @@ export class ProjectViewerComponent implements OnChanges {
 
   fetchReadme() {
     this.loadingMd = true;
-    if (!this.project?.githubRepo) {
-      this.readmeHtml = '<p class="text-rojo-oscuro">No README.md disponible</p>';
-      this.loadingMd = false;
-      return;
-    }
-    const repoUrl = `https://github.com/BernardUriza/sparkfoxFull/blob/master/README.md`;
+    const repoUrl = `https://raw.githubusercontent.com/BernardUriza/sparkfoxFull/master/README.md`;
     this.http.get(repoUrl, { responseType: 'text' }).subscribe({
     next: md => {
         const htmlOrPromise = marked.parse(md);
@@ -48,7 +43,7 @@ export class ProjectViewerComponent implements OnChanges {
         }
     },
     error: () => {
-        this.readmeHtml = '<p>No README.md disponible</p>';
+        this.readmeHtml = '<p>No README.md disponible at '+repoUrl+'</p>';
         this.loadingMd = false;
     }
     });
