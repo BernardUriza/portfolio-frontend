@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.html',
   standalone: true,
 })
-export class HeaderComponent {
+export class Header {
   constructor(private router: Router) {}
 
   scrollTo(section: string, event: Event) {

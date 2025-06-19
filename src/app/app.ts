@@ -28,7 +28,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
   standalone: true,
-  animations: [routeAnimations] // Aquí se activan
+  animations: [routeAnimations] 
 })
 export class App {
   mostrarLogin = false;
