@@ -33,13 +33,25 @@ export class ProjectViewerComponent implements OnChanges {
       this.loadingMd = false;
       return;
     }
-    const repoUrl = `https://raw.githubusercontent.com/${this.project.githubRepo}/master/README.md`;
-    this.http.get(repoUrl, { responseType: 'text' }).subscribe(md => {
-      this.readmeHtml = marked(md);
-      this.loadingMd = false;
-    }, () => {
-      this.readmeHtml = '<p class="text-rojo-oscuro">No README.md disponible</p>';
-      this.loadingMd = false;
+    const repoUrl = `https://github.com/BernardUriza/sparkfoxFull/blob/master/README.md`;
+    this.http.get(repoUrl, { responseType: 'text' }).subscribe({
+    next: md => {
+        const htmlOrPromise = marked.parse(md);
+        if (typeof htmlOrPromise === 'string') {
+        this.readmeHtml = htmlOrPromise;
+        this.loadingMd = false;
+        } else if (htmlOrPromise instanceof Promise) {
+        htmlOrPromise.then(res => {
+            this.readmeHtml = res;
+            this.loadingMd = false;
+        });
+        }
+    },
+    error: () => {
+        this.readmeHtml = '<p>No README.md disponible</p>';
+        this.loadingMd = false;
+    }
     });
+
   }
 }
