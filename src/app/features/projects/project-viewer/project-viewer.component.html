@@ -1,0 +1,16 @@
+<div class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 transition-opacity duration-300">
+  <div class="relative bg-azul-noche/90 border-2 border-dorado rounded-lg shadow-2xl max-w-6xl w-full max-h-[90vh] flex flex-col overflow-hidden animate-fade-in">
+    <div class="flex justify-between items-center mb-4 p-6">
+      <h2 class="text-2xl font-heading text-dorado">{{ project?.title }}</h2>
+      <button (click)="close.emit()" class="bg-rojo-oscuro text-dorado font-bold px-4 py-2 rounded hover:bg-dorado hover:text-rojo-oscuro transition">
+        Cerrar
+      </button>
+    </div>
+    <iframe
+      *ngIf="safeUrl"
+      [src]="safeUrl"
+      class="flex-1 w-full min-h-[700px] rounded-lg border-4 border-dorado shadow-xl"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      loading="lazy"></iframe>
+  </div>
+</div>

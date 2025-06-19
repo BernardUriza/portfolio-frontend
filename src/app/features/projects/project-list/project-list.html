@@ -1,34 +1,20 @@
 <div class="container mx-auto px-4">
   <div *ngIf="loading" class="flex justify-center items-center py-16">
-    <span class="animate-pulse-dorado text-2xl text-dorado font-heading">
-      Loading projects…
-    </span>
+    <span class="animate-pulse-dorado text-2xl text-dorado font-heading">Loading projects…</span>
   </div>
 
-  <ul
-    *ngIf="!loading && projects.length > 0"
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
-  >
-    <li
-      *ngFor="let p of projects; trackBy: trackProject"
-      class="rounded-xl bg-purpura-profundo border border-dorado p-6 shadow-xl hover:shadow-dorado transform hover:-translate-y-1 transition-all duration-300 animate-fade-in"
-    >
-      <h3 class="font-heading text-dorado text-xl mb-2 tracking-tight">
-        {{ p.title }}
-      </h3>
-      <p class="font-body text-gris-claro text-sm mb-4">
-        {{ p.description }}
-      </p>
-
+  <ul *ngIf="!loading && projects.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+    <li *ngFor="let p of projects; trackBy: trackProject"
+        class="rounded-xl bg-purpura-profundo border border-dorado p-6 shadow-xl hover:shadow-dorado transform hover:-translate-y-1 transition-all duration-300 animate-fade-in">
+      <h3 class="font-heading text-dorado text-xl mb-2 tracking-tight">{{ p.title }}</h3>
+      <p class="font-body text-gris-claro text-sm mb-4">{{ p.description }}</p>
       <div class="flex justify-between items-center text-xs text-gris-medio">
         <span>{{ p.createdDate | date }}</span>
-        <a
-          *ngIf="p.link"
-          [href]="p.link"
-          (click)="openIframe(p); $event.preventDefault()"
-          rel="noopener"
-          class="bg-dorado text-antracita font-bold px-3 py-1 rounded hover:bg-rojo-oscuro hover:text-dorado transition"
-        >
+        <a *ngIf="p.link"
+           href="#"
+           (click)="selectProject(p); $event.preventDefault()"
+           rel="noopener"
+           class="bg-dorado text-antracita font-bold px-3 py-1 rounded hover:bg-rojo-oscuro hover:text-dorado transition">
           View Project
         </a>
       </div>
@@ -36,46 +22,15 @@
   </ul>
 
   <div *ngIf="!loading && projects.length > 0" class="flex justify-center gap-4 mt-10 mb-10">
-    <a
-      href="/assets/cv.pdf"
-      target="_blank"
-      class="bg-rojo-oscuro text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-rojo-oscuro transition"
-    >
-      Download CV
-    </a>
-    <a
-      href="/#contact"
-      class="border border-dorado text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-purpura-profundo transition"
-    >
-      Contact
-    </a>
+    <a href="/assets/cv.pdf" target="_blank" class="bg-rojo-oscuro text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-rojo-oscuro transition">Download CV</a>
+    <a href="/#contact" class="border border-dorado text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-purpura-profundo transition">Contact</a>
   </div>
 
-  <p *ngIf="!loading && projects.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">
-    No projects found.
-  </p>
+  <p *ngIf="!loading && projects.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">No projects found.</p>
 </div>
-<section
-  id="project-viewer"
+
+<app-project-viewer
   *ngIf="selectedProject"
-  class="py-10 px-2 md:px-24 flex flex-col items-center"
->
-  <div class="w-full max-w-5xl">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl font-heading text-dorado">{{selectedProject.title}}</h2>
-      <button
-        (click)="closeIframe()"
-        class="bg-rojo-oscuro text-dorado font-bold px-4 py-2 rounded hover:bg-dorado hover:text-rojo-oscuro transition"
-      >
-        Cerrar
-      </button>
-    </div>
-    <iframe
-      *ngIf="safeUrl"
-      [src]="safeUrl"
-      class="w-full min-h-[700px] rounded-lg border-4 border-dorado shadow-xl"
-      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-      loading="lazy"
-    ></iframe>
-  </div>
-</section>
+  [project]="selectedProject"
+  (close)="closeViewer()">
+</app-project-viewer>
