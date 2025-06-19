@@ -1,9 +1,6 @@
 export interface Experience {
   id: number;
+  title: string;
   company: string;
-  role: string;
-  start: string; // ISO date o año/mes
-  end: string;   // "actual" o fecha
   description: string;
-  stack: string[];
 }

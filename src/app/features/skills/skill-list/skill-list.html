@@ -1,25 +1,50 @@
-<div *ngIf="loading" class="text-center py-12">
-  <span class="animate-pulse-dorado text-xl text-dorado font-heading">Loading skills…</span>
-</div>
+<section class="py-20 px-4 md:px-12 lg:px-32 bg-black flex flex-col items-center" id="skills">
+  <div class="w-full max-w-5xl">
+    <h2 class="text-4xl md:text-5xl font-heading text-center text-dorado mb-2 tracking-wider flex items-center justify-center gap-2">
+      <svg class="w-9 h-9 inline-block text-dorado drop-shadow" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke-dasharray="4 2"/>
+        <path d="M12 6v6l4 2" stroke-linecap="round"/>
+      </svg>
+      SKILLS
+    </h2>
+    <p class="text-lg text-gris-claro text-center mb-12 font-body">
+      Donde el músculo técnico es el único que importa.<br>
+      <span class="text-dorado">Expertise real, no promesas vacías.</span>
+    </p>
 
-<div
-  *ngIf="!loading && skills.length > 0"
-  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8"
->
-  <div
-    *ngFor="let skill of skills"
-    class="rounded-xl bg-azul-noche border-2 border-dorado shadow-inner-glow p-6 flex flex-col items-center justify-center animate-slide-up hover:scale-105 hover:shadow-dorado transition-all duration-300"
-  >
-    <span class="font-heading text-dorado text-xl mb-1 tracking-tight uppercase">{{ skill.name }}</span>
-    <span class="font-body text-gris-claro text-xs mb-4">{{ skill.description }}</span>
-    <span
-      class="bg-dorado text-antracita rounded-full px-4 py-1 font-heading font-bold text-xs shadow mt-2 tracking-wide animate-pulse-dorado"
+    <div *ngIf="loading" class="text-center py-16">
+      <span class="animate-pulse-dorado text-xl text-dorado font-heading">Loading skills…</span>
+    </div>
+
+    <div
+      *ngIf="!loading && skills.length > 0"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
     >
-      EXPERTISE
-    </span>
-  </div>
-</div>
+      <div
+        *ngFor="let skill of skills"
+        class="rounded-2xl bg-azul-noche border-2 border-dorado shadow-xl p-8 flex flex-col items-center justify-center animate-slide-up hover:scale-105 hover:shadow-dorado transition-all duration-300 relative overflow-visible"
+      >
+        <span class="absolute -top-7 left-1/2 -translate-x-1/2 bg-dorado rounded-full w-14 h-14 flex items-center justify-center shadow-lg border-4 border-black">
+          <!-- SVG personalizado para skills -->
+          <svg class="w-8 h-8 text-antracita" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path d="M12 3v2M12 19v2M4.22 4.22l1.42 1.42M17.66 17.66l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M17.66 6.34l1.42-1.42" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="5" />
+          </svg>
+        </span>
+        <span class="font-heading text-dorado text-xl mt-7 mb-1 tracking-tight uppercase">{{ skill.name }}</span>
+        <span class="font-body text-gris-claro text-xs mb-4 text-center">{{ skill.description }}</span>
+        <span
+          class="bg-dorado text-antracita rounded-full px-4 py-1 font-heading font-bold text-xs shadow mt-2 tracking-wide animate-pulse-dorado"
+        >
+          EXPERTISE
+        </span>
+      </div>
+    </div>
 
-<p *ngIf="!loading && skills.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">
-  No skills found.
-</p>
+    <p *ngIf="!loading && skills.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">
+      No skills found.
+    </p>
+  </div>
+</section>

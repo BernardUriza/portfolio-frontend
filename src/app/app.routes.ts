@@ -4,10 +4,13 @@ import { SkillList } from './features/skills/skill-list/skill-list';
 import { AdminComponent } from './features/admin/admin.component';
 import { authGuard } from './core/auth/auth.guard';
 import { LoginComponent } from './features/login/login.component';
+import { ExperienceListComponent } from './features/experience/experience-list/experience-list.component';
+
 
 export const routes: Routes = [
   { path: 'projects', component: ProjectList },
   { path: 'skills', component: SkillList },
+  { path: 'experiences', component: ExperienceListComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'projects', pathMatch: 'full' },
   { path: 'experience',

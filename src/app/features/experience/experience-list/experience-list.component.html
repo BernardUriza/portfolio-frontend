@@ -1,11 +1,24 @@
-<section class="timeline">
-  <h2>Experiencia Profesional</h2>
-  <ul>
-    <li *ngFor="let exp of experiences()">
-      <strong>{{exp.role}}</strong> en {{exp.company}}
-      <span>{{exp.start}} – {{exp.end}}</span>
-      <p>{{exp.description}}</p>
-      <small>Stack: {{exp.stack.join(', ')}}</small>
-    </li>
-  </ul>
+<section id="experiences" class="py-20 px-4 md:px-0 bg-black flex flex-col items-center">
+  <div class="max-w-2xl w-full">
+    <h2 class="text-4xl md:text-5xl font-heading mb-4 text-center text-dorado tracking-wider">
+      EXPERIENCIAS
+    </h2>
+    <p class="text-xl text-gris-claro text-center mb-12">
+      Nada decorativo,<span class="text-dorado"> solo logros reales.</span>
+    </p>
+    <ol class="relative border-l-4 border-dorado/30">
+      <li *ngFor="let exp of experiences()" class="mb-16 ml-8 group">
+        <span class="absolute -left-6 flex items-center justify-center w-12 h-12 bg-dorado/80 rounded-full border-4 border-black shadow-lg group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M7 10V3a1 1 0 112 0v7h3a1 1 0 110 2h-4a1 1 0 01-1-1z"/>
+          </svg>
+        </span>
+        <div class="bg-azul-noche/80 border border-dorado rounded-xl p-6 shadow-lg hover:shadow-dorado transition-shadow duration-300">
+          <h3 class="text-2xl font-bold text-dorado mb-1">{{exp.title}}</h3>
+          <div class="font-semibold text-gris-claro mb-2">{{exp.company}}</div>
+          <p class="text-base text-gris-claro/80">{{exp.description}}</p>
+        </div>
+      </li>
+    </ol>
+  </div>
 </section>
