@@ -3,9 +3,29 @@
     <span class="text-dorado">BERNARD</span><span class="text-rojo-oscuro">URIZA</span>
   </div>
   <nav class="space-x-6 text-sm font-body">
-    <a href="#about" class="hover:text-dorado transition-colors duration-300">Sobre mí</a>
-    <a href="#cases" class="hover:text-dorado transition-colors duration-300">Casos de estudio</a>
-    <a href="#services" class="hover:text-dorado transition-colors duration-300">Servicios</a>
-    <a href="#contact" class="hover:text-dorado transition-colors duration-300">Contacto</a>
+    <a href="#about" (click)="scrollTo('about', $event)" class="hover:text-dorado transition-colors duration-300">Sobre mí</a>
+    <a href="#cases" (click)="scrollTo('cases', $event)" class="hover:text-dorado transition-colors duration-300">Casos de estudio</a>
+    <a href="#services" (click)="scrollTo('services', $event)" class="hover:text-dorado transition-colors duration-300">Servicios</a>
+    <a href="#contact" (click)="scrollTo('contact', $event)" class="hover:text-dorado transition-colors duration-300">Contacto</a>
   </nav>
+  <div class="section-switcher flex gap-2 ml-8">
+    <button 
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      [class.bg-dorado]="isActive('projects')"
+      (click)="go('projects')">
+      Proyectos
+    </button>
+    <button 
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      [class.bg-dorado]="isActive('skills')"
+      (click)="go('skills')">
+      Skills
+    </button>
+    <button 
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      [class.bg-dorado]="isActive('experiences')"
+      (click)="go('experiences')">
+      Experiencias
+    </button>
+  </div>
 </header>
