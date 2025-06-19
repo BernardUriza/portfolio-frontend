@@ -1,12 +1,15 @@
 <app-header></app-header>
-<button (click)="abrirLogin()" style="position:fixed;bottom:30px;right:30px;z-index:1050;">Iniciar sesión</button>
+<button (click)="abrirLogin()" style="position: fixed; bottom: 30px; right: 30px; z-index: 1050">
+  Iniciar sesión
+</button>
 
 <ng-container *ngIf="!mostrarLogin">
   <app-hero></app-hero>
   <app-carousel></app-carousel>
-  <router-outlet #o="outlet"></router-outlet>
+  <section id="main-content">
+    <router-outlet #o="outlet"></router-outlet>
+  </section>
 </ng-container>
-
 <ng-container *ngIf="mostrarLogin">
   <div class="router-robotic-area" [@routeAnimations]="o.isActivated ? o.activatedRoute.routeConfig?.path : ''">
     <router-outlet #o="outlet"></router-outlet>
