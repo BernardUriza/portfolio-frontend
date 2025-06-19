@@ -22,6 +22,7 @@
     "@fontsource/cormorant-garamond": "^5.2.9",
     "@fontsource/inter": "^5.2.6",
     "@fontsource/open-sans": "^5.2.6",
+    "marked": "^15.0.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

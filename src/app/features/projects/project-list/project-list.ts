@@ -8,7 +8,7 @@ import { ProjectViewerComponent } from '../project-viewer/project-viewer.compone
   standalone: true, // <--- Si es standalone
   imports: [ProjectViewerComponent, DatePipe, CommonModule ], 
 })
-export class ProjectListComponent {
+export class ProjectList {
   loading = false;
   projects: ProjectModel[] = [];
   selectedProject: ProjectModel | null = null;
