@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { CommonModule } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-list',
@@ -13,9 +14,10 @@ import { ProjectModel } from '../models/project.model';
 export class ProjectList implements OnInit {
   projects: ProjectModel[] = [];
   loading = true;
-  selectedProject = signal<ProjectModel | null>(null);
+  selectedProject: ProjectModel | null = null;
+  safeUrl: SafeResourceUrl | null = null;
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.projectService.getProjects().subscribe({
@@ -35,13 +37,15 @@ export class ProjectList implements OnInit {
   }
 
   openIframe(project: ProjectModel) {
-    this.selectedProject.set(project);
+    this.selectedProject = project;
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(project.link);
     setTimeout(() => {
       document.getElementById('project-viewer')?.scrollIntoView({ behavior: 'smooth' });
     }, 10);
   }
   closeIframe() {
-    this.selectedProject.set(null);
+    this.selectedProject = null;
+    this.safeUrl = null;
   }
 
 }
