@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ProjectService } from '../project.service';
 import { CommonModule } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
@@ -13,6 +13,7 @@ import { ProjectModel } from '../models/project.model';
 export class ProjectList implements OnInit {
   projects: ProjectModel[] = [];
   loading = true;
+  selectedProject = signal<ProjectModel | null>(null);
 
   constructor(private projectService: ProjectService) {}
 
@@ -32,4 +33,15 @@ export class ProjectList implements OnInit {
   trackProject(i: number, p: ProjectModel) {
     return p.id || i;
   }
+
+  openIframe(project: ProjectModel) {
+    this.selectedProject.set(project);
+    setTimeout(() => {
+      document.getElementById('project-viewer')?.scrollIntoView({ behavior: 'smooth' });
+    }, 10);
+  }
+  closeIframe() {
+    this.selectedProject.set(null);
+  }
+
 }

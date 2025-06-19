@@ -25,7 +25,7 @@
         <a
           *ngIf="p.link"
           [href]="p.link"
-          target="_blank"
+          (click)="openIframe(p); $event.preventDefault()"
           rel="noopener"
           class="bg-dorado text-antracita font-bold px-3 py-1 rounded hover:bg-rojo-oscuro hover:text-dorado transition"
         >
@@ -55,3 +55,26 @@
     No projects found.
   </p>
 </div>
+<section
+  id="project-viewer"
+  *ngIf="selectedProject()"
+  class="py-10 px-2 md:px-24 flex flex-col items-center"
+>
+  <div class="w-full max-w-5xl">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-heading text-dorado">{{selectedProject()?.title}}</h2>
+      <button
+        (click)="closeIframe()"
+        class="bg-rojo-oscuro text-dorado font-bold px-4 py-2 rounded hover:bg-dorado hover:text-rojo-oscuro transition"
+      >
+        Cerrar
+      </button>
+    </div>
+    <iframe
+      [src]="selectedProject()?.link"
+      class="w-full min-h-[700px] rounded-lg border-4 border-dorado shadow-xl"
+      sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
