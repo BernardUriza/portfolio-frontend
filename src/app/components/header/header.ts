@@ -1,81 +1,62 @@
-import { Component, computed, signal, effect, inject } from '@angular/core';
+import { Component, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
   styleUrls: ['./header.scss'],
   standalone: true,
-  imports: [CommonModule, TranslateModule, MatTooltipModule],
+  imports: [CommonModule, MatTooltipModule],
 })
 export class Header {
-  private router = inject(Router);
-  private translate = inject(TranslateService);
+  private readonly router = inject(Router);
+  readonly i18n = inject(I18nService);
 
-  logoHovered = signal(false);
-  currentLang = signal('en');
-  isProjectsActive = computed(() => this.router.url.includes('projects'));
-  isSkillsActive = computed(() => this.router.url.includes('skills'));
-  isExperiencesActive = computed(() => this.router.url.includes('experiences'));
+  readonly logoHovered = signal(false);
+  readonly currentLang = this.i18n.lang;
 
-  constructor() {
-    this.translate.addLangs(['en', 'es']);
-    this.translate.setDefaultLang('en');
-    const browserLang = this.translate.getBrowserLang() || 'en';
-    const initialLang = browserLang.match(/en|es/) ? browserLang : 'en';
-    this.translate.use(initialLang);
-    this.currentLang.set(initialLang);
+  readonly isProjectsActive = computed(() => this.router.url.includes('projects'));
+  readonly isSkillsActive = computed(() => this.router.url.includes('skills'));
+  readonly isExperiencesActive = computed(() => this.router.url.includes('experiences'));
 
-    effect(() => {
-      this.translate.use(this.currentLang());
-    });
-  }
-  navItems = () => [
-    { href: '#about', target: 'about', label: 'Sobre mí', tooltip: 'Sobre mí', text: () => this.translate.instant('HEADER.ABOUT') },
-    { href: '#cases', target: 'cases', label: 'Casos de estudio', tooltip: 'Casos de estudio', text: () => this.translate.instant('HEADER.CASES') },
-    { href: '#services', target: 'services', label: 'Servicios', tooltip: 'Servicios', text: () => this.translate.instant('HEADER.SERVICES') },
-    { href: '#contact', target: 'contact', label: 'Contacto', tooltip: 'Contacto', text: () => this.translate.instant('HEADER.CONTACT') },
+  readonly navItems = () => [
+    { href: '#about', target: 'about', label: this.i18n.t().HEADER.ABOUT_LABEL, text: () => this.i18n.t().HEADER.ABOUT, tooltip: () => this.i18n.t().HEADER.ABOUT_TOOLTIP },
+    { href: '#cases', target: 'cases', label: this.i18n.t().HEADER.CASES_LABEL, text: () => this.i18n.t().HEADER.CASES, tooltip: () => this.i18n.t().HEADER.CASES_TOOLTIP },
+    { href: '#services', target: 'services', label: this.i18n.t().HEADER.SERVICES_LABEL, text: () => this.i18n.t().HEADER.SERVICES, tooltip: () => this.i18n.t().HEADER.SERVICES_TOOLTIP },
+    { href: '#contact', target: 'contact', label: this.i18n.t().HEADER.CONTACT_LABEL, text: () => this.i18n.t().HEADER.CONTACT, tooltip: () => this.i18n.t().HEADER.CONTACT_TOOLTIP },
   ];
 
-  sectionButtons = () => [
-    { section: 'projects', tooltip: 'Proyectos', text: () => this.translate.instant('HEADER.PROJECTS'), active: this.isProjectsActive },
-    { section: 'skills', tooltip: 'Skills', text: () => this.translate.instant('HEADER.SKILLS'), active: this.isSkillsActive },
-    { section: 'experiences', tooltip: 'Experiencias', text: () => this.translate.instant('HEADER.EXPERIENCES'), active: this.isExperiencesActive },
+  readonly sectionButtons = () => [
+    { section: 'projects', text: () => this.i18n.t().HEADER.PROJECTS, tooltip: () => this.i18n.t().HEADER.PROJECTS_TOOLTIP, active: this.isProjectsActive },
+    { section: 'skills', text: () => this.i18n.t().HEADER.SKILLS, tooltip: () => this.i18n.t().HEADER.SKILLS_TOOLTIP, active: this.isSkillsActive },
+    { section: 'experiences', text: () => this.i18n.t().HEADER.EXPERIENCES, tooltip: () => this.i18n.t().HEADER.EXPERIENCES_TOOLTIP, active: this.isExperiencesActive },
   ];
 
-  goHome() {
+  goHome(): void {
     this.router.navigate(['/']);
   }
 
-  langLabel = computed(() => this.currentLang() === 'en' ? 'Español' : 'English');
-  langTooltip = computed(() => this.currentLang() === 'en' ? 'Switch to Spanish' : 'Cambiar a Inglés');
-
-  scrollTo(section: string, event?: Event) {
-    if (event) event.preventDefault();
+  scrollTo(section: string, event?: Event): void {
+    event?.preventDefault();
     const el = document.getElementById(section);
     if (el) {
-      const header = document.querySelector('header');
-      const offset = header ? header.clientHeight : 0;
+      const offset = document.querySelector('header')?.clientHeight || 0;
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   }
 
-  go(route: string) {
-    this.router.navigate([route]).then(() => {
-      this.scrollTo('main-content');
-    });
+  go(route: string): void {
+    this.router.navigate([route]).then(() => this.scrollTo('main-content'));
   }
 
-  isActive = computed(() => {
-    const url = this.router.url;
-    return (route: string) => url.includes(route);
-  });
-
-  switchLang() {
-    this.currentLang.set(this.currentLang() === 'en' ? 'es' : 'en');
+  switchLang(): void {
+    this.i18n.switchLang();
   }
+
+  readonly langLabel = computed(() => this.currentLang() === 'en' ? this.i18n.t().HEADER.LANG_ES : this.i18n.t().HEADER.LANG_EN);
+  readonly langTooltip = computed(() => this.currentLang() === 'en' ? this.i18n.t().HEADER.LANG_SWITCH_ES : this.i18n.t().HEADER.LANG_SWITCH_EN);
 }

@@ -24,8 +24,6 @@
     "@fontsource/cormorant-garamond": "^5.2.9",
     "@fontsource/inter": "^5.2.6",
     "@fontsource/open-sans": "^5.2.6",
-    "@ngx-translate/core": "^16.0.4",
-    "@ngx-translate/http-loader": "^16.0.1",
     "marked": "^15.0.12",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
