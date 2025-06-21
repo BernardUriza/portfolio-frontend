@@ -1,24 +1,25 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { App } from './app/app';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { appConfig } from './app/app.config';
-import { provideHttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from './app/app'; // o la ruta donde exportes tu factory
-import { HttpClient } from '@angular/common/http';
+import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+export const PROVIDE_TRANSLATE = [
+  {
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }
+];
 
 bootstrapApplication(App, {
-  ...appConfig,
   providers: [
     provideHttpClient(),
     provideAnimations(),
-    {
-      provide: TranslateLoader,
-      useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
-    },
-    TranslateModule
-    ,
-    ...(appConfig.providers || [])
+  ...PROVIDE_TRANSLATE
   ]
-}).catch(err => console.error(err));
+});

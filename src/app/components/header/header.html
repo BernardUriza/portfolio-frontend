@@ -1,31 +1,59 @@
-<header class="bg-azul-noche bg-opacity-95 text-gris-claro px-6 py-4 flex justify-between items-center shadow-dorado sticky top-0 z-50">
-  <div class="text-2xl font-heading tracking-wide">
-    <span class="text-dorado">BERNARD</span><span class="text-rojo-oscuro">URIZA</span>
+<header
+  class="bg-azul-noche/80 backdrop-blur-md shadow-dorado sticky top-0 z-50 px-6 py-3 flex justify-between items-center transition-all duration-300 group"
+>
+  <div
+    class="text-2xl font-heading tracking-wide flex items-center gap-1 cursor-pointer select-none transition-transform duration-300 hover:scale-105 hover:drop-shadow-glow"
+    (click)="goHome()"
+    tabindex="0"
+    aria-label="Home"
+  >
+    <span class="text-dorado">BERNARD</span>
+    <span class="text-rojo-oscuro">URIZA</span>
   </div>
-  <nav class="space-x-6 text-sm font-body">
-    <a href="#about" (click)="scrollTo('about', $event)" class="hover:text-dorado transition-colors duration-300">Sobre mí</a>
-    <a href="#cases" (click)="scrollTo('cases', $event)" class="hover:text-dorado transition-colors duration-300">Casos de estudio</a>
-    <a href="#services" (click)="scrollTo('services', $event)" class="hover:text-dorado transition-colors duration-300">Servicios</a>
-    <a href="#contact" (click)="scrollTo('contact', $event)" class="hover:text-dorado transition-colors duration-300">Contacto</a>
+
+  <nav class="space-x-6 text-sm font-body hidden md:inline-block" role="navigation">
+    <a
+      *ngFor="let item of navItems()"
+      [href]="item.href"
+      (click)="scrollTo(item.target, $event)"
+      class="hover:text-dorado relative transition-all duration-300 group"
+      [attr.aria-label]="item.label"
+      matTooltip="{{ item.tooltip }}"
+    >
+      <span class="after:absolute after:content-[''] after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-dorado after:transition-all group-hover:after:w-full"></span>
+      {{ item.text() }}
+    </a>
   </nav>
+
   <div class="section-switcher flex gap-2 ml-8">
-    <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
-      [class.bg-dorado]="isActive('projects')"
-      (click)="go('projects')">
-      Proyectos
+    <button
+      *ngFor="let btn of sectionButtons()"
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado bg-black/20 hover:bg-dorado/10 transition-all duration-200 relative overflow-hidden group"
+      [class.bg-dorado]="btn.active()"
+      (click)="go(btn.section)"
+      matTooltip="{{ btn.tooltip }}"
+    >
+      <span class="group-hover:animate-pulse">{{ btn.text() }}</span>
     </button>
-    <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
-      [class.bg-dorado]="isActive('skills')"
-      (click)="go('skills')">
-      Skills
-    </button>
-    <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
-      [class.bg-dorado]="isActive('experiences')"
-      (click)="go('experiences')">
-      Experiencias
+  </div>
+
+  <div class="flex items-center ml-6">
+    <button
+      class="group rounded-full p-2 border-2 border-dorado hover:bg-dorado/30 transition-all duration-300 relative"
+      (click)="switchLang()"
+      aria-label="Cambiar idioma"
+      matTooltip="{{ langTooltip() }}"
+    >
+      <span class="sr-only">Idioma</span>
+      <ng-container *ngIf="currentLang() === 'en'; else esIcon">
+        <!-- icon EN -->
+      </ng-container>
+      <ng-template #esIcon>
+        <!-- icon ES -->
+      </ng-template>
+      <span class="absolute left-full ml-3 bg-azul-noche/95 px-3 py-1 rounded text-xs text-dorado opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-xl">
+        {{ langLabel() }}
+      </span>
     </button>
   </div>
 </header>
