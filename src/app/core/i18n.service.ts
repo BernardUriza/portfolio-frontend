@@ -25,6 +25,10 @@ export const LANGUAGES = {
       LANG_EN: 'English',
       LANG_SWITCH_ES: 'Switch to Spanish',
       LANG_SWITCH_EN: 'Switch to English'
+    },
+    HERO: {
+      HERO_LINE_1: 'Transforming broken systems',
+      HERO_LINE_2: 'into coherent architectures'
     }
   },
   es: {
@@ -51,6 +55,10 @@ export const LANGUAGES = {
       LANG_EN: 'Inglés',
       LANG_SWITCH_ES: 'Cambiar a Español',
       LANG_SWITCH_EN: 'Cambiar a Inglés'
+    },
+    HERO: {
+      HERO_LINE_1: 'Transformando sistemas rotos',
+      HERO_LINE_2: 'en nuevas arquitecturas coherentes'
     }
   }
 };

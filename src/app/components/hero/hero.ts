@@ -1,5 +1,5 @@
-import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
-
+import { Component, HostListener, ElementRef, Renderer2, inject, computed } from '@angular/core';
+import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-hero',
@@ -9,6 +9,10 @@ import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
   styleUrl: './hero.scss'
 })
 export class Hero {
+  readonly i18n = inject(I18nService);
+  readonly translations = computed(() => this.i18n.t().HERO);
+
+  readonly currentLang = this.i18n.lang;
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mousemove', ['$event'])
