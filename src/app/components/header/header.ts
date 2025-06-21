@@ -16,6 +16,8 @@ export class Header {
   readonly i18n = inject(I18nService);
 
   readonly logoHovered = signal(false);
+  readonly menuOpen = signal(false); // <-- NUEVO
+
   readonly currentLang = this.i18n.lang;
 
   readonly isProjectsActive = computed(() => this.router.url.includes('projects'));
@@ -35,8 +37,17 @@ export class Header {
     { section: 'experiences', text: () => this.i18n.t().HEADER.EXPERIENCES, tooltip: () => this.i18n.t().HEADER.EXPERIENCES_TOOLTIP, active: this.isExperiencesActive },
   ];
 
+  toggleMenu() {
+    this.menuOpen.update(open => !open);
+  }
+
+  closeMenu() {
+    this.menuOpen.set(false);
+  }
+
   goHome(): void {
     this.router.navigate(['/']);
+    this.closeMenu();
   }
 
   scrollTo(section: string, event?: Event): void {
@@ -47,14 +58,17 @@ export class Header {
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+    this.closeMenu();
   }
 
   go(route: string): void {
     this.router.navigate([route]).then(() => this.scrollTo('main-content'));
+    this.closeMenu();
   }
 
   switchLang(): void {
     this.i18n.switchLang();
+    this.closeMenu();
   }
 
   readonly langLabel = computed(() => this.currentLang() === 'en' ? this.i18n.t().HEADER.LANG_ES : this.i18n.t().HEADER.LANG_EN);

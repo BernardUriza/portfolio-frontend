@@ -11,12 +11,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from './app.animations';
 import { Router, NavigationEnd } from '@angular/router';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 @Component({
   selector: 'app-root',
   imports: [
