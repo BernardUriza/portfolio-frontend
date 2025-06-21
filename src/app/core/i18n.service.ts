@@ -28,7 +28,8 @@ export const LANGUAGES = {
     },
     HERO: {
       HERO_LINE_1: 'Transforming broken systems',
-      HERO_LINE_2: 'into coherent architectures'
+      HERO_LINE_2: 'into coherent architectures',
+      HERO_EXPLORE: 'ExplorE mi WORK'
     }
   },
   es: {
@@ -58,7 +59,8 @@ export const LANGUAGES = {
     },
     HERO: {
       HERO_LINE_1: 'Transformando sistemas rotos',
-      HERO_LINE_2: 'en nuevas arquitecturas coherentes'
+      HERO_LINE_2: 'en nuevas arquitecturas coherentes',
+      HERO_EXPLORE: 'Explorar mi trabajo'
     }
   }
 };
