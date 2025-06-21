@@ -32,6 +32,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class App {
   mostrarLogin = false;
+  mostrarHero = false;
   mostrarRouterRoboticArea = true;
   
   constructor(private router: Router) {
@@ -39,6 +40,7 @@ export class App {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.mostrarLogin = this.router.url === '/login';
+        this.mostrarHero = this.router.url === '/';
       }
     });
   }

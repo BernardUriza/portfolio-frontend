@@ -1,8 +1,9 @@
 <app-header></app-header>
-
-<ng-container *ngIf="!mostrarLogin">
-  <app-hero></app-hero>
-  <app-carousel></app-carousel>
+<ng-container *ngIf="!mostrarLogin">  
+  <ng-container *ngIf="mostrarHero">
+    <app-hero></app-hero>
+    <app-carousel></app-carousel>
+  </ng-container>
   <section id="main-content">
     <router-outlet #o="outlet"></router-outlet>
   </section>
