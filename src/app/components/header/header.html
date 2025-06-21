@@ -1,13 +1,12 @@
-<header class="sticky top-0 z-50 w-full bg-[#10131a]/95 border-b border-dorado/50 backdrop-blur-sm px-6 py-3 flex items-center justify-between transition-all duration-300">
+<header class="sticky top-0 z-50 w-full bg-gradient-to-b from-azul-noche/90 to-antracita/90 border-b border-holo-blue/30 backdrop-blur-sm px-6 py-3 flex items-center justify-between transition-all duration-300">
   <!-- Brand Logo -->
   <div
-    class="text-2xl sm:text-3xl font-heading tracking-wide flex items-center gap-2 cursor-pointer select-none hover:scale-105 active:scale-98 transition-transform duration-200"
+    class="text-2xl sm:text-3xl font-cyber tracking-wide cursor-pointer select-none transition-transform duration-200 hover:scale-105 active:scale-98 text-holo-blue relative"
     (click)="goHome()"
     tabindex="0"
     aria-label="Home"
   >
-    <span class="font-extrabold text-dorado animate-[pulse_2s_infinite] opacity-80">BERNARD</span>
-    <span class="font-extrabold text-white">URIZA</span>
+    <span class="glow-logo">&lt;BERNARD/&gt;</span>
   </div>
 
   <!-- Navigation -->
@@ -16,11 +15,11 @@
       *ngFor="let item of navItems()"
       [href]="item.href"
       (click)="scrollTo(item.target, $event)"
-      class="relative group transition-colors px-2 py-1 text-neutral-100"
+      class="relative group transition-all duration-300 text-neutral-100 hover:text-holo-blue"
       [attr.aria-label]="item.label"
     >
-      <span class="group-hover:text-dorado group-focus:text-dorado">{{ item.text() }}</span>
-      <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-dorado transition-all duration-300 group-hover:w-full group-focus:w-full"></span>
+      {{ item.text() }}
+      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-holo-blue group-hover:w-full transition-all duration-300"></span>
     </a>
   </nav>
 
@@ -28,8 +27,8 @@
   <div class="hidden md:flex gap-3 ml-10">
     <button
       *ngFor="let btn of sectionButtons()"
-      class="px-4 py-2 rounded border border-dorado/50 hover:bg-dorado/10 text-neutral-100 font-semibold transition-all"
-      [ngClass]="{ 'bg-dorado/20': btn.active() }"
+      class="px-4 py-2 rounded border border-holo-blue/60 text-neutral-100 font-semibold transition-all duration-300 hover:shadow-holo hover:bg-holo-blue/10"
+      [ngClass]="{ 'bg-holo-blue/10': btn.active() }"
       (click)="go(btn.section)"
     >
       {{ btn.text() }}
@@ -38,56 +37,15 @@
 
   <!-- Language Switcher -->
   <button
-    class="rounded-full p-2 border border-dorado/60 hover:bg-dorado/10 transition relative text-neutral-100 ml-4 focus:outline-none focus:ring-2 focus:ring-dorado focus:ring-offset-2"
+    class="rounded-full p-2 border border-holo-blue/60 hover:bg-holo-blue/10 transition relative text-neutral-100 ml-4 focus:outline-none focus:ring-2 focus:ring-holo-blue focus:ring-offset-2 hover:shadow-holo hover:scale-105"
     (click)="switchLang()"
     aria-label="Switch language"
   >
     <ng-container *ngIf="currentLang() === 'en'; else esIcon">
-      <span class="font-heading text-sm">EN</span>
+      <span class="font-cyber text-sm">EN</span>
     </ng-container>
     <ng-template #esIcon>
-      <span class="font-heading text-sm">ES</span>
+      <span class="font-cyber text-sm">ES</span>
     </ng-template>
   </button>
-
-  <!-- Burger Menu for Mobile -->
-  <button
-    class="ml-3 flex md:hidden items-center justify-center p-2 rounded-lg border border-dorado/60 hover:bg-dorado/10 transition focus:outline-none focus:ring-2 focus:ring-dorado focus:ring-offset-2"
-    aria-label="Open menu"
-    (click)="toggleMenu()"
-  >
-    <svg class="w-7 h-7 text-dorado" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
-    </svg>
-  </button>
-
-  <!-- Mobile Dropdown -->
-  <nav *ngIf="menuOpen" class="absolute top-full left-0 w-full bg-[#10131a]/98 border-b border-dorado/50 flex flex-col gap-3 px-4 py-6 md:hidden z-50 animate-slide-up">
-    <a
-      *ngFor="let item of navItems()"
-      [href]="item.href"
-      (click)="scrollTo(item.target, $event); toggleMenu()"
-      class="block text-[17px] font-semibold py-2 hover:text-dorado transition-colors text-neutral-100"
-      [attr.aria-label]="item.label"
-    >
-      {{ item.text() }}
-    </a>
-    <div class="flex gap-2 mt-4">
-  <button
-    *ngFor="let btn of sectionButtons()"
-    class="flex-1 px-3 py-2 rounded border border-dorado/60 hover:bg-dorado/10 transition font-semibold text-neutral-100"
-    [ngClass]="{ 'bg-dorado/10': btn.active() }"
-    (click)="go(btn.section); toggleMenu()"
-  >
-    {{ btn.text() }}
-  </button>
-</div>
-
-    <button
-      class="w-full mt-4 p-2 rounded-full border border-dorado/60 hover:bg-dorado/10 transition text-neutral-100"
-      (click)="switchLang(); toggleMenu()"
-    >
-      {{ langLabel() }}
-    </button>
-  </nav>
 </header>
