@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-carousel',
@@ -9,12 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './carousel.scss'
 })
 export class Carousel {
-  frases = [
-    'La disonancia es el inicio del cambio',
-    'Refactorizar culturas es el verdadero desarrollo',
-    'El código es la consecuencia, no el propósito'
-  ];
-
+  readonly i18n = inject(I18nService);
+  readonly translations = computed(() => this.i18n.t().CAROUSEL);
+ 
   fraseIndex = 0;
   fadeClass = 'opacity-100';
 
@@ -26,7 +24,7 @@ export class Carousel {
     setInterval(() => {
       this.fadeClass = 'opacity-0';
       setTimeout(() => {
-        this.fraseIndex = (this.fraseIndex + 1) % this.frases.length;
+        this.fraseIndex = (this.fraseIndex + 1) % this.translations().PHRASES.length;
         this.fadeClass = 'opacity-100';
       }, 500);
     }, 4000);

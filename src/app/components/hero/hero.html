@@ -84,15 +84,20 @@
     </g>
   </svg>
 
-  <!-- Main content -->
+   <!-- Main content -->
   <div class="relative z-10 text-center max-w-4xl px-4 animate-fade-in">
-    <h1 class="text-4xl md:text-6xl font-heading mb-6 leading-tight tracking-wide">
-      <span class="inline-block transform hover:scale-105 transition-transform">Transformando sistemas rotos</span> <br>
-      <span class="inline-block transform hover:scale-105 transition-transform">en nuevas arquitecturas coherentes</span>
-    </h1>
+  <h1 class="text-4xl md:text-6xl font-heading mb-6 leading-tight tracking-wide">
+    <span class="inline-block transform hover:scale-105 transition-transform">
+      {{ translations().HERO_LINE_1 }}
+    </span>
+    <br>
+    <span class="inline-block transform hover:scale-105 transition-transform">
+      {{ translations().HERO_LINE_2 }}
+    </span>
+  </h1>
     <button
       class="mt-6 border border-dorado text-gris-claro px-8 py-3 text-lg transition-all duration-300 hover:bg-rojo-oscuro/70 hover:shadow-dorado focus:ring-2 focus:ring-dorado focus:outline-none">
-      Explorar mi trabajo
+      {{ translations().HERO_EXPLORE }}
     </button>
   </div>
 </section>
