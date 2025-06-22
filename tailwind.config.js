@@ -76,8 +76,26 @@ module.exports = {
           '60%': { opacity: '.9' },
           '80%': { opacity: '1' },
         },
+         'neon-purple': {
+            '0%': {
+              textShadow: '0 0 10px #7f3be7, 0 0 24px #ab65f7, 0 0 44px #6f2da8',
+              filter: 'brightness(1.15)',
+              transform: 'translateY(0) scale(1)'
+            },
+            '45%': {
+              textShadow: '0 0 24px #ab65f7, 0 0 56px #bfa16a, 0 0 74px #6f2da8',
+              filter: 'brightness(1.4)',
+              transform: 'translateY(-4px) scale(1.07)'
+            },
+            '100%': {
+              textShadow: '0 0 10px #7f3be7, 0 0 24px #ab65f7, 0 0 44px #6f2da8',
+              filter: 'brightness(1.15)',
+              transform: 'translateY(0) scale(1)'
+            }
+          },
       },
       animation: {
+        'neon-purple': 'neon-purple 1.7s infinite cubic-bezier(0.61,0.12,0.68,1.4)',
         'fade-in': 'fade-in 1s ease-out forwards',
         'slide-up': 'slide-up 0.8s ease-out forwards',
         'pulse-dorado': 'pulse-dorado 2s infinite',
