@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-carousel',
