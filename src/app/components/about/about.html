@@ -6,3 +6,9 @@
     </p>
   </div>
 </section>
+<div *ngIf="dynamicMessage; else loading">
+  <strong>{{ dynamicMessage }}</strong>
+</div>
+<ng-template #loading>
+  <span>Loading dynamic message...</span>
+</ng-template>
