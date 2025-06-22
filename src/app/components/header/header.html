@@ -1,6 +1,12 @@
-<header class="bg-azul-noche bg-opacity-95 text-gris-claro px-6 py-4 flex justify-between items-center shadow-dorado sticky top-0 z-50">
-  <div class="text-2xl font-heading tracking-wide">
-    <span class="text-dorado">BERNARD</span><span class="text-rojo-oscuro">URIZA</span>
+<header class="sticky top-0 z-50 w-full text-gris-claro bg-azul-noche bg-opacity-95 border-t border-b border-dorado/30 backdrop-blur-sm px-6 py-4 flex items-center justify-between shadow-dorado transition-all duration-300">
+  <!-- Brand Logo Brutal y Animado -->
+  <div class="text-2xl sm:text-3xl font-heading tracking-wide cursor-pointer select-none flex items-center"
+    (click)="goHome()"
+    tabindex="0"
+    aria-label="Home">
+    <span class="text-dorado animate-neon-bounce animate-neon-flicker">&lt;BERNARD</span>
+    <span class="text-rojo-oscuro font-bold animate-neon-red ml-1">URIZA</span>
+    <span class="text-dorado animate-neon-bounce animate-neon-flicker ml-1">&gt;</span>
   </div>
   <nav class="space-x-6 text-sm font-body">
     <a href="#about" (click)="scrollTo('about', $event)" class="hover:text-dorado transition-colors duration-300">Sobre mí</a>
@@ -10,19 +16,19 @@
   </nav>
   <div class="section-switcher flex gap-2 ml-8">
     <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dorado/60"
       [class.bg-dorado]="isActive('projects')"
       (click)="go('projects')">
       Proyectos
     </button>
     <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dorado/60"
       [class.bg-dorado]="isActive('skills')"
       (click)="go('skills')">
       Skills
     </button>
     <button 
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/10"
+      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dorado/60"
       [class.bg-dorado]="isActive('experiences')"
       (click)="go('experiences')">
       Experiencias

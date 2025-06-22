@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class Header {
+  readonly menuOpen = signal(false);
   constructor(private router: Router) {}
 
   scrollTo(section: string, event?: Event) {
@@ -26,6 +27,14 @@ export class Header {
     });
   }
 
+  closeMenu() {
+    this.menuOpen.set(false);
+  }
+
+  goHome(): void {
+    this.router.navigate(['/']);
+    this.closeMenu();
+  }
 
   isActive(route: string) {
     return this.router.url.includes(route);
