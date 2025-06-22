@@ -43,6 +43,29 @@ export const LANGUAGES = {
     ABOUT: {
       TITLE: 'About Me',
       DESCRIPTION: 'Technical catalyst and architecture strategist. I expose what is broken and engineer coherence where chaos once reigned. I do not adapt, I transform. I do not decorate, I reconfigure.'
+    },
+    CASES: {
+      TITLE: 'Case Studies',
+      ITEMS: [
+        {
+          ID: 'startup',
+          TITLE: 'Startup Scaling',
+          SUMMARY: 'From 5 to 50 without losing coherence.',
+          DETAIL: 'Detailed transformation of a startup scaling with cyber-architected resilience.'
+        },
+        {
+          ID: 'family',
+          TITLE: 'Family Business Digitalization',
+          SUMMARY: 'From craft to scale, preserving its soul.',
+          DETAIL: 'Digital transition while preserving tradition.'
+        },
+        {
+          ID: 'fusion',
+          TITLE: 'Cultural & System Fusion',
+          SUMMARY: 'Merged what seemed impossible: tech and teams.',
+          DETAIL: 'Merging of technology stacks and cultures.'
+        }
+      ]
     }
   },
   es: {
@@ -87,6 +110,29 @@ export const LANGUAGES = {
     ABOUT: {
       TITLE: 'Sobre Mí',
       DESCRIPTION: 'Catalizador técnico y estratega de arquitectura. Revelo lo que está roto y diseño coherencia donde antes hubo caos. No adapto, transformo. No decoro, reconfiguro.'
+    },
+    CASES: {
+      TITLE: 'Casos de Estudio',
+      ITEMS: [
+        {
+          ID: 'startup',
+          TITLE: 'Escalado de Startup',
+          SUMMARY: 'De 5 a 50 sin perder la cabeza.',
+          DETAIL: 'Historia detallada de un startup que creció con arquitectura resiliente.'
+        },
+        {
+          ID: 'family',
+          TITLE: 'Digitalización de Empresa Familiar',
+          SUMMARY: 'De lo artesanal a lo escalable.',
+          DETAIL: 'Transición digital sin perder la tradición.'
+        },
+        {
+          ID: 'fusion',
+          TITLE: 'Fusión Cultural y de Sistemas',
+          SUMMARY: 'Unimos lo que parecía imposible: tecnología y equipos.',
+          DETAIL: 'Unión de stacks tecnológicos y culturas.'
+        }
+      ]
     }
   }
 };
