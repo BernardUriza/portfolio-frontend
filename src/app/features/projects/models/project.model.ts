@@ -1,7 +1,9 @@
 export interface ProjectModel {
-  id?: number; // el backend lo asigna
+  id?: number; // Assigned by backend
   title: string;
   description: string;
   link: string;
-  createdDate: string; // ISO date string
+  createdDate: string; 
+  githubRepo: string;
+  stack: string;      
 }
