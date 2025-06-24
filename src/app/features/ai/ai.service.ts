@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AiService {
@@ -8,7 +8,8 @@ export class AiService {
 
   constructor(private http: HttpClient) {}
 
-  generateDynamicMessage(stack: string): Observable<string> {
-    return this.http.post(this.apiUrl, { stack }, { responseType: 'text' });
+  generateDynamicMessage(trail: string[]) {
+    return this.http.post<{ message: string }>('/api/ai/message', { trail })
+      .pipe(map(resp => typeof resp === 'string' ? resp : resp.message || ''));
   }
 }

@@ -3,7 +3,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
 import { ProjectService } from '../project.service';
-import { HttpClient } from '@angular/common/http';
+import { AiService } from '../../ai/ai.service';
+import { StackTrailService } from '../../../stack-trail.service';
 
 @Component({
   selector: 'app-project-list',
@@ -18,11 +19,12 @@ export class ProjectList {
 
   aiMessageLoading = false;
   dynamicMessage = '';
-  
+
   constructor(
     private projectService: ProjectService,
-    private http: HttpClient
-  ) {}
+    private aiService: AiService,
+    private stackTrail: StackTrailService
+  ) { }
 
   ngOnInit() {
     this.loading = true;
@@ -37,31 +39,30 @@ export class ProjectList {
       }
     });
   }
-
-  selectProject(project: ProjectModel) {
-    this.selectedProject = project;
-    this.getAiMessage(project.stack);
-  }
-
   closeViewer() {
     this.selectedProject = null;
     this.dynamicMessage = '';
   }
 
-  getAiMessage(stack: string) {
+  selectProject(project: ProjectModel) {
+    this.selectedProject = project;
+    this.stackTrail.addStack(project.stack);
+    this.getAiMessage();
+  }
+
+  getAiMessage() {
     this.aiMessageLoading = true;
-    this.dynamicMessage = '';
-    this.http.post<{ message: string }>('/api/ai/message', { stack })
-      .subscribe({
-        next: (resp) => {
-          this.dynamicMessage = typeof resp === 'string' ? resp : resp.message || '';
-          this.aiMessageLoading = false;
-        },
-        error: () => {
-          this.dynamicMessage = 'Failed to load AI message.';
-          this.aiMessageLoading = false;
-        }
-      });
+    const trail = this.stackTrail.getTrail();
+    this.aiService.generateDynamicMessage(trail).subscribe({
+      next: (resp) => {
+        this.dynamicMessage = resp;
+        this.aiMessageLoading = false;
+      },
+      error: () => {
+        this.dynamicMessage = 'Failed to load AI message.';
+        this.aiMessageLoading = false;
+      }
+    });
   }
 
   trackProject(index: number, project: ProjectModel): any {
