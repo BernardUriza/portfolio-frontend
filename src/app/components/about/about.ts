@@ -18,10 +18,12 @@ export class About {
   constructor(private aiService: AiService) {}
 
   ngOnInit(): void {
-  const stack = 'Angular, Spring Boot, PostgreSQL';
+    const stack = ['Angular', 'Spring Boot', 'PostgreSQL'];
     this.aiService.generateDynamicMessage(stack).subscribe({
-      next: msg => this.dynamicMessage = msg,
-      error: err => this.dynamicMessage = 'Error loading message'
+      next: (msg: string) => (this.dynamicMessage = msg),
+      error: () => {
+        this.dynamicMessage = 'Error loading message';
+      }
     });
-    }
+  }
 }
