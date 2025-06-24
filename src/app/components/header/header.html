@@ -1,46 +1,75 @@
-<header class="sticky top-0 z-50 w-full text-gris-claro bg-azul-noche bg-opacity-95 border-t border-b border-dorado/30 backdrop-blur-sm px-6 py-4 flex items-center justify-between shadow-dorado transition-all duration-300">
-  <!-- Brand Logo Brutal y Animado -->
+<header class="relative sticky top-0 z-50 w-full text-gris-claro bg-azul-noche bg-opacity-95 border-t border-b border-dorado/30 backdrop-blur-sm px-4 py-3 flex items-center justify-between shadow-dorado transition-all duration-300">
+  <!-- Brand Logo -->
   <div class="text-2xl font-heading tracking-wide cursor-pointer select-none flex items-center"
-    (click)="goHome()"
-    tabindex="0"
-    aria-label="Home">
+    (click)="goHome()" tabindex="0" aria-label="Home">
     <span class="text-dorado animate-neon-bounce animate-neon-flicker">&lt;BERNARD</span>
     <span class="text-neon-purple font-bold animate-neon-purple ml-1">URIZA</span>
     <span class="text-dorado animate-neon-bounce animate-neon-flicker ml-1">&gt;</span>
   </div>
-  <!-- Navigation -->
-  <nav class="space-x-6 text-sm font-body">
-    <a 
-      *ngFor="let item of navItems()"
-      [href]="item.href"
-      (click)="scrollTo(item.target, $event)"
-      [attr.aria-label]="item.label" class="hover:text-dorado transition-colors duration-300">
-      {{ item.text }}
-      <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-dorado group-hover:w-full transition-all duration-300"></span>
-    </a>
-  </nav>
 
-  <!-- Section Switcher -->
-  <div class="section-switcher flex gap-2 ml-8">
-    <button 
-      *ngFor="let btn of sectionButtons()"
-      class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dorado/60"
-      [ngClass]="{ 'bg-dorado/10': btn.active() }"
-      (click)="go(btn.section)">
-      {{ btn.text }}
+  <!-- Desktop Navigation -->
+  <div class="hidden md:flex items-center">
+    <nav class="space-x-6 text-sm font-body" role="navigation">
+      <a *ngFor="let item of navItems()"
+        [href]="item.href"
+        (click)="scrollTo(item.target, $event)"
+        [attr.aria-label]="item.label"
+        class="hover:text-dorado transition-colors duration-300">
+        {{ item.text }}
+      </a>
+    </nav>
+    <div class="section-switcher flex gap-2 ml-8">
+      <button *ngFor="let btn of sectionButtons()"
+        class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dorado/60"
+        [ngClass]="{ 'bg-dorado/10': btn.active() }" (click)="go(btn.section)">
+        {{ btn.text }}
+      </button>
+    </div>
+    <button class="rounded-full p-2 border border-dorado/40 hover:bg-dorado/10 transition relative text-gris-claro ml-4 focus:outline-none focus:ring-1 focus:ring-dorado focus:ring-offset-1 hover:shadow-dorado hover:scale-105"
+      (click)="switchLang()" aria-label="Switch language">
+      <ng-container *ngIf="currentLang() === 'en'; else esIcon">
+        <span class="font-cyber text-sm">EN</span>
+      </ng-container>
+      <ng-template #esIcon>
+        <span class="font-cyber text-sm">ES</span>
+      </ng-template>
     </button>
   </div>
-   <!-- Language Switcher -->
-  <button
-    class="rounded-full p-2 border border-dorado/40 hover:bg-dorado/10 transition relative text-gris-claro ml-4 focus:outline-none focus:ring-1 focus:ring-dorado focus:ring-offset-1 hover:shadow-dorado hover:scale-105"
-    (click)="switchLang()"
-    aria-label="Switch language"
-  >
-    <ng-container *ngIf="currentLang() === 'en'; else esIcon">
-      <span class="font-cyber text-sm">EN</span>
-    </ng-container>
-    <ng-template #esIcon>
-      <span class="font-cyber text-sm">ES</span>
+
+  <!-- Mobile menu button -->
+  <button class="md:hidden p-2 border border-dorado/40 rounded focus:outline-none focus:ring-1 focus:ring-dorado ml-auto"
+    (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()" aria-label="Toggle menu">
+    <svg *ngIf="!menuOpen(); else closeIcon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <ng-template #closeIcon>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </ng-template>
   </button>
+
+  <!-- Mobile dropdown -->
+  <div *ngIf="menuOpen()" class="absolute top-full left-0 w-full bg-azul-noche/95 backdrop-blur-md px-6 py-4 space-y-4 shadow-dorado md:hidden">
+    <nav class="flex flex-col gap-4 text-sm font-body" role="navigation">
+      <a *ngFor="let item of navItems()" [href]="item.href" (click)="scrollTo(item.target, $event); closeMenu()" [attr.aria-label]="item.label" class="hover:text-dorado transition-colors duration-300">
+        {{ item.text }}
+      </a>
+    </nav>
+    <div class="flex flex-col gap-2">
+      <button *ngFor="let btn of sectionButtons()" class="px-4 py-2 rounded-lg font-semibold border border-dorado hover:bg-dorado/30 transition duration-150 focus:outline-none focus:ring-2 focus:ring-dorado/60"
+        [ngClass]="{ 'bg-dorado/10': btn.active() }" (click)="go(btn.section); closeMenu()">
+        {{ btn.text }}
+      </button>
+    </div>
+    <button class="rounded-full p-2 border border-dorado/40 hover:bg-dorado/10 transition text-gris-claro focus:outline-none focus:ring-1 focus:ring-dorado w-max"
+      (click)="switchLang(); closeMenu()" aria-label="Switch language">
+      <ng-container *ngIf="currentLang() === 'en'; else esIconMobile">
+        <span class="font-cyber text-sm">EN</span>
+      </ng-container>
+      <ng-template #esIconMobile>
+        <span class="font-cyber text-sm">ES</span>
+      </ng-template>
+    </button>
+  </div>
 </header>
