@@ -1,4 +1,4 @@
-import { Component, computed, signal, inject } from '@angular/core';
+import { Component, computed, signal, inject, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -12,6 +12,18 @@ import { I18nService } from '../../core/i18n.service';
 })
 export class Header {
   readonly menuOpen = signal(false);
+
+  @HostListener('window:resize')
+  onResize() {
+    if (window.innerWidth >= 768 && this.menuOpen()) {
+      this.closeMenu();
+    }
+  }
+
+  /** Toggle the mobile menu visibility */
+  toggleMenu(): void {
+    this.menuOpen.update(open => !open);
+  }
   readonly i18n = inject(I18nService);
   readonly currentLang = this.i18n.lang;
   readonly translations = computed(() => this.i18n.t().HEADER);
