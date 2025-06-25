@@ -7,9 +7,20 @@ export class AiService {
   private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/ai/message';
 
   constructor(private http: HttpClient) {}
-
-  generateDynamicMessage(trail: string[]) {
-    return this.http.post<{ message: string }>('/api/ai/message', { trail })
-      .pipe(map(resp => typeof resp === 'string' ? resp : resp.message || ''));
+  generateDynamicMessage(stack: string[]): Observable<string> {
+    return this.http
+      .post(this.apiUrl, { stack }, { responseType: 'text' as 'json' })
+      .pipe(
+        map((resp: any) => {
+          // Si es string, regresa tal cual. Si es JSON, saca la propiedad 'message'.
+          try {
+            const obj = JSON.parse(resp);
+            return obj.message || '';
+          } catch {
+            return resp;
+          }
+        })
+      );
   }
+
 }
