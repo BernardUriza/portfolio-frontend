@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "tailwind:build": "tailwindcss -i ./src/styles.scss -o ./src/tailwind.css --watch"
+    "tailwind:build": "tailwindcss -i ./src/styles.scss -o ./src/tailwind.css --watch",
+    "e2e": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.5",
     "tailwindcss": "^3.4.17",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "cypress": "^13.7.3"
   }
 }

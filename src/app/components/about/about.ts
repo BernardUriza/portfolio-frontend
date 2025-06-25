@@ -1,29 +1,43 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, ChangeDetectionStrategy } from '@angular/core';
 import { I18nService } from '../../core/i18n.service';
 import { AiService } from '../../features/ai/ai.service';
 import { CommonModule } from '@angular/common';
+import { StackTrailService } from '../../stack-trail.service';
+import { TraceService } from '../../core/trace.service';
+import { of, concat } from 'rxjs';
+import { switchMap, tap, timeout, catchError, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
   imports: [CommonModule],
   standalone: true,
   templateUrl: './about.html',
-  styleUrl: './about.scss'
+  styleUrl: './about.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class About {
   readonly i18n = inject(I18nService);
   readonly translations = computed(() => this.i18n.t().ABOUT);
-  dynamicMessage: string | null = null;
- 
-  constructor(private aiService: AiService) {}
+  readonly fallbackMessage = 'Transforming ideas...';
+  readonly dynamicMessage$ = inject(StackTrailService).trail$.pipe(
+    tap(trail => this.trace.trace('trail emission', trail)),
+    switchMap(trail =>
+      !trail.length
+        ? of(this.fallbackMessage)
+        : concat(
+            of(this.fallbackMessage),
+            this.aiService.generateDynamicMessage(trail).pipe(
+              timeout({ first: 5000 }),
+              catchError(err => {
+                this.trace.trace('ai error', err);
+                return of(this.fallbackMessage);
+              })
+            )
+          )
+    ),
+    tap(msg => this.trace.trace('dynamic emission', msg)),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
-  ngOnInit(): void {
-    const stack = ['Angular', 'Spring Boot', 'PostgreSQL'];
-    this.aiService.generateDynamicMessage(stack).subscribe({
-      next: (msg: string) => (this.dynamicMessage = msg),
-      error: () => {
-        this.dynamicMessage = 'Error loading message';
-      }
-    });
-  }
+  constructor(private aiService: AiService, private trace: TraceService) {}
 }
