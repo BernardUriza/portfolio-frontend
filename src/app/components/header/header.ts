@@ -1,14 +1,13 @@
 import { Component, computed, signal, inject, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
   standalone: true,
-  imports: [CommonModule, MatTooltipModule],
+  imports: [CommonModule],
 })
 export class Header {
   readonly menuOpen = signal(false);
