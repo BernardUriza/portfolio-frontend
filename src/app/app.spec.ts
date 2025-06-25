@@ -20,6 +20,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, portfolio-frontend');
+    expect(compiled.querySelector('h1')?.textContent)
+      .toContain('Engineering coherence from fragmentation');
   });
 });
