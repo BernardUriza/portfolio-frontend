@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { StackTrailService } from '../../stack-trail.service';
 import { TraceService } from '../../core/trace.service';
 import { of, concat } from 'rxjs';
-import { switchMap, tap, timeout, catchError, shareReplay } from 'rxjs/operators';
+import { switchMap, tap, catchError, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',
@@ -27,7 +27,6 @@ export class About {
         : concat(
             of(this.fallbackMessage),
             this.aiService.generateDynamicMessage(trail).pipe(
-              timeout({ first: 5000 }),
               catchError(err => {
                 this.trace.trace('ai error', err);
                 return of(this.fallbackMessage);
