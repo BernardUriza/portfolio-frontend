@@ -4,7 +4,7 @@ import { AiService } from '../../features/ai/ai.service';
 import { CommonModule } from '@angular/common';
 import { StackTrailService } from '../../stack-trail.service';
 import { TraceService } from '../../core/trace.service';
-import { of, concat } from 'rxjs';
+import { of, concat, Observable } from 'rxjs';
 import { switchMap, tap, catchError, shareReplay } from 'rxjs/operators';
 
 @Component({
@@ -31,7 +31,7 @@ export class About {
     this.trace.trace('fallback chosen', msg);
     return msg;
   }
-  readonly dynamicMessage$ = inject(StackTrailService).trail$.pipe(
+  readonly dynamicMessage$: Observable<string> = inject(StackTrailService).trail$.pipe(
     tap(trail => this.trace.trace('trail emission', trail)),
     switchMap(trail => {
       if (!trail.length) {
