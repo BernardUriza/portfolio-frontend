@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
@@ -6,6 +6,7 @@ import { ProjectService } from '../project.service';
 import { AiService } from '../../ai/ai.service';
 import { StackTrailService } from '../../../stack-trail.service';
 import { TraceService } from '../../../core/trace.service';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-project-list',
@@ -14,13 +15,16 @@ import { TraceService } from '../../../core/trace.service';
   imports: [ProjectViewerComponent, DatePipe, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectList {
-  loading = false;
-  projects: ProjectModel[] = [];
+export class ProjectList implements OnInit, OnDestroy {
+  readonly loading$ = new BehaviorSubject(true);
+  readonly projects$ = new BehaviorSubject<ProjectModel[]>([]);
+  readonly error$ = new BehaviorSubject(false);
   selectedProject: ProjectModel | null = null;
 
   aiMessageLoading = false;
   dynamicMessage = '';
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private projectService: ProjectService,
@@ -30,19 +34,27 @@ export class ProjectList {
   ) { }
 
   ngOnInit() {
-    this.loading = true;
-    this.projectService.getProjects().subscribe({
-      next: (projects) => {
-        this.trace.trace('projects fetched', projects);
-        this.projects = projects;
-        this.loading = false;
-      },
-      error: () => {
-        this.trace.trace('projects fetch error');
-        this.projects = [];
-        this.loading = false;
-      }
-    });
+    this.trace.trace('projects fetch start');
+    this.projectService
+      .getProjects()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (projects) => {
+          this.trace.trace('projects fetch success', projects.length);
+          this.projects$.next(projects);
+          this.loading$.next(false);
+        },
+        error: (err) => {
+          this.trace.trace('projects fetch error', err);
+          this.error$.next(true);
+          this.loading$.next(false);
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
   closeViewer() {
     this.selectedProject = null;

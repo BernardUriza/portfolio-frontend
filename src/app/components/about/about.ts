@@ -18,20 +18,35 @@ import { switchMap, tap, catchError, shareReplay } from 'rxjs/operators';
 export class About {
   readonly i18n = inject(I18nService);
   readonly translations = computed(() => this.i18n.t().ABOUT);
-  readonly fallbackMessage = 'Transforming ideas...';
+  private readonly fallbackMessages = [
+    'Transforming ideas...',
+    'Shaping concepts...',
+    'Refining visions...'
+  ];
+
+  private randomFallback(): string {
+    const msg = this.fallbackMessages[
+      Math.floor(Math.random() * this.fallbackMessages.length)
+    ];
+    this.trace.trace('fallback chosen', msg);
+    return msg;
+  }
   readonly dynamicMessage$ = inject(StackTrailService).trail$.pipe(
     tap(trail => this.trace.trace('trail emission', trail)),
     switchMap(trail => {
       if (!trail.length) {
+        const msg = this.randomFallback();
         this.trace.trace('fallback no trail');
-        return of(this.fallbackMessage);
+        return of(msg);
       }
       return concat(
-        of(this.fallbackMessage).pipe(tap(() => this.trace.trace('fallback start'))),
+        of(this.randomFallback()).pipe(
+          tap(msg => this.trace.trace('fallback start', msg))
+        ),
         this.aiService.generateDynamicMessage(trail).pipe(
           catchError(err => {
             this.trace.trace('ai error', err);
-            return of(this.fallbackMessage);
+            return of(this.randomFallback());
           })
         )
       );
