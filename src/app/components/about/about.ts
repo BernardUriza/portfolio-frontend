@@ -21,19 +21,21 @@ export class About {
   readonly fallbackMessage = 'Transforming ideas...';
   readonly dynamicMessage$ = inject(StackTrailService).trail$.pipe(
     tap(trail => this.trace.trace('trail emission', trail)),
-    switchMap(trail =>
-      !trail.length
-        ? of(this.fallbackMessage)
-        : concat(
-            of(this.fallbackMessage),
-            this.aiService.generateDynamicMessage(trail).pipe(
-              catchError(err => {
-                this.trace.trace('ai error', err);
-                return of(this.fallbackMessage);
-              })
-            )
-          )
-    ),
+    switchMap(trail => {
+      if (!trail.length) {
+        this.trace.trace('fallback no trail');
+        return of(this.fallbackMessage);
+      }
+      return concat(
+        of(this.fallbackMessage).pipe(tap(() => this.trace.trace('fallback start'))),
+        this.aiService.generateDynamicMessage(trail).pipe(
+          catchError(err => {
+            this.trace.trace('ai error', err);
+            return of(this.fallbackMessage);
+          })
+        )
+      );
+    }),
     tap(msg => this.trace.trace('dynamic emission', msg)),
     shareReplay({ bufferSize: 1, refCount: true })
   );
