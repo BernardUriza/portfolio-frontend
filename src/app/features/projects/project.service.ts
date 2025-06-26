@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ProjectModel } from './models/project.model';
 import { AiMessageService } from './ai-message.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/projects';
+  private apiUrl = `${environment.apiRoot}/projects`;
 
   private selectedProjectSubject = new BehaviorSubject<ProjectModel | null>(null);
   readonly selectedProject$ = this.selectedProjectSubject.asObservable();

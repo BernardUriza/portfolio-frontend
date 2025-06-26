@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AiMessageService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/projects';
+  private apiUrl = `${environment.apiRoot}/projects`;
   private cache = new Map<number, string>();
 
   constructor(private http: HttpClient) {}

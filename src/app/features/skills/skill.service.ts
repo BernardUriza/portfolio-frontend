@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SkillModel } from './models/skill.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/skills';
+  private apiUrl = `${environment.apiRoot}/skills`;
 
   constructor(private http: HttpClient) {}
 
