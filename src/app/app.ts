@@ -8,6 +8,7 @@ import { Services } from './components/services/services';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 import { Banner } from './components/banner/banner';
+import { GameChatComponent } from './components/game-chat/game-chat';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from './app.animations';
@@ -23,6 +24,7 @@ import { Router, NavigationEnd } from '@angular/router';
     Cases,
     Services,
     Contact,
+    GameChatComponent,
     Footer,
     CommonModule,
     RouterOutlet
