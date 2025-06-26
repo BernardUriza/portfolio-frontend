@@ -15,13 +15,19 @@ import { StackTrailService } from '../../../stack-trail.service';
 export class ProjectList {
   loading = false;
   projects: ProjectModel[] = [];
-  readonly selectedProject$ = this.projectService.selectedProject$;
-  readonly aiMessage$ = this.projectService.aiMessage$;
 
   constructor(
     private projectService: ProjectService,
     private stackTrail: StackTrailService
   ) { }
+
+  get selectedProject$() {
+    return this.projectService.selectedProject$;
+  }
+
+  get aiMessage$() {
+    return this.projectService.aiMessage$;
+  }
 
   ngOnInit() {
     this.loading = true;
