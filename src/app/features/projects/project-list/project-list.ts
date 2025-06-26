@@ -3,10 +3,10 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
 import { ProjectService } from '../project.service';
-import { ProjectCardComponent } from '../project-card/project-card.component';
 import { StackTrailService } from '../../../stack-trail.service';
 import { TraceService } from '../../../core/trace.service';
 import { BehaviorSubject, Subject, Observable, of, takeUntil, tap, catchError, shareReplay } from 'rxjs';
+import { AiService } from '../../ai/ai.service';
 
 @Component({
   selector: 'app-project-list',
