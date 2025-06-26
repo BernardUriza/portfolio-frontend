@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of, tap, catchError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { TraceService } from '../../core/trace.service';
 
 @Injectable({ providedIn: 'root' })
 export class AiService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/ai/message';
+  private apiUrl = `${environment.apiRoot}/ai/message`;
+  private traceUrl = `${environment.apiRoot}/ai/trace`;
   private cache = new Map<string, string>();
 
   constructor(private http: HttpClient, private trace: TraceService) {}
@@ -39,4 +41,33 @@ export class AiService {
       );
   }
 
+  sendChatMessage(prompt: string): Observable<string> {
+    return this.http
+      .post(this.apiUrl, { prompt }, { responseType: 'text' as 'json' })
+      .pipe(
+        map((resp: any) => {
+          try {
+            const obj = JSON.parse(resp);
+            return obj.message || '';
+          } catch {
+            return resp;
+          }
+        })
+      );
+  }
+
+  sendTrace(info: string): Observable<string> {
+    return this.http
+      .post(this.traceUrl, { info }, { responseType: 'text' as 'json' })
+      .pipe(
+        map((resp: any) => {
+          try {
+            const obj = JSON.parse(resp);
+            return obj.message || '';
+          } catch {
+            return resp;
+          }
+        })
+      );
+  }
 }

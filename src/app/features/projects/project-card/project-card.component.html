@@ -1,0 +1,14 @@
+<li class="rounded-xl bg-purpura-profundo border border-dorado p-6 shadow-xl hover:shadow-dorado transform hover:-translate-y-1 transition-all duration-300 animate-fade-in">
+  <h3 class="font-heading text-dorado text-xl mb-2 tracking-tight">{{ project.title }}</h3>
+  <p class="font-body text-gris-claro text-sm mb-4">{{ project.description }}</p>
+  <div class="flex justify-between items-center text-xs text-gris-medio">
+    <span>{{ project.createdDate | date }}</span>
+    <a *ngIf="project.link"
+       href="#"
+       (click)="select(); $event.preventDefault()"
+       rel="noopener"
+       class="bg-dorado text-antracita font-bold px-3 py-1 rounded hover:bg-rojo-oscuro hover:text-dorado transition">
+      View Project
+    </a>
+  </div>
+</li>

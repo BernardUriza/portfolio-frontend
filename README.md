@@ -39,6 +39,16 @@ El servicio estará disponible en:
 👉 [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 JDBC URL: `jdbc:h2:mem:testdb`
 
+## 💻 **Frontend Angular**
+
+Asegúrate de tener instalado **Node.js >=16**. Luego ejecuta:
+
+```bash
+npm install
+npm run build
+npm test
+```
+
 ---
 
 ## 🌐 **Despliegue en producción**

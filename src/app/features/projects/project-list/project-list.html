@@ -33,7 +33,7 @@
 </div>
 
 <app-project-viewer
-  *ngIf="selectedProject"
-  [project]="selectedProject"
+  *ngIf="selectedProject$ | async as sp"
+  [project]="sp"
   (close)="closeViewer()">
 </app-project-viewer>

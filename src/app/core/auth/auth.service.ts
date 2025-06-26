@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, tap, catchError, throwError } from 'rxjs';
+import { environment } from '../../../environments/environment';
 interface AuthResponse {
   accessToken: string;
   refreshToken: string;
@@ -12,8 +13,8 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  isAdmin = signal(false);  
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/auth';
+  isAdmin = signal(false);
+  private apiUrl = `${environment.apiRoot}/auth`;
   private accessToken: string | null = null;
   private loggedIn$ = new BehaviorSubject<boolean>(this.hasValidToken());
 

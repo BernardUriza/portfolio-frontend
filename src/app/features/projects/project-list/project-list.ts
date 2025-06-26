@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
 import { ProjectService } from '../project.service';
-import { AiService } from '../../ai/ai.service';
+import { ProjectCardComponent } from '../project-card/project-card.component';
 import { StackTrailService } from '../../../stack-trail.service';
 import { TraceService } from '../../../core/trace.service';
 import { BehaviorSubject, Subject, Observable, of, takeUntil, tap, catchError, shareReplay } from 'rxjs';
@@ -52,17 +52,17 @@ export class ProjectList implements OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+
   }
   closeViewer() {
-    this.selectedProject = null;
-    this.dynamicMessage = '';
+    this.projectService.selectProject(null);
   }
 
   selectProject(project: ProjectModel) {
     this.trace.trace('project selected', project);
     this.selectedProject = project;
     this.stackTrail.addStack(project.stack);
-    this.getAiMessage();
+    this.projectService.selectProject(project);
   }
 
   getAiMessage() {
