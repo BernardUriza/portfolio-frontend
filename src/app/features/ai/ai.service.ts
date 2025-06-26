@@ -24,4 +24,19 @@ export class AiService {
       );
   }
 
+  sendChatMessage(prompt: string): Observable<string> {
+    return this.http
+      .post(this.apiUrl, { prompt }, { responseType: 'text' as 'json' })
+      .pipe(
+        map((resp: any) => {
+          try {
+            const obj = JSON.parse(resp);
+            return obj.message || '';
+          } catch {
+            return resp;
+          }
+        })
+      );
+  }
+
 }
