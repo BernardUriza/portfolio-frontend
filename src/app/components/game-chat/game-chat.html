@@ -1,0 +1,19 @@
+<div class="fixed bottom-20 right-6 z-[60]" *ngIf="open$ | async" data-testid="game-chat-window">
+  <div class="w-80 bg-azul-noche/90 backdrop-blur-md text-gris-claro p-3 rounded-lg shadow-dorado mb-2">
+    <div class="space-y-2 max-h-60 overflow-y-auto" data-testid="game-chat-messages">
+      <div *ngFor="let msg of messages$ | async" [ngClass]="msg.from === 'user' ? 'text-right' : 'text-left'">
+        <div class="inline-block px-2 py-1 rounded" [ngClass]="msg.from === 'user' ? 'bg-saber-blue' : 'bg-holo-blue'">
+          <span *ngIf="msg.from === 'bot'" class="mr-1">{{msg.agent.icon}}</span>
+          {{msg.text}}
+        </div>
+      </div>
+    </div>
+    <form (ngSubmit)="send()" class="mt-2 flex">
+      <input [(ngModel)]="text" name="message" autocomplete="off" class="flex-1 bg-antracita text-gris-claro rounded-l px-2 py-1 focus:outline-none" />
+      <button type="submit" class="bg-dorado text-antracita px-3 rounded-r">&gt;</button>
+    </form>
+  </div>
+</div>
+<button (click)="toggle()" class="fixed bottom-20 right-6 z-[60] bg-holo-blue text-dorado p-3 rounded-full shadow-dorado focus:outline-none" data-testid="game-chat-toggle">
+  💬
+</button>
