@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
 import { ProjectService } from '../project.service';
@@ -10,7 +10,7 @@ import { StackTrailService } from '../../../stack-trail.service';
   selector: 'app-project-list',
   templateUrl: './project-list.html',
   standalone: true,
-  imports: [ProjectViewerComponent, ProjectCardComponent, DatePipe, CommonModule],
+  imports: [ProjectViewerComponent, ProjectCardComponent, CommonModule],
 })
 export class ProjectList {
   loading = false;
