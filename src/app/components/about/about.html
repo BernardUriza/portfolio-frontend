@@ -5,12 +5,12 @@
       {{ translations().DESCRIPTION }}
     </p>
     <!-- BLOQUE IA DESTACADO -->
-    <div *ngIf="dynamicMessage; else loading"
-         class="mt-8 flex justify-center">
-      <div class="bg-gradient-to-r from-gold to-indigo-700 px-8 py-4 rounded-2xl shadow-xl border-4 border-gold animate-pulse text-lg font-bold text-blue-950 tracking-wide uppercase drop-shadow-lg">
+    <div *ngIf="(dynamicMessage$ | async) as message; else loading"
+         class="mt-8 flex justify-center" data-cy="about-banner">
+      <div class="bg-gradient-to-r from-gold to-indigo-700 px-8 py-4 rounded-2xl shadow-xl border-4 border-gold animate-pulse text-lg font-bold text-slate-950 tracking-wide uppercase drop-shadow-lg">
         <span class="inline-block">
           <i class="fa-solid fa-bolt mr-2 text-yellow-400"></i>
-          {{ dynamicMessage }}
+          {{ message }}
         </span>
       </div>
     </div>

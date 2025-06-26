@@ -1,18 +1,35 @@
 <div class="container mx-auto px-4">
-  <div *ngIf="loading" class="flex justify-center items-center py-16">
-    <span class="animate-pulse-dorado text-2xl text-dorado font-heading">Loading projects…</span>
+  <div *ngIf="(loading$ | async)" class="flex justify-center items-center py-16" data-cy="projects-loading">
+      <span class="animate-pulse-dorado text-2xl text-dorado font-heading">Loading projects…</span>
   </div>
 
-  <ul *ngIf="!loading && projects.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
-    <app-project-card *ngFor="let p of projects; trackBy: trackProject" [project]="p"></app-project-card>
+  <ul *ngIf="!(loading$ | async) && !(error$ | async) && ((projects$ | async)?.length ?? 0) > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10" data-cy="projects-loaded">
+      <li *ngFor="let p of (projects$ | async); trackBy: trackProject"
+          class="rounded-xl bg-purpura-profundo border border-dorado p-6 shadow-xl hover:shadow-dorado transform hover:-translate-y-1 transition-all duration-300 animate-fade-in">
+      <h3 class="font-heading text-dorado text-xl mb-2 tracking-tight">{{ p.title }}</h3>
+      <p class="font-body text-gris-claro text-sm mb-4">{{ p.description }}</p>
+      <div class="flex justify-between items-center text-xs text-gris-medio">
+        <span>{{ p.createdDate | date }}</span>
+        <a *ngIf="p.link"
+           href="#"
+           (click)="selectProject(p); $event.preventDefault()"
+           rel="noopener"
+           data-cy="project-card"
+           class="bg-dorado text-antracita font-bold px-3 py-1 rounded hover:bg-rojo-oscuro hover:text-dorado transition">
+          View Project
+        </a>
+      </div>
+    </li>
   </ul>
 
-  <div *ngIf="!loading && projects.length > 0" class="flex justify-center gap-4 mt-10 mb-10">
+  <div *ngIf="!(loading$ | async) && !(error$ | async) && ((projects$ | async)?.length ?? 0) > 0" class="flex justify-center gap-4 mt-10 mb-10">
     <a href="/assets/cv.pdf" target="_blank" class="bg-rojo-oscuro text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-rojo-oscuro transition">Download CV</a>
     <a href="/#contact" class="border border-dorado text-dorado font-heading px-5 py-3 rounded hover:bg-dorado hover:text-purpura-profundo transition">Contact</a>
   </div>
 
-  <p *ngIf="!loading && projects.length === 0" class="text-rojo-oscuro text-center my-16 text-lg font-heading">No projects found.</p>
+  <p *ngIf="!(loading$ | async) && !(error$ | async) && ((projects$ | async)?.length ?? 0) === 0" data-cy="projects-empty" class="text-rojo-oscuro text-center my-16 text-lg font-heading">No projects found.</p>
+
+  <p *ngIf="(error$ | async)" data-cy="projects-error" class="text-rojo-oscuro text-center my-16 text-lg font-heading">Error loading projects.</p>
 </div>
 
 <app-project-viewer
