@@ -3,26 +3,23 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
 import { ProjectService } from '../project.service';
-import { AiService } from '../../ai/ai.service';
+import { ProjectCardComponent } from '../project-card/project-card.component';
 import { StackTrailService } from '../../../stack-trail.service';
 
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.html',
   standalone: true,
-  imports: [ProjectViewerComponent, DatePipe, CommonModule],
+  imports: [ProjectViewerComponent, ProjectCardComponent, DatePipe, CommonModule],
 })
 export class ProjectList {
   loading = false;
   projects: ProjectModel[] = [];
-  selectedProject: ProjectModel | null = null;
-
-  aiMessageLoading = false;
-  dynamicMessage = '';
+  readonly selectedProject$ = this.projectService.selectedProject$;
+  readonly aiMessage$ = this.projectService.aiMessage$;
 
   constructor(
     private projectService: ProjectService,
-    private aiService: AiService,
     private stackTrail: StackTrailService
   ) { }
 
@@ -40,30 +37,14 @@ export class ProjectList {
     });
   }
   closeViewer() {
-    this.selectedProject = null;
-    this.dynamicMessage = '';
+    this.projectService.selectProject(null);
   }
 
   selectProject(project: ProjectModel) {
-    this.selectedProject = project;
     this.stackTrail.addStack(project.stack);
-    this.getAiMessage();
+    this.projectService.selectProject(project);
   }
 
-  getAiMessage() {
-    this.aiMessageLoading = true;
-    const trail = this.stackTrail.getTrail();
-    this.aiService.generateDynamicMessage(trail).subscribe({
-      next: (resp) => {
-        this.dynamicMessage = resp;
-        this.aiMessageLoading = false;
-      },
-      error: () => {
-        this.dynamicMessage = 'Failed to load AI message.';
-        this.aiMessageLoading = false;
-      }
-    });
-  }
 
   trackProject(index: number, project: ProjectModel): any {
     return project?.id ?? index;

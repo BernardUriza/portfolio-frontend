@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Signal, signal } from '@angular/core';
 import { Experience } from './models/experience.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ExperienceService {
-  private apiUrl = 'https://portfolio-spring-1-jhxz.onrender.com/api/experience';
+  private apiUrl = `${environment.apiRoot}/experience`;
 
   experiences = signal<Experience[]>([]);
 

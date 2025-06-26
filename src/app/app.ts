@@ -7,6 +7,7 @@ import { Cases } from './components/cases/cases';
 import { Services } from './components/services/services';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
+import { Banner } from './components/banner/banner';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimations } from './app.animations';
@@ -16,6 +17,7 @@ import { Router, NavigationEnd } from '@angular/router';
   imports: [
     Header,
     Hero,
+    Banner,
     Carousel,
     About,
     Cases,
