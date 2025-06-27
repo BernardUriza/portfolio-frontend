@@ -1,4 +1,4 @@
-<div class="fixed bottom-20 right-6" *ngIf="open$ | async" data-testid="game-chat-window">
+<div class="fixed bottom-20 right-6 mb-16 z-50" *ngIf="open$ | async" data-testid="game-chat-window">
   <div class="w-80 bg-azul-noche/90 backdrop-blur-md text-gris-claro p-3 rounded-lg shadow-dorado mb-2">
     <div class="space-y-2 max-h-60 overflow-y-auto" data-testid="game-chat-messages">
       <div *ngFor="let msg of messages$ | async" [ngClass]="msg.from === 'user' ? 'text-right' : 'text-left'">
@@ -14,6 +14,6 @@
     </form>
   </div>
 </div>
-<button (click)="toggle()" class="fixed bottom-20 right-6 bg-holo-blue text-dorado p-3 rounded-full shadow-dorado focus:outline-none" data-testid="game-chat-toggle">
+<button (click)="toggle()" class="fixed bottom-20 right-6 bg-holo-blue text-dorado p-3 rounded-full shadow-dorado focus:outline-none z-50" data-testid="game-chat-toggle">
   💬
 </button>

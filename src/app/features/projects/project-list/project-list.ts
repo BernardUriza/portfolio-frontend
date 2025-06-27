@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
@@ -16,7 +16,7 @@ import { AiService } from '../../ai/ai.service';
   imports: [ProjectViewerComponent, DatePipe, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectList implements OnInit {
+export class ProjectList implements OnInit, OnDestroy {
   readonly loading$ = new BehaviorSubject(true);
   readonly error$ = new BehaviorSubject(false);
   projects$: Observable<ProjectModel[]> = of([]);
@@ -35,11 +35,12 @@ export class ProjectList implements OnInit {
   ) {
     this.selectedProject$ = this.projectService.selectedProject$;
   }
-  
+
   ngOnInit() {
     this.trace.trace('projects fetch start');
     this.loading$.next(true);
-    this.projects$ = this.projectService.getProjects(true).pipe( // 'true' para forzar fetch
+
+    this.projectService.getProjects(true).pipe(
       tap(projects => {
         this.trace.trace('projects fetch success', projects.length);
         this.loading$.next(false);
@@ -51,8 +52,9 @@ export class ProjectList implements OnInit {
         return of([]);
       }),
       takeUntil(this.destroy$),
-      shareReplay({ bufferSize: 1, refCount: true })
-    );
+    ).subscribe(); // <- Ejecuta el HTTP SIEMPRE
+
+    this.projects$ = this.projectService.projects$;
   }
 
   ngOnDestroy() {
