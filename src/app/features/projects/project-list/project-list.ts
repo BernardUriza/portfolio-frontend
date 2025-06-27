@@ -19,7 +19,7 @@ import { AiService } from '../../ai/ai.service';
 export class ProjectList implements OnDestroy {
   readonly loading$ = new BehaviorSubject(true);
   readonly error$ = new BehaviorSubject(false);
-  readonly projects$: Observable<ProjectModel[]>;
+  projects$: Observable<ProjectModel[]> = of([]);
   readonly selectedProject$: Observable<ProjectModel | null>;
 
   aiMessageLoading = false;
@@ -33,8 +33,11 @@ export class ProjectList implements OnDestroy {
     private stackTrail: StackTrailService,
     private trace: TraceService
   ) {
-    this.trace.trace('projects fetch start');
+    this.selectedProject$ = this.projectService.selectedProject$;
+  }
 
+  ngOnInit() {
+    this.trace.trace('projects fetch start');
     this.projects$ = this.projectService.getProjects().pipe(
       tap(projects => {
         this.trace.trace('projects fetch success', projects.length);
@@ -49,9 +52,6 @@ export class ProjectList implements OnDestroy {
       takeUntil(this.destroy$),
       shareReplay({ bufferSize: 1, refCount: true })
     );
-
-    // INICIALIZACIÓN SEGURA DE selectedProject$
-    this.selectedProject$ = this.projectService.selectedProject$;
   }
 
   ngOnDestroy() {
