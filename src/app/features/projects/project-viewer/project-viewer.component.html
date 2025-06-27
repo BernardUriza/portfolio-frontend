@@ -1,23 +1,42 @@
-<div class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center transition-opacity duration-300 animate-fade-in">
-  <div class="relative bg-azul-noche/95 border-2 border-dorado rounded-2xl shadow-2xl w-[98vw] max-w-[1700px] h-[96vh] grid grid-cols-1 lg:grid-cols-2 overflow-hidden scale-100 animate-zoom-in">
-    <!-- Panel Proyecto -->
-    <div class="flex flex-col h-full">
-      <div class="flex justify-between items-center p-4">
-        <h2 class="text-2xl font-heading text-dorado truncate">{{ project?.title }}</h2>
-        <button (click)="close.emit()" class="bg-rojo-oscuro text-dorado font-bold px-4 py-2 rounded hover:bg-dorado hover:text-rojo-oscuro transition">
-          Cerrar
-        </button>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 overflow-y-auto">
+  <div class="relative w-full max-w-5xl bg-gradient-to-br from-azul-noche/80 via-purpura-profundo/70 to-black/80 border border-dorado rounded-2xl shadow-2xl overflow-hidden" [ngClass]="{'grid md:grid-cols-2': readmeHtml}">
+    <!-- Close Button -->
+    <button aria-label="Close" (click)="close.emit()" class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center bg-rojo-oscuro text-dorado hover:bg-dorado hover:text-rojo-oscuro transition">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+
+    <!-- Project Panel -->
+    <div class="p-6 flex flex-col gap-4">
+      <h2 class="text-2xl font-heading text-dorado" *ngIf="project?.title">{{ project.title }}</h2>
+      <img *ngIf="project?.imageUrl" [src]="project.imageUrl" [alt]="project.title" class="rounded-xl shadow-lg w-full max-h-60 object-cover" loading="lazy" />
+      <p class="text-gris-claro font-body" *ngIf="project?.description">
+        {{ showFullDesc ? project.description : (project.description | slice:0:200) }}<span *ngIf="!showFullDesc && (project.description?.length > 200)">...</span>
+      </p>
+      <button *ngIf="project?.description?.length > 200" (click)="toggleDescription()" class="self-start text-sm text-dorado hover:underline">
+        {{ showFullDesc ? 'Read less' : 'Read more' }}
+      </button>
+      <div *ngIf="project?.stack" class="flex flex-wrap gap-2 mt-2">
+        <span *ngFor="let tech of project.stack.split(',')" class="px-3 py-1 rounded-full text-xs font-heading bg-dorado text-antracita">
+          {{ tech.trim() }}
+        </span>
       </div>
-      <iframe *ngIf="safeUrl"
-        [src]="safeUrl"
-        class="flex-1 w-full rounded-lg border-4 border-dorado shadow-xl bg-black"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-        loading="lazy"></iframe>
+      <span *ngIf="project?.createdDate" class="text-xs text-gris-medio">{{ project.createdDate | date }}</span>
+      <div class="flex gap-3 mt-auto">
+        <a *ngIf="project?.githubRepo" [href]="'https://github.com/' + project.githubRepo" target="_blank" rel="noopener" aria-label="View Source" class="flex items-center gap-1 px-4 py-2 rounded bg-dorado text-antracita font-heading hover:bg-rojo-oscuro hover:text-dorado transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.371 0 0 5.372 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.73.083-.73 1.205.085 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.419-1.305.762-1.605-2.665-.304-5.466-1.332-5.466-5.932 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.019.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.656 1.652.244 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.804 5.625-5.476 5.921.43.371.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.299 24 12c0-6.628-5.372-12-12-12z"/></svg>
+          <span>View Source</span>
+        </a>
+        <a *ngIf="project?.link" [href]="project.link" target="_blank" rel="noopener" aria-label="Open Demo" class="flex items-center gap-1 px-4 py-2 rounded bg-holo-blue text-white font-heading hover:bg-dorado hover:text-antracita transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M14 3h7v7m0-7L10 14m4 7H3V10m0 11L21 3"/></svg>
+          <span>Live Demo</span>
+        </a>
+      </div>
     </div>
-    <!-- Panel README -->
-    <div
-      class="bg-black/90 p-8 overflow-auto prose prose-invert max-w-none prose-headings:text-dorado prose-strong:text-dorado prose-a:text-dorado hover:prose-a:text-rojo-oscuro prose-code:bg-antracita prose-code:rounded prose-code:px-1 prose-code:py-0.5"
-      [innerHTML]="readmeHtml"
-    ></div>
+
+    <!-- README Panel -->
+    <div *ngIf="readmeHtml" class="p-6 overflow-y-auto prose prose-invert max-h-[80vh]">
+      <div *ngIf="loadingMd" class="text-center text-dorado font-heading animate-pulse">Loading README…</div>
+      <div [innerHTML]="readmeHtml" *ngIf="!loadingMd"></div>
+    </div>
   </div>
 </div>
