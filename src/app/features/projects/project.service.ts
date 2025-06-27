@@ -23,9 +23,9 @@ export class ProjectService {
 
   constructor(private http: HttpClient, private aiMessage: AiMessageService) {}
 
-  getProjects(): Observable<ProjectModel[]> {
-    if (this.projectsSubject.value.length === 0) {
-      return this.http.get<ProjectModel[]>(this.apiUrl).pipe(
+  getProjects(forceRefresh = false): Observable<ProjectModel[]> {
+    if (forceRefresh || this.projectsSubject.value.length === 0) {
+      const http$ = this.http.get<ProjectModel[]>(this.apiUrl).pipe(
         tap(projects => this.projectsSubject.next(projects)),
         catchError(err => {
           this.projectsSubject.next([]);
@@ -33,9 +33,9 @@ export class ProjectService {
         }),
         shareReplay(1)
       );
-    } else {
-      return this.projects$;
+      return http$;
     }
+    return this.projects$;
   }
   
   private refreshProjects(): void {

@@ -35,10 +35,11 @@ export class ProjectList implements OnInit {
   ) {
     this.selectedProject$ = this.projectService.selectedProject$;
   }
-
+  
   ngOnInit() {
     this.trace.trace('projects fetch start');
-    this.projects$ = this.projectService.getProjects().pipe(
+    this.loading$.next(true);
+    this.projects$ = this.projectService.getProjects(true).pipe( // 'true' para forzar fetch
       tap(projects => {
         this.trace.trace('projects fetch success', projects.length);
         this.loading$.next(false);
