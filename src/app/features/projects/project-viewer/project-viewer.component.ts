@@ -1,52 +1,72 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { marked } from 'marked'; // Instala con: npm i marked
-import { CommonModule } from '@angular/common';
+import { marked } from 'marked';
+import { CommonModule, DatePipe } from '@angular/common';
+import { ProjectModel } from '../models/project.model';
 
 @Component({
   selector: 'app-project-viewer',
   standalone: true,
-  imports: [ CommonModule],
-  templateUrl: './project-viewer.component.html'
+  imports: [CommonModule, DatePipe],
+  templateUrl: './project-viewer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectViewerComponent implements OnChanges {
-  @Input() project: any = null;
+  @Input() project: ProjectModel | null = null;
   @Output() close = new EventEmitter<void>();
   safeUrl: SafeResourceUrl | null = null;
   readmeHtml = '';
-  loadingMd = true;
+  loadingMd = false;
+  showFullDesc = false;
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient) {}
 
-  ngOnChanges() {
-    if (this.project?.link) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.project.link);
+  ngOnChanges(): void {
+    if (!this.project) {
+      return;
     }
+    this.safeUrl = this.project.link
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(this.project.link)
+      : null;
     this.fetchReadme();
   }
 
-  fetchReadme() {
+  private fetchReadme(): void {
+    this.readmeHtml = '';
+    if (!this.project?.githubRepo) {
+      return;
+    }
     this.loadingMd = true;
-    const repoUrl = `https://raw.githubusercontent.com/BernardUriza/sparkfoxFull/master/README.md`;
+    const repoUrl = `https://raw.githubusercontent.com/${this.project.githubRepo}/master/README.md`;
     this.http.get(repoUrl, { responseType: 'text' }).subscribe({
-    next: md => {
+      next: md => {
         const htmlOrPromise = marked.parse(md);
         if (typeof htmlOrPromise === 'string') {
-        this.readmeHtml = htmlOrPromise;
-        this.loadingMd = false;
+          this.readmeHtml = htmlOrPromise;
+          this.loadingMd = false;
         } else if (htmlOrPromise instanceof Promise) {
-        htmlOrPromise.then(res => {
+          htmlOrPromise.then(res => {
             this.readmeHtml = res;
             this.loadingMd = false;
-        });
+          });
         }
-    },
-    error: () => {
-        this.readmeHtml = '<p>No README.md disponible at '+repoUrl+'</p>';
+      },
+      error: () => {
+        this.readmeHtml = `<p>No README.md disponible en ${repoUrl}</p>`;
         this.loadingMd = false;
-    }
+      },
     });
+  }
 
+  toggleDescription(): void {
+    this.showFullDesc = !this.showFullDesc;
   }
 }
