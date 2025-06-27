@@ -5,7 +5,8 @@ import { ProjectViewerComponent } from '../project-viewer/project-viewer.compone
 import { ProjectService } from '../project.service';
 import { StackTrailService } from '../../../stack-trail.service';
 import { TraceService } from '../../../core/trace.service';
-import { BehaviorSubject, Subject, Observable, of, takeUntil, tap, catchError, shareReplay } from 'rxjs';
+import { BehaviorSubject, Subject, Observable, of } from 'rxjs';
+import { takeUntil, tap, catchError, shareReplay } from 'rxjs/operators';
 import { AiService } from '../../ai/ai.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class ProjectList implements OnDestroy {
   readonly loading$ = new BehaviorSubject(true);
   readonly error$ = new BehaviorSubject(false);
   readonly projects$: Observable<ProjectModel[]>;
-  readonly selectedProject$ = this.projectService.selectedProject$;
+  readonly selectedProject$: Observable<ProjectModel | null>;
 
   aiMessageLoading = false;
   dynamicMessage = '';
@@ -33,6 +34,7 @@ export class ProjectList implements OnDestroy {
     private trace: TraceService
   ) {
     this.trace.trace('projects fetch start');
+
     this.projects$ = this.projectService.getProjects().pipe(
       tap(projects => {
         this.trace.trace('projects fetch success', projects.length);
@@ -47,13 +49,16 @@ export class ProjectList implements OnDestroy {
       takeUntil(this.destroy$),
       shareReplay({ bufferSize: 1, refCount: true })
     );
+
+    // INICIALIZACIÓN SEGURA DE selectedProject$
+    this.selectedProject$ = this.projectService.selectedProject$;
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
-
   }
+
   closeViewer() {
     this.projectService.selectProject(null);
   }
@@ -68,6 +73,7 @@ export class ProjectList implements OnDestroy {
     this.aiMessageLoading = true;
     const trail = this.stackTrail.getTrail();
     this.trace.trace('ai message request', trail);
+
     this.aiService.generateDynamicMessage(trail)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
@@ -76,12 +82,12 @@ export class ProjectList implements OnDestroy {
           this.dynamicMessage = resp;
           this.aiMessageLoading = false;
         },
-      error: () => {
-        this.trace.trace('ai message error');
-        this.dynamicMessage = 'Failed to load AI message.';
-        this.aiMessageLoading = false;
-      }
-    });
+        error: () => {
+          this.trace.trace('ai message error');
+          this.dynamicMessage = 'Failed to load AI message.';
+          this.aiMessageLoading = false;
+        }
+      });
   }
 
   trackProject(index: number, project: ProjectModel): any {
