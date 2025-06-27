@@ -1,0 +1,15 @@
+<section id="between" class="bg-antracita text-gris-claro py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl md:text-4xl font-heading text-dorado mb-6">{{ translations().TITLE }}</h2>
+    <ul class="text-lg md:text-xl font-body space-y-2 mb-8 text-left max-w-3xl mx-auto">
+      <li *ngFor="let line of translations().LINES">{{ line }}</li>
+    </ul>
+    <div class="flex justify-center items-center gap-4 font-heading text-xl">
+      <span class="text-rojo-oscuro">{{ translations().DIAGRAM.CHAOS }}</span>
+      <span class="text-gris-claro">&#8594;</span>
+      <span class="text-dorado">{{ translations().DIAGRAM.CATALYST }}</span>
+      <span class="text-gris-claro">&#8594;</span>
+      <span class="text-holo-blue">{{ translations().DIAGRAM.ORDER }}</span>
+    </div>
+  </div>
+</section>

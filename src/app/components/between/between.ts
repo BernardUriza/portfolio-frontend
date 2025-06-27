@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { I18nService } from '../../core/i18n.service';
 
 @Component({
-  selector: 'app-contact',
+  selector: 'app-between',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './contact.html',
-  styleUrl: './contact.scss'
+  templateUrl: './between.html'
 })
-export class Contact {
-  readonly translations = computed(() => this.i18n.t().CTA);
+export class Between {
+  readonly translations = computed(() => this.i18n.t().BETWEEN);
   constructor(private i18n: I18nService) {}
 }
