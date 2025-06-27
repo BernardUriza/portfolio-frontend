@@ -16,7 +16,7 @@ class MockGameChatService {
 
   constructor() {
     this.messagesSubject = new BehaviorSubject<GameChatMessage[]>([
-      { agent: this.agents[0], text: 'Welcome!', from: 'bot' }
+      { id: '1', agent: this.agents[0], text: 'Welcome!', from: 'bot', timestamp: new Date() }
     ]);
     this.messages$ = this.messagesSubject.asObservable();
   }

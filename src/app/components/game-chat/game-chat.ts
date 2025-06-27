@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GameChatService } from './game-chat.service';
+import { GameChatService, GameChatMessage } from './game-chat.service';
 
 @Component({
   selector: 'app-game-chat',
@@ -17,6 +17,28 @@ export class GameChatComponent {
   text = '';
   agent = this.service.agents[0];
 
+  visibleIds = signal<string[]>([]);
+  allMessages: GameChatMessage[] = [];
+
+  constructor() {
+    this.messages$.subscribe(msgs => {
+      this.allMessages = msgs;
+      let delay = 0;
+      msgs.forEach(msg => {
+        if (!this.visibleIds().includes(msg.id)) {
+          setTimeout(() => this.visibleIds.update(ids => [...ids, msg.id]), delay);
+          delay += 200;
+        }
+      });
+      const set = new Set(msgs.map(m => m.id));
+      this.visibleIds.update(ids => ids.filter(id => set.has(id)));
+    });
+  }
+
+  trackById(_: number, msg: GameChatMessage) {
+    return msg.id;
+  }
+
   toggle() {
     this.service.toggle();
   }
@@ -26,5 +48,10 @@ export class GameChatComponent {
     if (!msg) return;
     this.service.sendMessage(this.agent, msg);
     this.text = '';
+  }
+
+  close(id: string) {
+    this.visibleIds.update(ids => ids.filter(i => i !== id));
+    setTimeout(() => this.service.closeMessage(id), 300);
   }
 }

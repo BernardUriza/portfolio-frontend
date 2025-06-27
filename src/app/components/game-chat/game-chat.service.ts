@@ -11,9 +11,11 @@ export interface GameChatAgent {
 }
 
 export interface GameChatMessage {
+  id: string;
   agent: GameChatAgent;
   text: string;
   from: 'user' | 'bot';
+  timestamp: Date;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -29,11 +31,12 @@ export class GameChatService {
   ];
 
   constructor(private ai: AiService) {
-    // Mensaje inicial predefinido
     const welcome: GameChatMessage = {
+      id: crypto.randomUUID(),
       agent: this.agents[0],
       text: '¡Bienvenido! ¿En qué puedo ayudarte hoy?',
-      from: 'bot'
+      from: 'bot',
+      timestamp: new Date()
     };
     this.messagesSubject.next([welcome]);
   }
@@ -64,18 +67,41 @@ export class GameChatService {
   }
 
   sendMessage(agent: GameChatAgent, text: string) {
-    const userMsg: GameChatMessage = { agent, text, from: 'user' };
+    const userMsg: GameChatMessage = {
+      id: crypto.randomUUID(),
+      agent,
+      text,
+      from: 'user',
+      timestamp: new Date()
+    };
     this.messagesSubject.next([...this.messagesSubject.value, userMsg]);
 
     this.ai.sendChatMessage(text).subscribe({
       next: reply => {
-        const botMsg: GameChatMessage = { agent, text: reply, from: 'bot' };
+        const botMsg: GameChatMessage = {
+          id: crypto.randomUUID(),
+          agent,
+          text: reply,
+          from: 'bot',
+          timestamp: new Date()
+        };
         this.messagesSubject.next([...this.messagesSubject.value, botMsg]);
       },
       error: () => {
-        const botMsg: GameChatMessage = { agent, text: 'Error contacting AI', from: 'bot' };
+        const botMsg: GameChatMessage = {
+          id: crypto.randomUUID(),
+          agent,
+          text: 'Error contacting AI',
+          from: 'bot',
+          timestamp: new Date()
+        };
         this.messagesSubject.next([...this.messagesSubject.value, botMsg]);
       }
     });
+  }
+
+  closeMessage(id: string) {
+    const remaining = this.messagesSubject.value.filter(m => m.id !== id);
+    this.messagesSubject.next(remaining);
   }
 }

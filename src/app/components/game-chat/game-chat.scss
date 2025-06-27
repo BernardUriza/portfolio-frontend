@@ -1,1 +1,9 @@
 /* Minimal styling as most is handled via Tailwind classes */
+
+.game-message-enter {
+  @apply opacity-0 translate-y-4 transition-all duration-300;
+}
+
+.game-message-show {
+  @apply opacity-100 translate-y-0;
+}

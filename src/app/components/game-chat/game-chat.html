@@ -1,19 +1,45 @@
-<div class="fixed bottom-20 right-6 mb-16 z-50" *ngIf="open$ | async" data-testid="game-chat-window">
-  <div class="w-80 bg-azul-noche/90 backdrop-blur-md text-gris-claro p-3 rounded-lg shadow-dorado mb-2">
-    <div class="space-y-2 max-h-60 overflow-y-auto" data-testid="game-chat-messages">
-      <div *ngFor="let msg of messages$ | async" [ngClass]="msg.from === 'user' ? 'text-right' : 'text-left'">
-        <div class="inline-block px-2 py-1 rounded" [ngClass]="msg.from === 'user' ? 'bg-saber-blue' : 'bg-holo-blue'">
-          <span *ngIf="msg.from === 'bot'" class="mr-1">{{msg.agent.icon}}</span>
-          {{msg.text}}
+<div class="fixed bottom-6 right-6 w-80 max-h-96 z-50" *ngIf="open$ | async" data-testid="game-chat-window">
+  <div class="bg-azul-noche/95 backdrop-blur-md border border-holo-blue/30 rounded-lg shadow-dorado overflow-hidden">
+    <div class="bg-gradient-to-r from-azul-noche to-purpura-profundo border-b border-holo-blue/20 p-3">
+      <div class="flex items-center space-x-2">
+        <span class="text-holo-blue">{{ agent.icon }}</span>
+        <span class="text-gris-claro font-semibold text-sm">{{ agent.name }}</span>
+        <div class="w-2 h-2 bg-cyber-green rounded-full animate-pulse"></div>
+      </div>
+    </div>
+    <div class="max-h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-holo-blue scrollbar-track-antracita">
+      <div class="p-2 space-y-2" data-testid="game-chat-messages">
+        <div *ngFor="let msg of allMessages; trackBy: trackById" class="relative group game-message-enter" [class.game-message-show]="visibleIds().includes(msg.id)">
+          <div class="bg-antracita/80 rounded-lg p-3 border border-gris-medio/50 hover:border-holo-blue/30 transition-colors">
+            <button (click)="close(msg.id)" class="absolute -top-1 -right-1 w-5 h-5 bg-rojo-oscuro/80 hover:bg-rojo-oscuro text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xs">
+              ×
+            </button>
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="p-1.5 rounded-full" [ngClass]="msg.agent.color">{{ msg.agent.icon }}</span>
+              <span class="text-xs font-medium text-gris-medio">{{ msg.agent.name }}</span>
+              <span class="text-xs text-gris-medio">{{ msg.timestamp | date:'HH:mm' }}</span>
+            </div>
+            <p class="text-sm text-gris-claro leading-relaxed">{{ msg.text }}</p>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-holo-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+          </div>
         </div>
       </div>
     </div>
-    <form (ngSubmit)="send()" class="mt-2 flex">
-      <input [(ngModel)]="text" name="message" autocomplete="off" class="flex-1 bg-antracita text-gris-claro rounded-l px-2 py-1 focus:outline-none" />
-      <button type="submit" class="bg-dorado text-antracita px-3 rounded-r">&gt;</button>
+    <form (ngSubmit)="send()" class="flex border-t border-holo-blue/20">
+      <input [(ngModel)]="text" name="message" autocomplete="off" class="flex-1 bg-antracita text-gris-claro px-2 py-1 focus:outline-none" />
+      <button type="submit" class="bg-dorado text-antracita px-3">&gt;</button>
     </form>
+    <div class="bg-azul-noche/90 border-t border-holo-blue/20 p-2">
+      <div class="flex items-center justify-between text-xs text-gris-medio">
+        <span>{{ allMessages.length }} mensaje{{ allMessages.length !== 1 ? 's' : '' }}</span>
+        <div class="flex items-center space-x-1">
+          <div class="w-1 h-1 bg-cyber-green rounded-full animate-pulse"></div>
+          <span>Activo</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<button (click)="toggle()" class="fixed bottom-20 right-6 bg-holo-blue text-dorado p-3 rounded-full shadow-dorado focus:outline-none z-50" data-testid="game-chat-toggle">
+<button (click)="toggle()" class="fixed bottom-6 right-6 bg-holo-blue text-dorado p-3 rounded-full shadow-dorado focus:outline-none z-50" data-testid="game-chat-toggle">
   💬
 </button>
