@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
 import { ProjectViewerComponent } from '../project-viewer/project-viewer.component';
@@ -16,7 +16,7 @@ import { AiService } from '../../ai/ai.service';
   imports: [ProjectViewerComponent, DatePipe, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectList implements OnDestroy {
+export class ProjectList implements OnInit {
   readonly loading$ = new BehaviorSubject(true);
   readonly error$ = new BehaviorSubject(false);
   projects$: Observable<ProjectModel[]> = of([]);
