@@ -12,8 +12,8 @@ export const LANGUAGES = {
       CONTACT: 'Connect',
       CONTACT_LABEL: 'Connect',
       CONTACT_TOOLTIP: 'Establish direct communication',
-      CASES: 'Case Studies',
-      CASES_LABEL: 'Case Studies',
+      CASES: 'Proven Impact',
+      CASES_LABEL: 'Proven Impact',
       CASES_TOOLTIP: 'Analyze transformative projects',
       PROJECTS: 'Projects',
       PROJECTS_TOOLTIP: 'Navigate my project portfolio',
@@ -27,9 +27,10 @@ export const LANGUAGES = {
       LANG_SWITCH_EN: 'Activate English'
     },
     HERO: {
-      HERO_LINE_1: 'Engineering coherence from fragmentation',
-      HERO_LINE_2: 'Delivering resilient, cyber-architected systems',
-      HERO_EXPLORE: 'Engage with my portfolio'
+      HERO_LINE_1: "Your team doesn't need more developers.",
+      HERO_LINE_2: 'It needs a phase catalyst.',
+      HERO_SUB: 'I break systems that have outgrown their chaos\x2014but are not yet ready for stability.',
+      HERO_EXPLORE: 'Schedule a Catalyst Consultation'
     },
     CAROUSEL: {
       PHRASES: [
@@ -45,7 +46,7 @@ export const LANGUAGES = {
       DESCRIPTION: 'Technical catalyst and architecture strategist. I expose what is broken and engineer coherence where chaos once reigned. I do not adapt, I transform. I do not decorate, I reconfigure.'
     },
     CASES: {
-      TITLE: 'Case Studies',
+      TITLE: 'Proven Impact',
       ITEMS: [
         {
           ID: 'startup',
@@ -66,6 +67,38 @@ export const LANGUAGES = {
           DETAIL: 'Merging of technology stacks and cultures.'
         }
       ]
+    },
+    BETWEEN: {
+      TITLE: 'What Happens Between Startup and Structure',
+      LINES: [
+        "Your organization has passed MVP stage. You've grown, hired, layered process…",
+        'And now? Velocity drops. Morale fragments. Decisions slow down.',
+        "That's not burnout. It's narrative entropy.",
+        "You don't need another standup.",
+        'You need confrontation. Real, catalytic, and surgical.'
+      ],
+      DIAGRAM: { CHAOS: 'CHAOS', CATALYST: 'CATALYST', ORDER: 'ORDER' }
+    },
+    SERVICES_DETAIL: {
+      TITLE: 'Catalyst Engineering by Bernard Uriza',
+      OFFERINGS: [
+        { ICON: '🔍', TITLE: 'Symbolic System Diagnosis', DESC: 'Deep-read of your team culture, unspoken contracts, and technical decisions hiding ego structures.' },
+        { ICON: '🧠', TITLE: 'Narrative & Architectural Disruption', DESC: 'Restructure not only your tech stack\u2014but your organizational myths.' },
+        { ICON: '💥', TITLE: 'Fracture as Strategy', DESC: 'I engineer safe collapse. I break the parts that are silently holding you back.' },
+        { ICON: '🚪', TITLE: 'Designed Exit', DESC: "I leave when I'm no longer needed. I don't grow with your org. I evolve it." }
+      ],
+      TOOLS_TITLE: 'Tools Used',
+      TOOLS: 'GPT-driven retrospectives \u2022 Architecture audits \u2022 Signal hacking \u2022 Legacy resurrection \u2022 Emotional mapping'
+    },
+    CTA: {
+      TITLE_LINE_1: "I won't make you feel comfortable.",
+      TITLE_LINE_2: "I'll make you feel clear.",
+      SUBTEXT: 'Book a 30-minute clarity conflict. No fluff. No frameworks. Just reality.',
+      BUTTON: 'Start the Disruption',
+      NAME: 'Name',
+      EMAIL: 'Email',
+      MESSAGE: 'Message',
+      SEND: 'Send'
     }
   },
   es: {
@@ -79,8 +112,8 @@ export const LANGUAGES = {
       CONTACT: 'Conectar',
       CONTACT_LABEL: 'Conectar',
       CONTACT_TOOLTIP: 'Establece comunicación directa',
-      CASES: 'Casos de Estudio',
-      CASES_LABEL: 'Casos de Estudio',
+      CASES: 'Impacto Comprobado',
+      CASES_LABEL: 'Impacto Comprobado',
       CASES_TOOLTIP: 'Analiza proyectos transformadores',
       PROJECTS: 'Proyectos',
       PROJECTS_TOOLTIP: 'Navega por mi portafolio',
@@ -94,9 +127,10 @@ export const LANGUAGES = {
       LANG_SWITCH_EN: 'Activar Inglés'
     },
     HERO: {
-      HERO_LINE_1: 'Ingeniería de coherencia desde la fragmentación',
-      HERO_LINE_2: 'Sistemas resilientes con arquitectura cibernética',
-      HERO_EXPLORE: 'Explora mi portafolio'
+      HERO_LINE_1: 'Tu equipo no necesita más desarrolladores.',
+      HERO_LINE_2: 'Necesita un catalizador de fases.',
+      HERO_SUB: 'Rompo sistemas que superaron su caos pero aún no están listos para la estabilidad.',
+      HERO_EXPLORE: 'Agenda una Consulta Catalizadora'
     },
     CAROUSEL: {
       PHRASES: [
@@ -112,7 +146,7 @@ export const LANGUAGES = {
       DESCRIPTION: 'Catalizador técnico y estratega de arquitectura. Revelo lo que está roto y diseño coherencia donde antes hubo caos. No adapto, transformo. No decoro, reconfiguro.'
     },
     CASES: {
-      TITLE: 'Casos de Estudio',
+      TITLE: 'Impacto Comprobado',
       ITEMS: [
         {
           ID: 'startup',
@@ -133,6 +167,38 @@ export const LANGUAGES = {
           DETAIL: 'Unión de stacks tecnológicos y culturas.'
         }
       ]
+    },
+    BETWEEN: {
+      TITLE: 'Qué ocurre entre el inicio y la estructura',
+      LINES: [
+        'Tu organización superó la fase MVP. Creciste, contrataste, pusiste procesos…',
+        '¿Y ahora? La velocidad cae. La moral se fragmenta. Las decisiones se estancan.',
+        'Eso no es agotamiento. Es entropía narrativa.',
+        'No necesitas otra daily.',
+        'Necesitas confrontación. Real, catalítica y quirúrgica.'
+      ],
+      DIAGRAM: { CHAOS: 'CAOS', CATALYST: 'CATALIZADOR', ORDER: 'ORDEN' }
+    },
+    SERVICES_DETAIL: {
+      TITLE: 'Catalyst Engineering por Bernard Uriza',
+      OFFERINGS: [
+        { ICON: '🔍', TITLE: 'Diagnóstico Simbólico de Sistemas', DESC: 'Lectura profunda de la cultura del equipo, contratos tácitos y decisiones técnicas que esconden estructuras de ego.' },
+        { ICON: '🧠', TITLE: 'Disrupción Narrativa y Arquitectónica', DESC: 'Reestructura no solo tu stack tecnológico, sino tus mitos organizacionales.' },
+        { ICON: '💥', TITLE: 'Fractura como Estrategia', DESC: 'Ingeniero colapsos seguros. Rompo las partes que te frenan en silencio.' },
+        { ICON: '🚪', TITLE: 'Salida Diseñada', DESC: 'Me marcho cuando ya no soy necesario. No crezco con tu organización; la evoluciono.' }
+      ],
+      TOOLS_TITLE: 'Herramientas Utilizadas',
+      TOOLS: 'Retrospectivas con GPT \u2022 Auditorías de arquitectura \u2022 Hackeo de señales \u2022 Resurrección de legados \u2022 Mapeo emocional'
+    },
+    CTA: {
+      TITLE_LINE_1: 'No te haré sentir cómodo.',
+      TITLE_LINE_2: 'Te haré sentir claro.',
+      SUBTEXT: 'Agenda un conflicto de claridad de 30 minutos. Sin adornos. Sin frameworks. Solo realidad.',
+      BUTTON: 'Iniciar la Disrupción',
+      NAME: 'Nombre',
+      EMAIL: 'Correo',
+      MESSAGE: 'Mensaje',
+      SEND: 'Enviar'
     }
   }
 };
