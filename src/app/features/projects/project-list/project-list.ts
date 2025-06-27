@@ -19,7 +19,7 @@ export class ProjectList implements OnDestroy {
   readonly loading$ = new BehaviorSubject(true);
   readonly error$ = new BehaviorSubject(false);
   readonly projects$: Observable<ProjectModel[]>;
-  selectedProject: ProjectModel | null = null;
+  readonly selectedProject$ = this.projectService.selectedProject$;
 
   aiMessageLoading = false;
   dynamicMessage = '';
@@ -60,7 +60,6 @@ export class ProjectList implements OnDestroy {
 
   selectProject(project: ProjectModel) {
     this.trace.trace('project selected', project);
-    this.selectedProject = project;
     this.stackTrail.addStack(project.stack);
     this.projectService.selectProject(project);
   }
