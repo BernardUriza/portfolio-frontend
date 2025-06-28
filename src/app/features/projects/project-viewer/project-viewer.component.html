@@ -10,9 +10,9 @@
       <h2 class="text-2xl font-heading text-dorado" *ngIf="project?.title">{{ project?.title }}</h2>
       <img *ngIf="project?.imageUrl" [src]="project?.imageUrl" [attr.alt]="project?.title || ''" class="rounded-xl shadow-lg w-full max-h-60 object-cover" loading="lazy" />
       <p class="text-gris-claro font-body" *ngIf="project?.description">
-        {{ showFullDesc ? project?.description : (project?.description | slice:0:200) }}<span *ngIf="!showFullDesc && (project?.description?.length > 200)">...</span>
+        {{ showFullDesc ? project?.description : (project?.description | slice:0:200) }}<span *ngIf="!showFullDesc && project?.description && project.description.length > 200">...</span>
       </p>
-      <button *ngIf="project?.description?.length > 200" (click)="toggleDescription()" class="self-start text-sm text-dorado hover:underline">
+      <button *ngIf="project?.description && project.description.length > 200" (click)="toggleDescription()" class="self-start text-sm text-dorado hover:underline">
         {{ showFullDesc ? 'Read less' : 'Read more' }}
       </button>
       <div *ngIf="project?.stack as stack" class="flex flex-wrap gap-2 mt-2">
