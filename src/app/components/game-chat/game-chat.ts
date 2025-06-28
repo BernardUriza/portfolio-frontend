@@ -1,7 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GameChatService, GameChatMessage } from './game-chat.service';
+import { GameChatService } from './game-chat.service';
+import { ChatMessage, AgentInfo } from './game-chat.models';
 
 @Component({
   selector: 'app-game-chat',
@@ -15,10 +16,10 @@ export class GameChatComponent {
   open$ = this.service.open$;
   messages$ = this.service.messages$;
   text = '';
-  agent = this.service.agents[0];
+  agent: AgentInfo = this.service.agents[0];
 
   visibleIds = signal<string[]>([]);
-  allMessages: GameChatMessage[] = [];
+  allMessages: ChatMessage[] = [];
 
   constructor() {
     this.messages$.subscribe(msgs => {
@@ -35,7 +36,7 @@ export class GameChatComponent {
     });
   }
 
-  trackById(_: number, msg: GameChatMessage) {
+  trackById(_: number, msg: ChatMessage) {
     return msg.id;
   }
 

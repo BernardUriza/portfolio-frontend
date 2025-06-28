@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ProjectModel } from '../models/project.model';
+import { ProjectContext } from '../../../components/game-chat/game-chat.models';
 
 @Component({
   selector: 'app-project-viewer',
@@ -22,6 +23,7 @@ import { ProjectModel } from '../models/project.model';
 export class ProjectViewerComponent implements OnChanges {
   @Input() project: ProjectModel | null = null;
   @Output() close = new EventEmitter<void>();
+  @Output() projectViewed = new EventEmitter<ProjectContext>();
   safeUrl: SafeResourceUrl | null = null;
   readmeHtml = '';
   loadingMd = false;
@@ -36,6 +38,13 @@ export class ProjectViewerComponent implements OnChanges {
     this.safeUrl = this.project.link
       ? this.sanitizer.bypassSecurityTrustResourceUrl(this.project.link)
       : null;
+    const ctx: ProjectContext = {
+      projectId: String(this.project.id),
+      title: this.project.title,
+      technologies: this.project.stack.split(',').map(t => t.trim()),
+      viewedAt: new Date(),
+    };
+    this.projectViewed.emit(ctx);
     this.fetchReadme();
   }
 

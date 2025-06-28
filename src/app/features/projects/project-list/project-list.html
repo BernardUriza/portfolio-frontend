@@ -35,5 +35,6 @@
 <app-project-viewer
   *ngIf="selectedProject$ | async as sp"
   [project]="sp"
-  (close)="closeViewer()">
-</app-project-viewer>
+  (close)="closeViewer()"
+  (projectViewed)="onProjectViewed($event)"
+></app-project-viewer>

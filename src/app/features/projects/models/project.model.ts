@@ -5,5 +5,6 @@ export interface ProjectModel {
   link: string;
   createdDate: string; 
   githubRepo: string;
-  stack: string;      
+  stack: string;
+  imageUrl?: string;
 }

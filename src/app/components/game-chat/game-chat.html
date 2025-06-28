@@ -20,6 +20,12 @@
               <span class="text-xs text-gris-medio">{{ msg.timestamp | date:'HH:mm' }}</span>
             </div>
             <p class="text-sm text-gris-claro leading-relaxed">{{ msg.text }}</p>
+            <div *ngIf="msg.suggestions?.length" class="mt-2 flex gap-1 flex-wrap">
+              <button *ngFor="let s of msg.suggestions" (click)="text = s" class="px-2 py-0.5 text-xs rounded bg-holo-blue text-white hover:bg-dorado hover:text-antracita">{{ s }}</button>
+            </div>
+            <div class="text-xs text-gris-medio mt-1" *ngIf="msg.context">
+              Hablando sobre: {{ msg.context.section }}
+            </div>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-holo-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
           </div>
         </div>
