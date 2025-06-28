@@ -8,6 +8,8 @@ import { TraceService } from '../../../core/trace.service';
 import { BehaviorSubject, Subject, Observable, of } from 'rxjs';
 import { takeUntil, tap, catchError, shareReplay } from 'rxjs/operators';
 import { AiService } from '../../ai/ai.service';
+import { GameChatService } from '../../../components/game-chat/game-chat.service';
+import { ProjectContext, AgentType } from '../../../components/game-chat/game-chat.models';
 
 @Component({
   selector: 'app-project-list',
@@ -31,7 +33,8 @@ export class ProjectList implements OnInit, OnDestroy {
     private projectService: ProjectService,
     private aiService: AiService,
     private stackTrail: StackTrailService,
-    private trace: TraceService
+    private trace: TraceService,
+    private chat: GameChatService
   ) {
     this.selectedProject$ = this.projectService.selectedProject$;
   }
@@ -70,6 +73,11 @@ export class ProjectList implements OnInit, OnDestroy {
     this.trace.trace('project selected', project);
     this.stackTrail.addStack(project.stack);
     this.projectService.selectProject(project);
+  }
+
+  onProjectViewed(ctx: ProjectContext) {
+    const agent = this.chat.agents.find(a => a.type === AgentType.TECH_EXPERT) || this.chat.agents[0];
+    this.chat.sendMessage(agent, `Estoy revisando ${ctx.title}. Usa ${ctx.technologies.join(', ')}`);
   }
 
   getAiMessage() {

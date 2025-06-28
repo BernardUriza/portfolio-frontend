@@ -1,22 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { GameChatComponent } from './game-chat';
-import { GameChatService, GameChatAgent, GameChatMessage } from './game-chat.service';
+import { GameChatService } from './game-chat.service';
+import { AgentInfo, AgentType, ChatMessage } from './game-chat.models';
 
 class MockGameChatService {
   private openSubject = new BehaviorSubject<boolean>(false);
   open$ = this.openSubject.asObservable();
 
-  private messagesSubject: BehaviorSubject<GameChatMessage[]>;
+  private messagesSubject: BehaviorSubject<ChatMessage[]>;
   messages$;
 
-  agents: GameChatAgent[] = [
-    { id: 'guide', name: 'Guide', color: 'dorado', icon: '🤖' }
+  agents: AgentInfo[] = [
+    {
+      type: AgentType.PROJECT_GUIDE,
+      name: 'Guide',
+      color: 'dorado',
+      icon: '🤖',
+      personality: 'technical',
+      expertise: [],
+      greetingTemplates: []
+    }
   ];
 
   constructor() {
-    this.messagesSubject = new BehaviorSubject<GameChatMessage[]>([
-      { id: '1', agent: this.agents[0], text: 'Welcome!', from: 'bot', timestamp: new Date() }
+    this.messagesSubject = new BehaviorSubject<ChatMessage[]>([
+      { id: '1', agent: this.agents[0], text: 'Welcome!', from: 'bot', timestamp: new Date(), context: { section: 'home', metadata: {}, timestamp: new Date() }, isContextual: true }
     ]);
     this.messages$ = this.messagesSubject.asObservable();
   }
