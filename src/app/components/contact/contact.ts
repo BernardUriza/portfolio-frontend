@@ -14,18 +14,21 @@ import { ToastService } from '../toast/toast.service';
 })
 export class Contact {
   readonly translations = computed(() => this.i18n.t().CTA);
-  readonly form = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    message: ['', Validators.required]
-  });
+  readonly form;
 
   constructor(
     private fb: FormBuilder,
     private i18n: I18nService,
     private service: ContactService,
     private toast: ToastService
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
+  }
+
 
   hint(field: 'name' | 'email' | 'message') {
     const map = {
@@ -41,7 +44,9 @@ export class Contact {
       this.toast.show('Formulario inválido');
       return;
     }
-    this.service.sendContact(this.form.value).subscribe({
+    const { name, email, message } = this.form.value;
+    const payload = { name: name || '', email: email || '', message: message || '' };
+    this.service.sendContact(payload).subscribe({
       next: () => {
         this.toast.show('Correo enviado con éxito.');
         this.form.reset();
