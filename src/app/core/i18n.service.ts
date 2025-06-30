@@ -29,7 +29,7 @@ export const LANGUAGES = {
     HERO: {
       HERO_LINE_1: "Your team doesn't need more developers.",
       HERO_LINE_2: 'It needs a phase catalyst.',
-      HERO_SUB: 'I break systems that have outgrown their chaos\x2014but are not yet ready for stability.',
+      HERO_SUB: 'I break systems that have outgrown their chaos but are not yet ready for stability.',
       HERO_EXPLORE: 'Schedule a Catalyst Consultation'
     },
     CAROUSEL: {
@@ -71,15 +71,21 @@ export const LANGUAGES = {
     BETWEEN: {
       TITLE: 'What Happens Between Startup and Structure',
       SUBTITLE: 'Transformation • Catalysis • Emergence',
-      PILLARS: { DETECTION: 'DETECTION', ANALYSIS: 'ANALYSIS', CATALYSIS: 'CATALYSIS' },
+      PILLARS: {
+        DETECTION: 'DETECTION',
+        ANALYSIS: 'ANALYSIS', 
+        CATALYSIS: 'CATALYSIS'
+      },
       CTA_BUTTON: 'Initiate Systemic Diagnosis',
       CTA_COMMENT: '// Enzyme-substrate compatibility evaluation',
+      // Versión balanceada de las líneas del diagrama catalítico
       LINES: [
-        'Your startup scaled beyond MVP, adding people and process.',
-        'Suddenly velocity stalls and decisions gridlock.',
-        "That's not fatigue—it's narrative entropy.",
-        "More standups won't fix it.",
-        'Only a catalytic shock realigns your story.'
+        'Your startup scaled beyond MVP, adding people and process layers.',
+        'Suddenly velocity stalls and every decision becomes gridlock.',
+        "That's not fatigue—it's narrative entropy taking hold of systems.",
+        "More standups won't fix underlying structural breakdown here.",
+        'Only a catalytic shock can realign your organizational story.',
+        'Crisis becomes opportunity when you embrace necessary disonance.'
       ],
       DIAGRAM: {
         CHAOS: 'CHAOS',
@@ -87,7 +93,11 @@ export const LANGUAGES = {
         ORDER: 'ORDER',
         TITLE: 'SYSTEMIC TRANSFORMATION PROCESS',
         WEEKS: ['Week 0-1', 'Weeks 2-8', 'Week 9+'],
-        LABELS: { CHAOS: 'SYSTEMIC CRISIS', CATALYST: 'CATALYTIC INTERVENTION', ORDER: 'NEW EQUILIBRIUM' },
+        LABELS: { 
+          CHAOS: 'SYSTEMIC CRISIS', 
+          CATALYST: 'CATALYTIC INTERVENTION', 
+          ORDER: 'NEW EQUILIBRIUM' 
+        },
         DESCRIPTIONS: [
           'System in critical state requires external intervention',
           'Introduction of productive dissonance and reconfiguration',
@@ -100,13 +110,29 @@ export const LANGUAGES = {
     SERVICES_DETAIL: {
       TITLE: 'Catalyst Engineering by Bernard Uriza',
       OFFERINGS: [
-        { ICON: '🔍', TITLE: 'Symbolic System Diagnosis', DESC: 'Deep-read of your team culture, unspoken contracts, and technical decisions hiding ego structures.' },
-        { ICON: '🧠', TITLE: 'Narrative & Architectural Disruption', DESC: 'Restructure not only your tech stack\u2014but your organizational myths.' },
-        { ICON: '💥', TITLE: 'Fracture as Strategy', DESC: 'I engineer safe collapse. I break the parts that are silently holding you back.' },
-        { ICON: '🚪', TITLE: 'Designed Exit', DESC: "I leave when I'm no longer needed. I don't grow with your org. I evolve it." }
+        { 
+          ICON: '🔍', 
+          TITLE: 'Symbolic System Diagnosis', 
+          DESC: 'Deep-read of your team culture, unspoken contracts, and technical decisions hiding ego structures.' 
+        },
+        { 
+          ICON: '🧠', 
+          TITLE: 'Narrative & Architectural Disruption', 
+          DESC: 'Restructure not only your tech stack—but your organizational myths.' 
+        },
+        { 
+          ICON: '💥', 
+          TITLE: 'Fracture as Strategy', 
+          DESC: 'I engineer safe collapse. I break the parts that are silently holding you back.' 
+        },
+        { 
+          ICON: '🚪', 
+          TITLE: 'Designed Exit', 
+          DESC: "I leave when I'm no longer needed. I don't grow with your org. I evolve it." 
+        }
       ],
       TOOLS_TITLE: 'Tools Used',
-      TOOLS: 'GPT-driven retrospectives \u2022 Architecture audits \u2022 Signal hacking \u2022 Legacy resurrection \u2022 Emotional mapping'
+      TOOLS: 'GPT-driven retrospectives • Architecture audits • Signal hacking • Legacy resurrection • Emotional mapping'
     },
     CTA: {
       TITLE_LINE_1: "I won't make you feel comfortable.",
@@ -180,13 +206,13 @@ export const LANGUAGES = {
         {
           ID: 'startup',
           TITLE: 'Escalado de Startup',
-          SUMMARY: 'De 5 a 50 sin perder la cabeza.',
+          SUMMARY: 'De 5 a 50 sin perder coherencia.',
           DETAIL: 'Historia detallada de un startup que creció con arquitectura resiliente.'
         },
         {
           ID: 'family',
           TITLE: 'Digitalización de Empresa Familiar',
-          SUMMARY: 'De lo artesanal a lo escalable.',
+          SUMMARY: 'De lo artesanal a lo escalable, preservando su esencia.',
           DETAIL: 'Transición digital sin perder la tradición.'
         },
         {
@@ -200,15 +226,21 @@ export const LANGUAGES = {
     BETWEEN: {
       TITLE: 'Qué ocurre entre el inicio y la estructura',
       SUBTITLE: 'Transformación • Catálisis • Emergencia',
-      PILLARS: { DETECTION: 'DETECCIÓN', ANALYSIS: 'ANÁLISIS', CATALYSIS: 'CATÁLISIS' },
+      PILLARS: {
+        DETECTION: 'DETECCIÓN',
+        ANALYSIS: 'ANÁLISIS',
+        CATALYSIS: 'CATÁLISIS'
+      },
       CTA_BUTTON: 'Iniciar Diagnóstico Sistémico',
       CTA_COMMENT: '// Evaluación de compatibilidad enzima-sustrato',
+      // Versión balanceada en español del diagrama catalítico
       LINES: [
-        'Tu startup superó el MVP sumando gente y procesos.',
+        'Tu startup superó el MVP sumando capas de gente y procesos.',
         'Ahora la velocidad se detiene y las decisiones se congelan.',
-        'Eso no es agotamiento: es entropía narrativa.',
-        'Otra reunión no lo solucionará.',
-        'Solo un choque catalítico realinea tu historia.'
+        'Eso no es agotamiento: es entropía narrativa sistémica tomando control.',
+        'Otra reunión no solucionará el colapso estructural subyacente aquí.',
+        'Solo un choque catalítico puede realinear tu historia organizacional.',
+        'La crisis se convierte en oportunidad al abrazar la disonancia necesaria.'
       ],
       DIAGRAM: {
         CHAOS: 'CAOS',
@@ -216,7 +248,11 @@ export const LANGUAGES = {
         ORDER: 'ORDEN',
         TITLE: 'PROCESO DE TRANSFORMACIÓN SISTÉMICA',
         WEEKS: ['Semana 0-1', 'Semanas 2-8', 'Semana 9+'],
-        LABELS: { CHAOS: 'CRISIS SISTÉMICA', CATALYST: 'INTERVENCIÓN CATALÍTICA', ORDER: 'NUEVO EQUILIBRIO' },
+        LABELS: { 
+          CHAOS: 'CRISIS SISTÉMICA', 
+          CATALYST: 'INTERVENCIÓN CATALÍTICA', 
+          ORDER: 'NUEVO EQUILIBRIO' 
+        },
         DESCRIPTIONS: [
           'Sistema en estado crítico requiere intervención externa',
           'Introducción de disonancia productiva y reconfiguración',
@@ -229,13 +265,29 @@ export const LANGUAGES = {
     SERVICES_DETAIL: {
       TITLE: 'Catalyst Engineering por Bernard Uriza',
       OFFERINGS: [
-        { ICON: '🔍', TITLE: 'Diagnóstico Simbólico de Sistemas', DESC: 'Lectura profunda de la cultura del equipo, contratos tácitos y decisiones técnicas que esconden estructuras de ego.' },
-        { ICON: '🧠', TITLE: 'Disrupción Narrativa y Arquitectónica', DESC: 'Reestructura no solo tu stack tecnológico, sino tus mitos organizacionales.' },
-        { ICON: '💥', TITLE: 'Fractura como Estrategia', DESC: 'Ingeniero colapsos seguros. Rompo las partes que te frenan en silencio.' },
-        { ICON: '🚪', TITLE: 'Salida Diseñada', DESC: 'Me marcho cuando ya no soy necesario. No crezco con tu organización; la evoluciono.' }
+        { 
+          ICON: '🔍', 
+          TITLE: 'Diagnóstico Simbólico de Sistemas', 
+          DESC: 'Lectura profunda de la cultura del equipo, contratos tácitos y decisiones técnicas que esconden estructuras de ego.' 
+        },
+        { 
+          ICON: '🧠', 
+          TITLE: 'Disrupción Narrativa y Arquitectónica', 
+          DESC: 'Reestructura no solo tu stack tecnológico, sino tus mitos organizacionales.' 
+        },
+        { 
+          ICON: '💥', 
+          TITLE: 'Fractura como Estrategia', 
+          DESC: 'Ingeniero colapsos seguros. Rompo las partes que te frenan en silencio.' 
+        },
+        { 
+          ICON: '🚪', 
+          TITLE: 'Salida Diseñada', 
+          DESC: 'Me marcho cuando ya no soy necesario. No crezco con tu organización; la evoluciono.' 
+        }
       ],
       TOOLS_TITLE: 'Herramientas Utilizadas',
-      TOOLS: 'Retrospectivas con GPT \u2022 Auditorías de arquitectura \u2022 Hackeo de señales \u2022 Resurrección de legados \u2022 Mapeo emocional'
+      TOOLS: 'Retrospectivas con GPT • Auditorías de arquitectura • Hackeo de señales • Resurrección de legados • Mapeo emocional'
     },
     CTA: {
       TITLE_LINE_1: 'No te haré sentir cómodo.',
@@ -263,7 +315,36 @@ export const LANGUAGES = {
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
-  lang = signal<'en' | 'es'>('en');
-  t = computed(() => LANGUAGES[this.lang()]);
-  switchLang = () => this.lang.set(this.lang() === 'en' ? 'es' : 'en');
+  readonly lang = signal<'en' | 'es'>('en');
+  
+  // Computed properties for better reactivity
+  readonly t = computed(() => LANGUAGES[this.lang()]);
+  readonly currentLang = computed(() => this.lang());
+  readonly isEnglish = computed(() => this.lang() === 'en');
+  readonly isSpanish = computed(() => this.lang() === 'es');
+  
+  // Public methods
+  switchLang = (): void => {
+    this.lang.set(this.lang() === 'en' ? 'es' : 'en');
+  };
+  
+  setLang = (language: 'en' | 'es'): void => {
+    this.lang.set(language);
+  };
+  
+  // Utility method for getting specific translations
+  getText = (path: string): string => {
+    const keys = path.split('.');
+    let current: any = this.t();
+    
+    for (const key of keys) {
+      current = current?.[key];
+      if (current === undefined) {
+        console.warn(`Translation key not found: ${path}`);
+        return path;
+      }
+    }
+    
+    return current;
+  };
 }
