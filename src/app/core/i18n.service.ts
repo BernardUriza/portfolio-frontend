@@ -154,6 +154,13 @@ export const LANGUAGES = {
     EXPERIENCE_LIST: {
       TITLE: 'Experiences',
       SUBTITLE: 'Nothing decorative,<span class="text-dorado"> only real achievements.</span>'
+    },
+    FOOTER: {
+      ABOUT: 'About Me',
+      CASES: 'Case Studies',
+      SERVICES: 'Services',
+      CONTACT: 'Contact',
+      MOTTO: 'I work for those seeking transformation, not those seeking appeasement.'
     }
   },
   es: {
@@ -309,6 +316,13 @@ export const LANGUAGES = {
     EXPERIENCE_LIST: {
       TITLE: 'Experiencias',
       SUBTITLE: 'Nada decorativo,<span class="text-dorado"> solo logros reales.</span>'
+    },
+    FOOTER: {
+      ABOUT: 'Sobre Mí',
+      CASES: 'Casos de estudio',
+      SERVICES: 'Servicios',
+      CONTACT: 'Contacto',
+      MOTTO: 'Trabajo para quienes buscan transformar, no para quienes buscan complacer.'
     }
   }
 };
