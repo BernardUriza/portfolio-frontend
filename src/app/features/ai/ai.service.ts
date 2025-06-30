@@ -25,7 +25,6 @@ export class AiService {
         tap(() => this.trace.trace('ai request', stack)),
         map((resp: any) => {
           try {
-            debugger
             const obj = JSON.parse(resp);
             const parsed = JSON.parse(obj.message);
             const lang = this.i18n.currentLang();

@@ -5,6 +5,7 @@ import { catchError, tap, shareReplay } from 'rxjs/operators';
 import { ProjectModel } from './models/project.model';
 import { AiMessageService } from './ai-message.service';
 import { environment } from '../../../environments/environment';
+import { I18nService } from '../../core/i18n.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ProjectService {
   private aiMessageSubject = new BehaviorSubject<string | null>(null);
   readonly aiMessage$ = this.aiMessageSubject.asObservable();
 
-  constructor(private http: HttpClient, private aiMessage: AiMessageService) {}
+  constructor(private http: HttpClient, private aiMessage: AiMessageService,  private i18n: I18nService) {}
 
   getProjects(forceRefresh = false): Observable<ProjectModel[]> {
     if (forceRefresh || this.projectsSubject.value.length === 0) {
@@ -71,10 +72,20 @@ export class ProjectService {
     if (project?.id != null) {
       this.aiMessageSubject.next(null);
       this.aiMessage
-        .getProjectMessage(project.id)
-        .pipe(tap(msg => this.aiMessageSubject.next(
-          typeof msg === 'string' ? JSON.parse(msg) : msg
-        )))
+      .getProjectMessage(project.id)
+        .pipe(
+          tap(msg => {
+            const parsed = typeof msg === 'string' ? JSON.parse(msg) : msg;
+            const lang = this.i18n.currentLang(); 
+            const message =
+              parsed[lang] ??
+              parsed['en'] ??
+              parsed['es'] ??
+              parsed.message ??
+              '';
+            this.aiMessageSubject.next(message);
+          })
+        )
         .subscribe();
     } else {
       this.aiMessageSubject.next(null);
