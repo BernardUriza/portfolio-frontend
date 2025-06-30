@@ -1,9 +1,9 @@
 <div class="max-w-sm mx-auto mt-12 bg-azul-noche p-6 rounded shadow text-gris-claro">
-  <h2 class="text-2xl font-heading mb-4">Iniciar sesión</h2>
+  <h2 class="text-2xl font-heading mb-4">{{ translations().TITLE }}</h2>
   <form (ngSubmit)="submit()" [formGroup]="form" class="flex flex-col gap-4">
-    <input type="email" formControlName="email" placeholder="Correo" class="p-2 bg-antracita text-gris-claro rounded">
-    <input type="password" formControlName="password" placeholder="Contraseña" class="p-2 bg-antracita text-gris-claro rounded">
-    <button type="submit" class="bg-dorado text-antracita p-2 rounded hover:bg-rojo-oscuro hover:text-gris-claro transition">Entrar</button>
+    <input type="email" formControlName="email" [placeholder]="translations().EMAIL" class="p-2 bg-antracita text-gris-claro rounded">
+    <input type="password" formControlName="password" [placeholder]="translations().PASSWORD" class="p-2 bg-antracita text-gris-claro rounded">
+    <button type="submit" class="bg-dorado text-antracita p-2 rounded hover:bg-rojo-oscuro hover:text-gris-claro transition">{{ translations().SUBMIT }}</button>
   </form>
   <p *ngIf="error" class="text-red-500 mt-2">{{ error }}</p>
 </div>
