@@ -12,8 +12,12 @@
         class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado">
       <textarea formControlName="message" [placeholder]="translations().MESSAGE" (input)="hint('message')"
         class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado"></textarea>
-      <button type="submit" class="border border-dorado text-gris-claro px-4 py-2 hover:bg-rojo-oscuro/70 hover:shadow-lg transition-colors">
-        {{ translations().SEND }}
+      <button type="submit" [disabled]="isLoading" 
+        class="border border-dorado text-gris-claro px-4 py-2 hover:bg-rojo-oscuro/70 hover:shadow-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed relative">
+        <span [class.opacity-0]="isLoading">{{ translations().SEND }}</span>
+        <div *ngIf="isLoading" class="absolute inset-0 flex items-center justify-center">
+          <div class="w-5 h-5 border-2 border-dorado border-t-transparent rounded-full animate-spin"></div>
+        </div>
       </button>
     </form>
   </div>
