@@ -1,3 +1,23 @@
-<div class="symptom-bar" role="img" aria-label="Indicador de velocidad fluctuante">
-  <div class="bar" *ngFor="let b of [1,2,3,4,5]"></div>
+<div [ngSwitch]="style" class="w-full h-full flex items-center justify-center">
+  <div *ngSwitchCase="'BARS'" class="flex items-end gap-1 h-full">
+    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:30%; animation-delay:0s"></div>
+    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:70%; animation-delay:0.1s"></div>
+    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:40%; animation-delay:0.2s"></div>
+    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:90%; animation-delay:0.3s"></div>
+    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:50%; animation-delay:0.4s"></div>
+  </div>
+  <div *ngSwitchCase="'DOTS'" class="flex items-end gap-2 h-full">
+    <div class="w-2 h-2 bg-rojo-oscuro rounded-full animate-bounce" style="animation-delay:0s"></div>
+    <div class="w-2 h-2 bg-rojo-oscuro/80 rounded-full animate-bounce" style="animation-delay:0.2s"></div>
+    <div class="w-2 h-2 bg-rojo-oscuro/60 rounded-full animate-bounce" style="animation-delay:0.4s"></div>
+    <div class="w-2 h-2 bg-rojo-oscuro/40 rounded-full animate-bounce" style="animation-delay:0.6s"></div>
+    <div class="w-2 h-2 bg-rojo-oscuro/20 rounded-full animate-bounce" style="animation-delay:0.8s"></div>
+  </div>
+  <div *ngSwitchDefault class="grid grid-cols-5 gap-1 h-full items-end">
+    <div class="w-2 h-2 bg-rojo-oscuro/60 animate-ping" style="animation-delay:0s"></div>
+    <div class="w-2 h-3 bg-rojo-oscuro/50 animate-ping" style="animation-delay:0.2s"></div>
+    <div class="w-2 h-4 bg-rojo-oscuro/40 animate-ping" style="animation-delay:0.4s"></div>
+    <div class="w-2 h-3 bg-rojo-oscuro/30 animate-ping" style="animation-delay:0.6s"></div>
+    <div class="w-2 h-2 bg-rojo-oscuro/20 animate-ping" style="animation-delay:0.8s"></div>
+  </div>
 </div>
