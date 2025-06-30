@@ -45,7 +45,8 @@ export class Contact {
       return;
     }
     const { name, email, message } = this.form.value;
-    const payload = { name: name || '', email: email || '', message: message || '' };
+    const payload = { name: name || '', email: email || '', 
+      "subject": "Prueba SMTP Render", message: message || '' };
     this.service.sendContact(payload).subscribe({
       next: () => {
         this.toast.show('Correo enviado con éxito.');
