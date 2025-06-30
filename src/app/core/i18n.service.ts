@@ -99,6 +99,13 @@ export const LANGUAGES = {
       EMAIL: 'Email',
       MESSAGE: 'Message',
       SEND: 'Send'
+    },
+    LOGIN: {
+      TITLE: 'Log in',
+      EMAIL: 'Email',
+      PASSWORD: 'Password',
+      SUBMIT: 'Sign In',
+      ERROR: 'Invalid credentials'
     }
   },
   es: {
@@ -199,6 +206,13 @@ export const LANGUAGES = {
       EMAIL: 'Correo',
       MESSAGE: 'Mensaje',
       SEND: 'Enviar'
+    },
+    LOGIN: {
+      TITLE: 'Iniciar sesión',
+      EMAIL: 'Correo',
+      PASSWORD: 'Contraseña',
+      SUBMIT: 'Entrar',
+      ERROR: 'Credenciales inválidas'
     }
   }
 };
