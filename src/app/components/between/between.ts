@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { I18nService } from '../../core/i18n.service';
 import { Entropy } from './entropy';
 import { SymptomBar } from './symptom-bar';
-import { EntropyWave } from './entropy-wave';
 import { MethodTransform } from './method-transform';
 
 @Component({
   selector: 'app-between',
   standalone: true,
-  imports: [CommonModule, Entropy, SymptomBar, EntropyWave, MethodTransform],
+  imports: [CommonModule, Entropy, SymptomBar, MethodTransform],
   templateUrl: './between.html'
 })
 export class Between {
