@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceService } from '../experience.service';
+import { I18nService } from '../../../core/i18n.service';
 
 @Component({
   selector: 'app-experience-list',
@@ -11,8 +12,9 @@ import { ExperienceService } from '../experience.service';
 })
 export class ExperienceListComponent implements OnInit {
   experiences;
+  readonly translations = computed(() => this.i18n.t().EXPERIENCE_LIST);
 
-  constructor(private expService: ExperienceService) {
+  constructor(private expService: ExperienceService, private i18n: I18nService) {
     this.experiences = this.expService.experiences;
   }
 
