@@ -56,4 +56,13 @@ export class About {
   );
 
   constructor(private aiService: AiService, private trace: TraceService) {}
+
+  getCurrentEntropyLevel(): number {
+  return Math.floor(Math.random() * 40) + 60; // 60-100%
+}
+
+getCatalystReadiness(): string {
+  const levels = ['OPTIMAL', 'HIGH', 'MODERATE'];
+  return levels[Math.floor(Math.random() * levels.length)];
+}
 }
