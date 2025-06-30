@@ -20,7 +20,7 @@ export class MethodTransform implements OnInit, OnDestroy {
         next = this.options[Math.floor(Math.random() * this.options.length)];
       } while (next === this.style);
       this.style = next;
-    }, 10000);
+    }, 15000);
   }
 
   ngOnDestroy(): void {

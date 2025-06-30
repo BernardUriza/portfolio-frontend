@@ -1,101 +1,211 @@
-<!-- SECCIÓN "WHAT HAPPENS BETWEEN" - REDISEÑO IMPACTANTE -->
-<section id="between" class="bg-antracita text-gris-claro py-20 px-6 overflow-hidden">
-  <div class="max-w-6xl mx-auto">
+<!-- SECCIÓN "ARQUITECTURA CATALÍTICA" - REDISEÑO IMPACTANTE -->
+<section id="catalytic-architecture" class="bg-antracita text-gris-claro py-24 px-6 overflow-hidden relative">
+  <!-- Patrón de fondo sutil -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, #f59e0b 1px, transparent 1px), radial-gradient(circle at 75% 75%, #06b6d4 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto relative">
     
-    <!-- TÍTULO PRINCIPAL CON ANIMACIÓN -->
-    <div class="text-center mb-16 relative">
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-dorado to-transparent h-px top-1/2 opacity-20"></div>
-      <h2 class="text-4xl md:text-5xl font-heading text-dorado mb-4 relative bg-antracita px-8 inline-block">
-        {{ translations().TITLE }}
-      </h2>
-      <div class="w-20 h-1 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue mx-auto rounded-full animate-pulse"></div>
+    <!-- TÍTULO PRINCIPAL CON ANIMACIÓN MEJORADA -->
+    <div class="text-center mb-20 relative">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-dorado/20 to-transparent h-px top-1/2 opacity-40"></div>
+      <div class="inline-block relative">
+        <h2 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue mb-4 relative px-8">
+          {{ translations().TITLE }}
+        </h2>
+        <div class="text-center text-sm font-mono text-gris-claro/60 tracking-widest uppercase">
+          Transformación • Catálisis • Emergencia
+        </div>
+      </div>
+      <div class="w-32 h-1 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue mx-auto rounded-full mt-6" style="animation: pulse-glow 2s ease-in-out infinite;"></div>
     </div>
 
-    <!-- TRES BLOQUES PRINCIPALES -->
-    <div class="grid md:grid-cols-3 gap-8 mb-16 auto-rows-fr">
-      <div class="bg-gray-900 border border-rojo-oscuro/30 rounded-2xl flex flex-col items-center p-6 text-center h-full">
-        <h3 class="text-2xl font-heading text-rojo-oscuro mb-4">EL SÍNTOMA</h3>
-        <div class="w-full h-32 mb-4">
-          <app-symptom-bar></app-symptom-bar>
+    <!-- TRES PILARES CONCEPTUALES -->
+    <div class="grid md:grid-cols-3 gap-8 mb-20">
+      
+      <!-- PILAR 1: DIAGNÓSTICO -->
+      <div class="group relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-rojo-oscuro/10 to-rojo-oscuro/5 rounded-3xl blur-sm group-hover:blur-none transition-all duration-500"></div>
+        <div class="relative bg-gray-900/80 backdrop-blur-sm border border-rojo-oscuro/30 rounded-3xl p-8 h-full hover:border-rojo-oscuro/60 transition-all duration-300">
+          <div class="flex items-center justify-center w-16 h-16 bg-rojo-oscuro/20 rounded-2xl mb-6 mx-auto">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="text-2xl font-bold text-rojo-oscuro mb-4 text-center">DETECCIÓN</h3>
+          <div class="w-full h-24 mb-6 bg-gray-800/50 rounded-xl flex items-center justify-center">
+            <app-symptom-bar></app-symptom-bar>
+          </div>
+          <p class="text-sm text-gris-claro/90 leading-relaxed text-center">
+            {{ translations().LINES[0] }}
+          </p>
+          <p class="text-xs text-gris-claro/70 mt-3 text-center font-mono">
+            {{ translations().LINES[1] }}
+          </p>
         </div>
-        <p class="text-sm mb-1">{{ translations().LINES[0] }}</p>
-        <p class="text-sm opacity-90">{{ translations().LINES[1] }}</p>
       </div>
 
-      <div class="bg-gray-900 border border-dorado/30 rounded-2xl flex flex-col items-center p-6 text-center h-full">
-        <h3 class="text-2xl font-heading text-dorado mb-4">LA REALIDAD</h3>
-        <div class="w-full h-32 mb-4">
-          <app-entropy></app-entropy>
+      <!-- PILAR 2: ANÁLISIS -->
+      <div class="group relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-dorado/10 to-dorado/5 rounded-3xl blur-sm group-hover:blur-none transition-all duration-500"></div>
+        <div class="relative bg-gray-900/80 backdrop-blur-sm border border-dorado/30 rounded-3xl p-8 h-full hover:border-dorado/60 transition-all duration-300">
+          <div class="flex items-center justify-center w-16 h-16 bg-dorado/20 rounded-2xl mb-6 mx-auto">
+            <span class="text-2xl">🔬</span>
+          </div>
+          <h3 class="text-2xl font-bold text-dorado mb-4 text-center">ANÁLISIS</h3>
+          <div class="w-full h-24 mb-6 bg-gray-800/50 rounded-xl flex items-center justify-center">
+            <app-entropy></app-entropy>
+          </div>
+          <p class="text-sm text-gris-claro/90 leading-relaxed text-center font-semibold">
+            {{ translations().LINES[2] }}
+          </p>
+          <p class="text-xs text-gris-claro/70 mt-3 text-center font-mono">
+            {{ translations().LINES[3] }}
+          </p>
         </div>
-        <p class="text-sm font-semibold mb-1">{{ translations().LINES[2] }}</p>
-        <p class="text-sm opacity-90">{{ translations().LINES[3] }}</p>
       </div>
 
-      <div class="bg-gray-900 border border-holo-blue/30 rounded-2xl flex flex-col items-center p-6 text-center h-full">
-        <h3 class="text-2xl font-heading text-holo-blue mb-4">EL MÉTODO</h3>
-        <div class="w-full h-32 mb-4">
-          <app-method-transform></app-method-transform>
+      <!-- PILAR 3: CATÁLISIS -->
+      <div class="group relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-holo-blue/10 to-holo-blue/5 rounded-3xl blur-sm group-hover:blur-none transition-all duration-500"></div>
+        <div class="relative bg-gray-900/80 backdrop-blur-sm border border-holo-blue/30 rounded-3xl p-8 h-full hover:border-holo-blue/60 transition-all duration-300">
+          <div class="flex items-center justify-center w-16 h-16 bg-holo-blue/20 rounded-2xl mb-6 mx-auto">
+            <span class="text-2xl">⚗️</span>
+          </div>
+          <h3 class="text-2xl font-bold text-holo-blue mb-4 text-center">CATÁLISIS</h3>
+          <div class="w-full h-24 mb-6 bg-gray-800/50 rounded-xl flex items-center justify-center">
+            <app-method-transform></app-method-transform>
+          </div>
+          <p class="text-sm text-gris-claro/90 leading-relaxed text-center font-semibold">
+            {{ translations().LINES[4] }}
+          </p>
         </div>
-        <p class="text-sm font-semibold">{{ translations().LINES[4] }}</p>
       </div>
     </div>
 
-    <!-- DIAGRAMA DE FLUJO INTERACTIVO -->
-    <div class="relative bg-gradient-to-r from-gray-900/50 to-gray-800/50 rounded-3xl p-8 border border-gray-700">
-      <div class="absolute inset-0 bg-gradient-to-r from-rojo-oscuro/5 via-dorado/5 to-holo-blue/5 rounded-3xl"></div>
-      <div class="relative">
+    <!-- DIAGRAMA DE TRANSFORMACIÓN MEJORADO -->
+    <div class="relative">
+      <div class="bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-gray-900/60 backdrop-blur rounded-3xl p-10 border border-gray-700/50 relative overflow-hidden">
         
-        <h4 class="text-xl font-heading text-gris-claro mb-8 text-center">PROCESO DE TRANSFORMACIÓN</h4>
+        <!-- Efectos de fondo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-rojo-oscuro/3 via-dorado/3 to-holo-blue/3 rounded-3xl"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue opacity-50"></div>
         
-        <!-- Línea de proceso -->
-        <div class="flex items-center justify-between max-w-4xl mx-auto relative">
+        <div class="relative">
+          <h4 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-dorado to-holo-blue mb-12 text-center">
+            PROCESO DE TRANSFORMACIÓN SISTÉMICA
+          </h4>
           
-          <!-- Línea de conexión animada -->
-          <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue opacity-30 -translate-y-1/2"></div>
-          <div class="absolute top-1/2 left-0 h-px bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue -translate-y-1/2 animate-pulse" style="width: 100%; animation: flow 3s ease-in-out infinite;"></div>
-          
-          <!-- Nodo 1: CAOS -->
-          <div class="relative z-10 group cursor-pointer">
-            <div class="w-20 h-20 bg-rojo-oscuro/20 rounded-full flex items-center justify-center border-2 border-rojo-oscuro group-hover:scale-110 transition-transform duration-300 animate-pulse">
-              <span class="text-rojo-oscuro font-bold text-sm">{{ translations().DIAGRAM.CHAOS }}</span>
+          <!-- Fases del proceso -->
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            
+            <!-- FASE 1: CRISIS -->
+            <div class="text-center group">
+              <div class="relative mb-6">
+                <div class="w-24 h-24 mx-auto bg-rojo-oscuro/20 rounded-full flex items-center justify-center border-2 border-rojo-oscuro group-hover:scale-110 transition-all duration-300 relative">
+                  <span class="text-rojo-oscuro font-bold text-lg">{{ translations().DIAGRAM.CHAOS }}</span>
+                  <div class="absolute inset-0 rounded-full bg-rojo-oscuro/10 animate-ping"></div>
+                </div>
+                <div class="text-sm text-rojo-oscuro font-semibold mt-3">PUNTO DE CRISIS</div>
+              </div>
+              <div class="bg-gray-800/50 rounded-xl p-4 border border-rojo-oscuro/20">
+                <p class="text-xs text-gris-claro/80 leading-relaxed">
+                  Sistema en estado crítico. Patrones existentes no funcionan. Necesidad urgente de intervención.
+                </p>
+              </div>
             </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-rojo-oscuro font-semibold whitespace-nowrap">INICIO CAÓTICO</div>
+            
+            <!-- CONECTORES ANIMADOS -->
+            <div class="hidden md:flex items-center justify-center">
+              <div class="w-full h-px bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-rojo-oscuro to-dorado animate-pulse"></div>
+                <div class="absolute top-1/2 left-1/4 w-2 h-2 bg-dorado rounded-full -translate-y-1/2 animate-bounce"></div>
+                <div class="absolute top-1/2 right-1/4 w-2 h-2 bg-holo-blue rounded-full -translate-y-1/2 animate-bounce" style="animation-delay: 0.5s;"></div>
+              </div>
+            </div>
+            
+            <!-- FASE 2: INTERVENCIÓN -->
+            <div class="text-center group">
+              <div class="relative mb-6">
+                <div class="w-28 h-28 mx-auto bg-dorado/20 rounded-full flex items-center justify-center border-2 border-dorado group-hover:scale-110 transition-all duration-300 relative">
+                  <span class="text-dorado font-bold text-sm text-center leading-tight">{{ translations().DIAGRAM.CATALYST }}</span>
+                  <div class="absolute inset-0 rounded-full bg-dorado/10" style="animation: pulse-glow 2s ease-in-out infinite;"></div>
+                </div>
+                <div class="text-sm text-dorado font-semibold mt-3">INTERVENCIÓN CATALÍTICA</div>
+              </div>
+              <div class="bg-gray-800/50 rounded-xl p-4 border border-dorado/20">
+                <p class="text-xs text-gris-claro/80 leading-relaxed">
+                  Introducción de disonancia productiva. Reconfiguración de patrones. Emergencia de nuevas posibilidades.
+                </p>
+              </div>
+            </div>
+            
+            <!-- FASE 3: EMERGENCIA -->
+            <div class="text-center group">
+              <div class="relative mb-6">
+                <div class="w-24 h-24 mx-auto bg-holo-blue/20 rounded-full flex items-center justify-center border-2 border-holo-blue group-hover:scale-110 transition-all duration-300 relative">
+                  <span class="text-holo-blue font-bold text-lg">{{ translations().DIAGRAM.ORDER }}</span>
+                  <div class="absolute inset-0 rounded-full bg-holo-blue/10 animate-pulse"></div>
+                </div>
+                <div class="text-sm text-holo-blue font-semibold mt-3">NUEVO EQUILIBRIO</div>
+              </div>
+              <div class="bg-gray-800/50 rounded-xl p-4 border border-holo-blue/20">
+                <p class="text-xs text-gris-claro/80 leading-relaxed">
+                  Sistema estabilizado en nuevo nivel de complejidad. Capacidad aumentada de auto-organización.
+                </p>
+              </div>
+            </div>
           </div>
           
-          <!-- Nodo 2: CATALIZADOR -->
-          <div class="relative z-10 group cursor-pointer">
-            <div class="w-24 h-24 bg-dorado/20 rounded-full flex items-center justify-center border-2 border-dorado group-hover:scale-110 transition-transform duration-300 animate-pulse">
-              <span class="text-dorado font-bold text-sm text-center leading-tight">{{ translations().DIAGRAM.CATALYST }}</span>
-            </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-dorado font-semibold whitespace-nowrap">IMPACTO CATALIZADOR</div>
+          <!-- Timeline -->
+          <div class="flex justify-between items-center text-xs font-mono text-gris-claro/60 bg-gray-800/30 rounded-full px-6 py-3">
+            <span class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-rojo-oscuro rounded-full"></div>
+              SEMANA 0-1
+            </span>
+            <span class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-dorado rounded-full"></div>
+              SEMANAS 2-8
+            </span>
+            <span class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-holo-blue rounded-full"></div>
+              SEMANA 9+
+            </span>
           </div>
           
-          <!-- Nodo 3: ORDEN -->
-          <div class="relative z-10 group cursor-pointer">
-            <div class="w-20 h-20 bg-holo-blue/20 rounded-full flex items-center justify-center border-2 border-holo-blue group-hover:scale-110 transition-transform duration-300 animate-pulse">
-              <span class="text-holo-blue font-bold text-sm">{{ translations().DIAGRAM.ORDER }}</span>
-            </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-holo-blue font-semibold whitespace-nowrap">ORDEN DINÁMICO</div>
+          <p class="text-center text-xs text-gris-claro/60 mt-6 font-mono">
+            // Cada transformación es irreversible y genera nueva capacidad sistémica
+          </p>
         </div>
-        </div>
-        
-        <!-- Indicadores de tiempo -->
-        <div class="flex justify-between max-w-4xl mx-auto mt-12 text-xs text-gris-claro opacity-60">
-          <span>SEMANA 0</span>
-          <span>SEMANAS 1-4</span>
-          <span>SEMANA 6+</span>
-        </div>
-        <p class="text-center text-xs text-gris-claro mt-4 opacity-70">Cada fase dura lo justo para generar un cambio irreversible.</p>
       </div>
     </div>
 
-    <!-- CTA FINAL -->
-    <div class="text-center mt-12">
-      <div class="inline-block p-1 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue rounded-full">
-        <button class="bg-antracita text-gris-claro px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
-          INICIAR DIAGNÓSTICO
+    <!-- CTA MEJORADO -->
+    <div class="text-center mt-16">
+      <div class="inline-block relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue rounded-2xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+        <button class="relative bg-antracita text-gris-claro px-12 py-4 rounded-2xl font-semibold border border-gray-700 hover:border-dorado/50 transition-all duration-300 transform hover:scale-105 group-hover:bg-gray-900/90">
+          <span class="flex items-center gap-3">
+            <span class="text-lg">🔍</span>
+            INICIAR DIAGNÓSTICO SISTÉMICO
+          </span>
         </button>
       </div>
+      <p class="text-xs text-gris-claro/60 mt-4 font-mono">
+        // Evaluación de compatibilidad enzima-sustrato
+      </p>
     </div>
   </div>
 </section>
+
+<style>
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    opacity: 1;
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+    opacity: 0.8;
+  }
+}
+</style>

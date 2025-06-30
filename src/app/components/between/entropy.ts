@@ -26,7 +26,7 @@ export class Entropy implements OnInit, OnDestroy {
         next = this.options[Math.floor(Math.random() * this.options.length)];
       } while (next === this.plasmaSelected);
       this.plasmaSelected = next;
-    }, 10000);
+    }, 30000);
   }
 
   ngOnDestroy(): void {
