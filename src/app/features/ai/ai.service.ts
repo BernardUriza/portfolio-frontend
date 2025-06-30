@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable, of, tap, catchError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { TraceService } from '../../core/trace.service';
+import { I18nService } from '../../core/i18n.service';
 
 @Injectable({ providedIn: 'root' })
 export class AiService {
@@ -10,7 +11,7 @@ export class AiService {
   private traceUrl = `${environment.apiRoot}/ai/trace`;
   private cache = new Map<string, string>();
 
-  constructor(private http: HttpClient, private trace: TraceService) {}
+  constructor(private http: HttpClient, private trace: TraceService, private i18n: I18nService) {}
   generateDynamicMessage(stack: string[]): Observable<string> {
     const key = stack.join('|');
     if (this.cache.has(key)) {
@@ -26,8 +27,10 @@ export class AiService {
           try {
             debugger
             const obj = JSON.parse(resp);
-            const traslatedObj = JSON.parse(obj.message);
-            return traslatedObj.en || '';
+            const parsed = JSON.parse(obj.message);
+            const lang = this.i18n.currentLang();
+            const message = parsed[lang] ?? parsed['en'] ?? parsed['es'] ?? parsed.message ?? '';
+            return message || '';
           } catch {
             return resp;
           }
