@@ -28,10 +28,10 @@
     <div class="w-full h-24 mb-6 bg-gray-800/50 rounded-xl flex items-center justify-center">
       <ng-content select="[visual]"></ng-content>
     </div>
-    <p class="text-sm text-gris-claro/90 leading-relaxed text-center">
+    <p class="text-md text-gris-claro/90 leading-relaxed text-center">
       {{ description }}
     </p>
-    <p *ngIf="detail" class="text-xs text-gris-claro/70 mt-3 text-center font-mono">
+    <p *ngIf="detail" class="text-sm text-gris-claro/70 mt-3 text-center font-mono">
       {{ detail }}
     </p>
   </div>
