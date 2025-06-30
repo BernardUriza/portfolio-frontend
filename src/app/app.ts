@@ -10,6 +10,7 @@ import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 import { Banner } from './components/banner/banner';
 import { GameChatComponent } from './components/game-chat/game-chat';
+import { ToastContainerComponent } from './components/toast/toast-container';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { GameChatService } from './components/game-chat/game-chat.service';
@@ -29,6 +30,7 @@ import { Router, NavigationEnd } from '@angular/router';
     Contact,
     GameChatComponent,
     Footer,
+    ToastContainerComponent,
     CommonModule,
     RouterOutlet
   ],
