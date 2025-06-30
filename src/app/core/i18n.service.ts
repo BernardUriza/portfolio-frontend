@@ -106,6 +106,10 @@ export const LANGUAGES = {
       PASSWORD: 'Password',
       SUBMIT: 'Sign In',
       ERROR: 'Invalid credentials'
+    },
+    EXPERIENCE_LIST: {
+      TITLE: 'Experiences',
+      SUBTITLE: 'Nothing decorative,<span class="text-dorado"> only real achievements.</span>'
     }
   },
   es: {
@@ -213,6 +217,10 @@ export const LANGUAGES = {
       PASSWORD: 'Contraseña',
       SUBMIT: 'Entrar',
       ERROR: 'Credenciales inválidas'
+    },
+    EXPERIENCE_LIST: {
+      TITLE: 'Experiencias',
+      SUBTITLE: 'Nada decorativo,<span class="text-dorado"> solo logros reales.</span>'
     }
   }
 };
