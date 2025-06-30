@@ -20,7 +20,7 @@ export class SymptomBar implements OnInit, OnDestroy {
         next = this.options[Math.floor(Math.random() * this.options.length)];
       } while (next === this.style);
       this.style = next;
-    }, 10000);
+    }, 90000);
   }
 
   ngOnDestroy(): void {

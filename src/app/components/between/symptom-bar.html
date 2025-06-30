@@ -1,23 +1,56 @@
+<!-- Enhanced Angular Component with Tailwind -->
 <div [ngSwitch]="style" class="w-full h-full flex items-center justify-center">
-  <div *ngSwitchCase="'BARS'" class="flex items-end gap-1 h-full">
-    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:30%; animation-delay:0s"></div>
-    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:70%; animation-delay:0.1s"></div>
-    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:40%; animation-delay:0.2s"></div>
-    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:90%; animation-delay:0.3s"></div>
-    <div class="w-1 bg-rojo-oscuro rounded-sm animate-pulse" style="height:50%; animation-delay:0.4s"></div>
+  
+  <!-- BARS - Representing organizational growth and eventual rigidity -->
+  <div *ngSwitchCase="'BARS'" class="flex items-end gap-2 h-16">
+    <div class="w-2 bg-red-600 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:25%; animation-delay:0s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-500 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:70%; animation-delay:0.4s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-400 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:40%; animation-delay:0.8s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-600 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:85%; animation-delay:1.2s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-500 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:55%; animation-delay:1.6s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-400 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:75%; animation-delay:2s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-300 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:30%; animation-delay:2.4s; animation-duration:3.5s"></div>
+    <div class="w-2 bg-red-200 rounded-t-sm animate-pulse shadow-lg transition-all duration-700 ease-in-out" 
+         style="height:20%; animation-delay:2.8s; animation-duration:3.5s"></div>
   </div>
-  <div *ngSwitchCase="'DOTS'" class="flex items-end gap-2 h-full">
-    <div class="w-2 h-2 bg-rojo-oscuro rounded-full animate-bounce" style="animation-delay:0s"></div>
-    <div class="w-2 h-2 bg-rojo-oscuro/80 rounded-full animate-bounce" style="animation-delay:0.2s"></div>
-    <div class="w-2 h-2 bg-rojo-oscuro/60 rounded-full animate-bounce" style="animation-delay:0.4s"></div>
-    <div class="w-2 h-2 bg-rojo-oscuro/40 rounded-full animate-bounce" style="animation-delay:0.6s"></div>
-    <div class="w-2 h-2 bg-rojo-oscuro/20 rounded-full animate-bounce" style="animation-delay:0.8s"></div>
+  
+  <!-- DOTS - Representing people joining, then organizational friction -->
+  <div *ngSwitchCase="'DOTS'" class="flex items-center gap-3 h-16">
+    <div class="w-3 h-3 bg-red-600 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:0s; animation-duration:4s"></div>
+    <div class="w-3 h-3 bg-red-500 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:0.6s; animation-duration:4s"></div>
+    <div class="w-3 h-3 bg-red-400 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:1.2s; animation-duration:4s"></div>
+    <div class="w-3 h-3 bg-red-300 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:1.8s; animation-duration:4s"></div>
+    <div class="w-3 h-3 bg-red-200 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:2.4s; animation-duration:4s"></div>
+    <div class="w-3 h-3 bg-red-100 rounded-full animate-bounce shadow-md transform transition-all duration-1000 ease-out" 
+         style="animation-delay:3s; animation-duration:4s"></div>
   </div>
-  <div *ngSwitchDefault class="grid grid-cols-5 gap-1 h-full items-end">
-    <div class="w-2 h-2 bg-rojo-oscuro/60 animate-ping" style="animation-delay:0s"></div>
-    <div class="w-2 h-3 bg-rojo-oscuro/50 animate-ping" style="animation-delay:0.2s"></div>
-    <div class="w-2 h-4 bg-rojo-oscuro/40 animate-ping" style="animation-delay:0.4s"></div>
-    <div class="w-2 h-3 bg-rojo-oscuro/30 animate-ping" style="animation-delay:0.6s"></div>
-    <div class="w-2 h-2 bg-rojo-oscuro/20 animate-ping" style="animation-delay:0.8s"></div>
+  
+  <!-- GRIDLOCK - Default: Showing the bureaucratic slowdown -->
+  <div *ngSwitchDefault class="grid grid-cols-6 gap-1 h-16 items-end">
+    <div class="w-3 h-3 bg-red-600/80 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:0s; animation-duration:5s"></div>
+    <div class="w-3 h-4 bg-red-500/70 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:0.8s; animation-duration:5s"></div>
+    <div class="w-3 h-6 bg-red-400/60 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:1.6s; animation-duration:5s"></div>
+    <div class="w-3 h-4 bg-red-300/50 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:2.4s; animation-duration:5s"></div>
+    <div class="w-3 h-3 bg-red-200/40 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:3.2s; animation-duration:5s"></div>
+    <div class="w-3 h-2 bg-red-100/30 animate-ping rounded-sm shadow-sm transform transition-all duration-1500 ease-in-out" 
+         style="animation-delay:4s; animation-duration:5s"></div>
   </div>
+  
 </div>
