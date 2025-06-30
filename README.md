@@ -3,6 +3,8 @@
 
 Portfolio API es un servicio RESTful desarrollado con **Java 21** y **Spring Boot 3.5.0** que permite gestionar un portafolio de proyectos, habilidades, experiencias laborales y contactos. Este backend está diseñado para ser consumido por interfaces frontend como aplicaciones web, móviles o herramientas de automatización, ofreciendo un conjunto de endpoints seguros, escalables y fáciles de integrar.
 
+La sección de frontend "What Happens Between Startup and Structure" cuenta con componentes animados documentados en [docs/between-components.md](docs/between-components.md).
+
 ---
 
 ## 🚀 **Tecnologías utilizadas**
