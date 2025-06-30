@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { I18nService } from '../../core/i18n.service';
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './footer.scss'
 })
 export class Footer {
-
+  readonly i18n = inject(I18nService);
+  readonly translations = computed(() => this.i18n.t().FOOTER);
 }
