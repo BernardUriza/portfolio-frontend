@@ -1,31 +1,232 @@
-<div class="mt-2 flex justify-center">
-  <div class="relative w-16 h-12">
-    <!-- Background grid fragmentado -->
-    <div class="absolute inset-0 opacity-20">
-      <div class="grid grid-cols-4 grid-rows-3 gap-px h-full">
-        <div class="bg-dorado animate-pulse"></div>
-        <div class="bg-dorado/50 animate-pulse" style="animation-delay: 0.1s;"></div>
-        <div class="bg-transparent"></div>
-        <div class="bg-dorado/30 animate-pulse" style="animation-delay: 0.2s;"></div>
-        <div class="bg-transparent"></div>
-        <div class="bg-dorado/80 animate-pulse" style="animation-delay: 0.3s;"></div>
-        <div class="bg-dorado/40 animate-pulse" style="animation-delay: 0.4s;"></div>
-        <div class="bg-transparent"></div>
-        <div class="bg-dorado/60 animate-pulse" style="animation-delay: 0.5s;"></div>
-        <div class="bg-transparent"></div>
-        <div class="bg-dorado/70 animate-pulse" style="animation-delay: 0.6s;"></div>
-        <div class="bg-dorado/20 animate-pulse" style="animation-delay: 0.7s;"></div>
+<div [ngSwitch]="plasmaSelected">
+  <div *ngSwitchCase="'HÍBRIDO CONCEPTUAL'">
+    <div class="mt-2 flex justify-center">
+      <div class="relative w-16 h-12">
+        <!-- Background grid fragmentado -->
+        <div class="absolute inset-0 opacity-20">
+          <div class="grid grid-cols-4 grid-rows-3 gap-px h-full">
+            <div class="bg-dorado animate-pulse"></div>
+            <div
+              class="bg-dorado/50 animate-pulse"
+              style="animation-delay: 0.1s"
+            ></div>
+            <div class="bg-transparent"></div>
+            <div
+              class="bg-dorado/30 animate-pulse"
+              style="animation-delay: 0.2s"
+            ></div>
+            <div class="bg-transparent"></div>
+            <div
+              class="bg-dorado/80 animate-pulse"
+              style="animation-delay: 0.3s"
+            ></div>
+            <div
+              class="bg-dorado/40 animate-pulse"
+              style="animation-delay: 0.4s"
+            ></div>
+            <div class="bg-transparent"></div>
+            <div
+              class="bg-dorado/60 animate-pulse"
+              style="animation-delay: 0.5s"
+            ></div>
+            <div class="bg-transparent"></div>
+            <div
+              class="bg-dorado/70 animate-pulse"
+              style="animation-delay: 0.6s"
+            ></div>
+            <div
+              class="bg-dorado/20 animate-pulse"
+              style="animation-delay: 0.7s"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Símbolo central de entropía narrativa -->
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <div class="text-dorado text-xl font-mono animate-pulse">∿</div>
+        </div>
+
+        <!-- Partículas flotantes -->
+        <div
+          class="absolute top-1 left-1 w-1 h-1 bg-dorado/60 rounded-full animate-ping"
+        ></div>
+        <div
+          class="absolute top-2 right-2 w-1 h-1 bg-dorado/40 rounded-full animate-ping"
+          style="animation-delay: 0.5s"
+        ></div>
+        <div
+          class="absolute bottom-1 left-3 w-1 h-1 bg-dorado/50 rounded-full animate-ping"
+          style="animation-delay: 1s"
+        ></div>
       </div>
     </div>
-    
-    <!-- Símbolo central de entropía narrativa -->
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div class="text-dorado text-xl font-mono animate-pulse">∿</div>
-    </div>
-    
-    <!-- Partículas flotantes -->
-    <div class="absolute top-1 left-1 w-1 h-1 bg-dorado/60 rounded-full animate-ping"></div>
-    <div class="absolute top-2 right-2 w-1 h-1 bg-dorado/40 rounded-full animate-ping" style="animation-delay: 0.5s;"></div>
-    <div class="absolute bottom-1 left-3 w-1 h-1 bg-dorado/50 rounded-full animate-ping" style="animation-delay: 1s;"></div>
   </div>
+  <div *ngSwitchCase="'RED NEURAL FRAGMENTADA'">
+    <div class="mt-2 flex justify-center">
+      <div class="relative w-16 h-12">
+        <!-- Nodos -->
+        <div
+          class="absolute top-1 left-2 w-2 h-2 bg-dorado/80 rounded-full animate-pulse"
+        ></div>
+        <div
+          class="absolute top-1 right-2 w-2 h-2 bg-dorado/60 rounded-full animate-pulse"
+          style="animation-delay: 0.2s"
+        ></div>
+        <div
+          class="absolute bottom-1 left-1 w-2 h-2 bg-dorado/70 rounded-full animate-pulse"
+          style="animation-delay: 0.4s"
+        ></div>
+        <div
+          class="absolute bottom-1 right-1 w-2 h-2 bg-dorado/50 rounded-full animate-pulse"
+          style="animation-delay: 0.6s"
+        ></div>
+        <div
+          class="absolute top-1/2 left-1/2 w-2 h-2 bg-dorado rounded-full animate-pulse transform -translate-x-1/2 -translate-y-1/2"
+          style="animation-delay: 0.8s"
+        ></div>
+
+        <!-- Conexiones rotas -->
+        <div
+          class="absolute top-2 left-3 w-4 h-px bg-gradient-to-r from-dorado to-transparent opacity-50 animate-pulse"
+        ></div>
+        <div
+          class="absolute top-6 right-3 w-4 h-px bg-gradient-to-l from-dorado to-transparent opacity-50 animate-pulse"
+          style="animation-delay: 0.3s"
+        ></div>
+        <div
+          class="absolute top-4 left-6 w-px h-3 bg-gradient-to-b from-dorado to-transparent opacity-50 animate-pulse"
+          style="animation-delay: 0.5s"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'HEARTBEAT/PULSO DE SISTEMA'">
+    <div class="mt-2 flex justify-center">
+      <div class="relative w-16 h-8 flex items-end justify-center gap-px">
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 20%; animation-delay: 0s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 40%; animation-delay: 0.1s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 80%; animation-delay: 0.2s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 100%; animation-delay: 0.3s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 60%; animation-delay: 0.4s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 30%; animation-delay: 0.5s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 70%; animation-delay: 0.6s"
+        ></div>
+        <div
+          class="w-1 bg-dorado rounded-full animate-pulse"
+          style="height: 45%; animation-delay: 0.7s"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'MATRIZ DE SISTEMAS FRAGMENTADOS'">
+    <div class="mt-2 flex justify-center">
+      <div class="grid grid-cols-3 gap-1 w-12 h-12">
+        <div class="bg-dorado/80 rounded-sm animate-pulse"></div>
+        <div
+          class="bg-dorado/30 rounded-sm animate-pulse"
+          style="animation-delay: 0.1s"
+        ></div>
+        <div
+          class="bg-dorado/60 rounded-sm animate-pulse"
+          style="animation-delay: 0.2s"
+        ></div>
+        <div
+          class="bg-dorado/40 rounded-sm animate-pulse"
+          style="animation-delay: 0.3s"
+        ></div>
+        <div
+          class="bg-dorado/90 rounded-sm animate-pulse"
+          style="animation-delay: 0.4s"
+        ></div>
+        <div
+          class="bg-dorado/20 rounded-sm animate-pulse"
+          style="animation-delay: 0.5s"
+        ></div>
+        <div
+          class="bg-dorado/70 rounded-sm animate-pulse"
+          style="animation-delay: 0.6s"
+        ></div>
+        <div
+          class="bg-dorado/50 rounded-sm animate-pulse"
+          style="animation-delay: 0.7s"
+        ></div>
+        <div
+          class="bg-dorado/35 rounded-sm animate-pulse"
+          style="animation-delay: 0.8s"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'RADAR DE DIAGNÓSTICO'">
+    <div class="mt-2 flex justify-center">
+      <div class="relative w-16 h-16">
+        <!-- Círculos concéntricos -->
+        <div
+          class="absolute inset-0 border border-dorado/20 rounded-full"
+        ></div>
+        <div
+          class="absolute inset-2 border border-dorado/30 rounded-full"
+        ></div>
+        <div
+          class="absolute inset-4 border border-dorado/40 rounded-full"
+        ></div>
+        <!-- Línea de barrido -->
+        <div
+          class="absolute top-1/2 left-1/2 w-6 h-px bg-gradient-to-r from-transparent to-dorado origin-left transform -translate-y-px animate-spin"
+          style="transform-origin: 0 50%"
+        ></div>
+        <!-- Punto central -->
+        <div
+          class="absolute top-1/2 left-1/2 w-1 h-1 bg-dorado rounded-full transform -translate-x-1/2 -translate-y-1/2"
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="'GRÁFICO DE ENTROPÍA CON ONDAS'">
+    <div class="mt-2 flex justify-center">
+      <div class="relative w-16 h-12">
+        <!-- Ondas de entropía -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-3 h-1 bg-dorado rounded-full animate-pulse"></div>
+          <div
+            class="w-2 h-2 bg-dorado/70 rounded-full animate-ping ml-1"
+            style="animation-delay: 0.2s"
+          ></div>
+          <div
+            class="w-1 h-3 bg-dorado/50 rounded-full animate-pulse ml-1"
+            style="animation-delay: 0.4s"
+          ></div>
+          <div
+            class="w-2 h-1 bg-dorado/80 rounded-full animate-ping ml-1"
+            style="animation-delay: 0.6s"
+          ></div>
+        </div>
+        <!-- Línea base -->
+        <div class="absolute bottom-2 left-0 right-0 h-px bg-dorado/30"></div>
+      </div>
+    </div>
+  </div>
+  <span *ngSwitchDefault>(No eligió operación)</span>
 </div>
