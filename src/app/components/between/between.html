@@ -56,10 +56,10 @@
           
           <!-- Nodo 1: CAOS -->
           <div class="relative z-10 group cursor-pointer">
-            <div class="w-20 h-20 bg-rojo-oscuro/20 rounded-full flex items-center justify-center border-2 border-rojo-oscuro group-hover:scale-110 transition-transform duration-300">
+            <div class="w-20 h-20 bg-rojo-oscuro/20 rounded-full flex items-center justify-center border-2 border-rojo-oscuro group-hover:scale-110 transition-transform duration-300 animate-pulse">
               <span class="text-rojo-oscuro font-bold text-sm">{{ translations().DIAGRAM.CHAOS }}</span>
             </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-rojo-oscuro font-semibold whitespace-nowrap">ESTADO INICIAL</div>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-rojo-oscuro font-semibold whitespace-nowrap">INICIO CAÓTICO</div>
           </div>
           
           <!-- Nodo 2: CATALIZADOR -->
@@ -67,16 +67,16 @@
             <div class="w-24 h-24 bg-dorado/20 rounded-full flex items-center justify-center border-2 border-dorado group-hover:scale-110 transition-transform duration-300 animate-pulse">
               <span class="text-dorado font-bold text-sm text-center leading-tight">{{ translations().DIAGRAM.CATALYST }}</span>
             </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-dorado font-semibold whitespace-nowrap">INTERVENCIÓN</div>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-dorado font-semibold whitespace-nowrap">IMPACTO CATALIZADOR</div>
           </div>
           
           <!-- Nodo 3: ORDEN -->
           <div class="relative z-10 group cursor-pointer">
-            <div class="w-20 h-20 bg-holo-blue/20 rounded-full flex items-center justify-center border-2 border-holo-blue group-hover:scale-110 transition-transform duration-300">
+            <div class="w-20 h-20 bg-holo-blue/20 rounded-full flex items-center justify-center border-2 border-holo-blue group-hover:scale-110 transition-transform duration-300 animate-pulse">
               <span class="text-holo-blue font-bold text-sm">{{ translations().DIAGRAM.ORDER }}</span>
             </div>
-            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-holo-blue font-semibold whitespace-nowrap">RESULTADO</div>
-          </div>
+            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-holo-blue font-semibold whitespace-nowrap">ORDEN DINÁMICO</div>
+        </div>
         </div>
         
         <!-- Indicadores de tiempo -->
@@ -85,6 +85,7 @@
           <span>SEMANAS 1-4</span>
           <span>SEMANA 6+</span>
         </div>
+        <p class="text-center text-xs text-gris-claro mt-4 opacity-70">Cada fase dura lo justo para generar un cambio irreversible.</p>
       </div>
     </div>
 

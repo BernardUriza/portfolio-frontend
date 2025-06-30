@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,4 +8,22 @@ import { CommonModule } from '@angular/common';
   templateUrl: './method-transform.html',
   styleUrl: './method-transform.scss'
 })
-export class MethodTransform {}
+export class MethodTransform implements OnInit, OnDestroy {
+  options = ['FLOW', 'CUBES', 'SPIRAL'];
+  style = this.options[0];
+  private intervalId: any;
+
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      let next;
+      do {
+        next = this.options[Math.floor(Math.random() * this.options.length)];
+      } while (next === this.style);
+      this.style = next;
+    }, 10000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
+}

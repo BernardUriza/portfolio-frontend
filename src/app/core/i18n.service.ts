@@ -71,11 +71,11 @@ export const LANGUAGES = {
     BETWEEN: {
       TITLE: 'What Happens Between Startup and Structure',
       LINES: [
-        "Your organization has passed MVP stage. You've grown, hired, layered process…",
-        'And now? Velocity drops. Morale fragments. Decisions slow down.',
-        "That's not burnout. It's narrative entropy.",
-        "You don't need another standup.",
-        'You need confrontation. Real, catalytic, and surgical.'
+        'Your startup scaled beyond MVP, adding people and process.',
+        'Suddenly velocity stalls and decisions gridlock.',
+        "That's not fatigue—it's narrative entropy.",
+        "More standups won't fix it.",
+        'Only a catalytic shock realigns your story.'
       ],
       DIAGRAM: { CHAOS: 'CHAOS', CATALYST: 'CATALYST', ORDER: 'ORDER' }
     },
@@ -171,11 +171,11 @@ export const LANGUAGES = {
     BETWEEN: {
       TITLE: 'Qué ocurre entre el inicio y la estructura',
       LINES: [
-        'Tu organización superó la fase MVP. Creciste, contrataste, pusiste procesos…',
-        '¿Y ahora? La velocidad cae. La moral se fragmenta. Las decisiones se estancan.',
-        'Eso no es agotamiento. Es entropía narrativa.',
-        'No necesitas otra daily.',
-        'Necesitas confrontación. Real, catalítica y quirúrgica.'
+        'Tu startup superó el MVP sumando gente y procesos.',
+        'Ahora la velocidad se detiene y las decisiones se congelan.',
+        'Eso no es agotamiento: es entropía narrativa.',
+        'Otra reunión no lo solucionará.',
+        'Solo un choque catalítico realinea tu historia.'
       ],
       DIAGRAM: { CHAOS: 'CAOS', CATALYST: 'CATALIZADOR', ORDER: 'ORDEN' }
     },
