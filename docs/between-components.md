@@ -26,4 +26,4 @@ Shows a catalyst flow with circles, cubes or spinning rings.
 - **Usage:** embedded in the "El Método" card.
 - **Animation:** Style rotates randomly among three options every 10 seconds.
 
-Each component is standalone and imported into `app-between`. They scale with their container and rely solely on Tailwind CSS for animation.
+Each component is standalone and imported into `app-catalytic-architecture`. They scale with their container and rely solely on Tailwind CSS for animation.
