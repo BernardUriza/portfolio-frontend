@@ -15,7 +15,7 @@
           {{ translations().TITLE }}
         </h2>
         <div class="text-center text-sm font-mono text-gris-claro/60 tracking-widest uppercase">
-          Transformación • Catálisis • Emergencia
+          {{ translations().SUBTITLE }}
         </div>
       </div>
       <div class="w-32 h-1 bg-gradient-to-r from-rojo-oscuro via-dorado to-holo-blue mx-auto rounded-full mt-6 pulse-glow"></div>
@@ -24,7 +24,7 @@
     <!-- TRES PILARES CONCEPTUALES -->
     <div class="grid md:grid-cols-3 gap-8 mb-20">
       <app-pillar-card
-        title="DETECCIÓN"
+        [title]="translations().PILLARS.DETECTION"
         icon="⚡"
         color="rojo-oscuro"
         [description]="translations().LINES[0]"
@@ -33,7 +33,7 @@
       </app-pillar-card>
 
       <app-pillar-card
-        title="ANÁLISIS"
+        [title]="translations().PILLARS.ANALYSIS"
         icon="🔬"
         color="dorado"
         [description]="translations().LINES[2]"
@@ -42,7 +42,7 @@
       </app-pillar-card>
 
       <app-pillar-card
-        title="CATÁLISIS"
+        [title]="translations().PILLARS.CATALYSIS"
         icon="⚗️"
         color="holo-blue"
         [description]="translations().LINES[4]">
@@ -59,12 +59,12 @@
         <button class="relative bg-antracita text-gris-claro px-12 py-4 rounded-2xl font-semibold border border-gray-700 hover:border-dorado/50 transition-all duration-300 transform hover:scale-105 group-hover:bg-gray-900/90">
           <span class="flex items-center gap-3">
             <span class="text-lg">🔍</span>
-            INICIAR DIAGNÓSTICO SISTÉMICO
+            {{ translations().CTA_BUTTON }}
           </span>
         </button>
       </div>
       <p class="text-xs text-gris-claro/60 mt-4 font-mono">
-        // Evaluación de compatibilidad enzima-sustrato
+        {{ translations().CTA_COMMENT }}
       </p>
     </div>
   </div>

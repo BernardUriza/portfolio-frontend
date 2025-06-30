@@ -5,15 +5,15 @@
 
     <div class="relative">
       <h4 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-dorado to-holo-blue mb-12 text-center">
-        PROCESO DE TRANSFORMACIÓN SISTÉMICA
+        {{ translations().DIAGRAM.TITLE }}
       </h4>
       <!-- Línea de proceso horizontal -->
       <div class="relative max-w-4xl mx-auto mb-12">
         <!-- Fila de semanas, separada, nunca tachada -->
         <div class="flex justify-between items-center pointer-events-none">
-          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">Semana 0-1</span>
-          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">Semanas 2-8</span>
-          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">Semana 9+</span>
+          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">{{ translations().DIAGRAM.WEEKS[0] }}</span>
+          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">{{ translations().DIAGRAM.WEEKS[1] }}</span>
+          <span class="bg-antracita/80 px-2 py-1 rounded text-xs text-gris-claro/70">{{ translations().DIAGRAM.WEEKS[2] }}</span>
         </div>
         <!-- Línea de fondo (siempre por detrás) -->
         <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-rojo-oscuro/30 via-dorado/30 to-holo-blue/30 -translate-y-1/2 z-0"></div>
@@ -25,7 +25,7 @@
               <span class="text-gris-claro font-bold text-sm">{{ translations().DIAGRAM.CHAOS }}</span>
             </div>
             <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs text-rojo-oscuro font-semibold whitespace-nowrap z-20 bg-antracita/90 px-2 py-1 rounded shadow">
-              CRISIS SISTÉMICA
+              {{ translations().DIAGRAM.LABELS.CHAOS }}
             </div>
           </div>
           <!-- NODO 2: CATÁLISIS -->
@@ -34,7 +34,7 @@
               <span class="text-antracita/90 font-bold text-sm text-right leading-tight">{{ translations().DIAGRAM.CATALYST }}</span>
             </div>
             <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs text-dorado font-semibold whitespace-nowrap z-20 bg-antracita/90 px-2 py-1 rounded shadow">
-              INTERVENCIÓN CATALÍTICA
+              {{ translations().DIAGRAM.LABELS.CATALYST }}
             </div>
           </div>
           <!-- NODO 3: EMERGENCIA -->
@@ -43,7 +43,7 @@
               <span class="text-gris-claro font-bold text-sm">{{ translations().DIAGRAM.ORDER }}</span>
             </div>
             <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs text-holo-blue font-semibold whitespace-nowrap z-20 bg-antracita/90 px-2 py-1 rounded shadow">
-              NUEVO EQUILIBRIO
+              {{ translations().DIAGRAM.LABELS.ORDER }}
             </div>
           </div>
         </div>
@@ -52,22 +52,22 @@
       <div class="grid md:grid-cols-3 gap-6 mt-16">
         <div class="text-center">
           <p class="text-xs text-gris-claro/80 leading-relaxed">
-            Sistema en estado crítico requiere intervención externa
+            {{ translations().DIAGRAM.DESCRIPTIONS[0] }}
           </p>
         </div>
         <div class="text-center">
           <p class="text-xs text-gris-claro/80 leading-relaxed">
-            Introducción de disonancia productiva y reconfiguración
+            {{ translations().DIAGRAM.DESCRIPTIONS[1] }}
           </p>
         </div>
         <div class="text-center">
           <p class="text-xs text-gris-claro/80 leading-relaxed">
-            Estabilización en nuevo nivel de complejidad y capacidad
+            {{ translations().DIAGRAM.DESCRIPTIONS[2] }}
           </p>
         </div>
       </div>
       <p class="text-center text-xs text-gris-claro/60 mt-8 font-mono">
-        // Transformación irreversible con capacidad sistémica emergente
+        {{ translations().DIAGRAM.FOOTER }}
       </p>
     </div>
   </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { I18nService } from '../../../../core/i18n.service';
 
 @Component({
   selector: 'app-entropy',
@@ -9,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./entropy.component.scss']
 })
 export class EntropyComponent implements OnInit, OnDestroy {
+  readonly i18n = inject(I18nService);
+  readonly translations = computed(() => this.i18n.t().BETWEEN);
   options = [
     'HÍBRIDO CONCEPTUAL',
     'RED NEURAL FRAGMENTADA',
