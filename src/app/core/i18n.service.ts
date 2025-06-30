@@ -70,6 +70,10 @@ export const LANGUAGES = {
     },
     BETWEEN: {
       TITLE: 'What Happens Between Startup and Structure',
+      SUBTITLE: 'Transformation • Catalysis • Emergence',
+      PILLARS: { DETECTION: 'DETECTION', ANALYSIS: 'ANALYSIS', CATALYSIS: 'CATALYSIS' },
+      CTA_BUTTON: 'Initiate Systemic Diagnosis',
+      CTA_COMMENT: '// Enzyme-substrate compatibility evaluation',
       LINES: [
         'Your startup scaled beyond MVP, adding people and process.',
         'Suddenly velocity stalls and decisions gridlock.',
@@ -77,7 +81,21 @@ export const LANGUAGES = {
         "More standups won't fix it.",
         'Only a catalytic shock realigns your story.'
       ],
-      DIAGRAM: { CHAOS: 'CHAOS', CATALYST: 'CATALYST', ORDER: 'ORDER' }
+      DIAGRAM: {
+        CHAOS: 'CHAOS',
+        CATALYST: 'CATALYST',
+        ORDER: 'ORDER',
+        TITLE: 'SYSTEMIC TRANSFORMATION PROCESS',
+        WEEKS: ['Week 0-1', 'Weeks 2-8', 'Week 9+'],
+        LABELS: { CHAOS: 'SYSTEMIC CRISIS', CATALYST: 'CATALYTIC INTERVENTION', ORDER: 'NEW EQUILIBRIUM' },
+        DESCRIPTIONS: [
+          'System in critical state requires external intervention',
+          'Introduction of productive dissonance and reconfiguration',
+          'Stabilization at new level of complexity and capability'
+        ],
+        FOOTER: '// Irreversible transformation with emergent systemic capacity'
+      },
+      ENTROPY_DEFAULT: '(No operation selected)'
     },
     SERVICES_DETAIL: {
       TITLE: 'Catalyst Engineering by Bernard Uriza',
@@ -181,6 +199,10 @@ export const LANGUAGES = {
     },
     BETWEEN: {
       TITLE: 'Qué ocurre entre el inicio y la estructura',
+      SUBTITLE: 'Transformación • Catálisis • Emergencia',
+      PILLARS: { DETECTION: 'DETECCIÓN', ANALYSIS: 'ANÁLISIS', CATALYSIS: 'CATÁLISIS' },
+      CTA_BUTTON: 'Iniciar Diagnóstico Sistémico',
+      CTA_COMMENT: '// Evaluación de compatibilidad enzima-sustrato',
       LINES: [
         'Tu startup superó el MVP sumando gente y procesos.',
         'Ahora la velocidad se detiene y las decisiones se congelan.',
@@ -188,7 +210,21 @@ export const LANGUAGES = {
         'Otra reunión no lo solucionará.',
         'Solo un choque catalítico realinea tu historia.'
       ],
-      DIAGRAM: { CHAOS: 'CAOS', CATALYST: 'CATALIZADOR', ORDER: 'ORDEN' }
+      DIAGRAM: {
+        CHAOS: 'CAOS',
+        CATALYST: 'CATALIZADOR',
+        ORDER: 'ORDEN',
+        TITLE: 'PROCESO DE TRANSFORMACIÓN SISTÉMICA',
+        WEEKS: ['Semana 0-1', 'Semanas 2-8', 'Semana 9+'],
+        LABELS: { CHAOS: 'CRISIS SISTÉMICA', CATALYST: 'INTERVENCIÓN CATALÍTICA', ORDER: 'NUEVO EQUILIBRIO' },
+        DESCRIPTIONS: [
+          'Sistema en estado crítico requiere intervención externa',
+          'Introducción de disonancia productiva y reconfiguración',
+          'Estabilización en nuevo nivel de complejidad y capacidad'
+        ],
+        FOOTER: '// Transformación irreversible con capacidad sistémica emergente'
+      },
+      ENTROPY_DEFAULT: '(No eligió operación)'
     },
     SERVICES_DETAIL: {
       TITLE: 'Catalyst Engineering por Bernard Uriza',
