@@ -5,12 +5,15 @@
       <span class="text-dorado">{{ translations().TITLE_LINE_2 }}</span>
     </h2>
     <p class="text-sm mb-4 italic">{{ translations().SUBTEXT }}</p>
-    <form class="flex flex-col gap-4">
-      <input type="text" [placeholder]="translations().NAME" class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado">
-      <input type="email" [placeholder]="translations().EMAIL" class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado">
-      <textarea [placeholder]="translations().MESSAGE" class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado"></textarea>
+    <form class="flex flex-col gap-4" [formGroup]="form" (ngSubmit)="submit()">
+      <input type="text" formControlName="name" [placeholder]="translations().NAME" (input)="hint('name')"
+        class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado">
+      <input type="email" formControlName="email" [placeholder]="translations().EMAIL" (input)="hint('email')"
+        class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado">
+      <textarea formControlName="message" [placeholder]="translations().MESSAGE" (input)="hint('message')"
+        class="bg-azul-noche border border-antracita p-2 text-gris-claro focus:outline-none focus:border-dorado"></textarea>
       <button type="submit" class="border border-dorado text-gris-claro px-4 py-2 hover:bg-rojo-oscuro/70 hover:shadow-lg transition-colors">
-        {{ translations().BUTTON }}
+        {{ translations().SEND }}
       </button>
     </form>
   </div>

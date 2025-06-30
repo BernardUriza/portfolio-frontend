@@ -132,7 +132,12 @@ Actualmente, el proyecto se encuentra desplegado en OnRender:
 | -------- | -------------------- | ------------------------------------- |
 | `GET`    | `/api/contacts`      | Listar todos los mensajes de contacto |
 | `POST`   | `/api/contacts`      | Enviar un mensaje de contacto         |
+
 | `DELETE` | `/api/contacts/{id}` | Eliminar un mensaje                   |
+
+El formulario de contacto de la aplicación frontend usa el endpoint `POST /api/contacts`.
+Los datos se envían mediante `HttpClient` sin recargar la página y se notifica al usuario
+con toasts cuando el envío se realiza.
 
 #### JSON ejemplo:
 
