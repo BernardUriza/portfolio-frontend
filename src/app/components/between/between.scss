@@ -1,0 +1,30 @@
+@keyframes flow {
+  0% { width: 0%; }
+  50% { width: 50%; }
+  100% { width: 100%; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Efecto hover para las cards */
+@media (min-width: 1024px) {
+  .grid > div:hover ~ div {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+/* Gradiente animado para el título */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-gradient-animate {
+  background: linear-gradient(-45deg, #8B5A3C, #FFD700, #00BFFF, #8B5A3C);
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+}
