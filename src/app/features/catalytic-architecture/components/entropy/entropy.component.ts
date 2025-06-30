@@ -1,12 +1,14 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-entropy',
+  standalone: true,
   imports: [CommonModule],
-  templateUrl: './entropy.html'
+  templateUrl: './entropy.component.html',
+  styleUrls: ['./entropy.component.scss']
 })
-export class Entropy implements OnInit, OnDestroy {
+export class EntropyComponent implements OnInit, OnDestroy {
   options = [
     'HÍBRIDO CONCEPTUAL',
     'RED NEURAL FRAGMENTADA',

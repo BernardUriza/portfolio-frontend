@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-method-transform',
+  selector: 'app-symptom-bar',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './method-transform.html',
-  styleUrl: './method-transform.scss'
+  templateUrl: './symptom-bar.component.html',
+  styleUrls: ['./symptom-bar.component.scss']
 })
-export class MethodTransform implements OnInit, OnDestroy {
-  options = ['FLOW', 'CUBES', 'SPIRAL'];
+export class SymptomBarComponent implements OnInit, OnDestroy {
+  options = ['BARS', 'DOTS', 'BLOCKS'];
   style = this.options[0];
   private intervalId: any;
 
@@ -20,7 +20,7 @@ export class MethodTransform implements OnInit, OnDestroy {
         next = this.options[Math.floor(Math.random() * this.options.length)];
       } while (next === this.style);
       this.style = next;
-    }, 15000);
+    }, 90000);
   }
 
   ngOnDestroy(): void {

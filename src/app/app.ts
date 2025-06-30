@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Header } from './components/header/header';
 import { Hero } from './components/hero/hero';
 import { Carousel } from './components/carousel/carousel';
-import { Between } from './components/between/between';
+import { CatalyticArchitectureComponent } from './features/catalytic-architecture/catalytic-architecture.component';
 import { About } from './components/about/about';
 import { Cases } from './components/cases/cases';
 import { Services } from './components/services/services';
@@ -22,7 +22,7 @@ import { Router, NavigationEnd } from '@angular/router';
     Hero,
     Banner,
     Carousel,
-    Between,
+    CatalyticArchitectureComponent,
     About,
     Cases,
     Services,
