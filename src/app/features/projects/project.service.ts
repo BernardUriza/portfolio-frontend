@@ -72,7 +72,9 @@ export class ProjectService {
       this.aiMessageSubject.next(null);
       this.aiMessage
         .getProjectMessage(project.id)
-        .pipe(tap(msg => this.aiMessageSubject.next(msg)))
+        .pipe(tap(msg => this.aiMessageSubject.next(
+          typeof msg === 'string' ? JSON.parse(msg) : msg
+        )))
         .subscribe();
     } else {
       this.aiMessageSubject.next(null);

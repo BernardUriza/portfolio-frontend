@@ -24,8 +24,10 @@ export class AiService {
         tap(() => this.trace.trace('ai request', stack)),
         map((resp: any) => {
           try {
+            debugger
             const obj = JSON.parse(resp);
-            return obj.message || '';
+            const traslatedObj = JSON.parse(obj.message);
+            return traslatedObj.en || '';
           } catch {
             return resp;
           }
